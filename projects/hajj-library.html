@@ -36,19 +36,19 @@
 <header class="p-hero">
   <div class="hero-glow"></div>
   <div class="wrap hero">
-    <span class="domain"><span class="t-ar">موبايل · منشور على Google Play</span><span class="t-en">Mobile · Live on Google Play</span></span>
+    <span class="domain"><span class="t-ar">موبايل · AI على الجهاز · منشور</span><span class="t-en">Mobile · On-device AI · Live</span></span>
     <h1><span class="t-en">Hajj Library<span class="accent">مكتبة الحج</span></span><span class="t-ar">مكتبة الحج</span></h1>
     <p class="tagline">
-      <span class="t-ar">قارئ نصوص تراثية يعمل دون إنترنت بالكامل، بمحرّك بحث صرفي مبنيّ من الصفر وبحث دلالي بالـ embeddings عبر ONNX — منشور ومُصان على Google Play.</span>
-      <span class="t-en">A fully offline reader for heritage texts, with a from-scratch morphological search engine and ONNX-based semantic search — shipped and maintained on Google Play.</span>
+      <span class="t-ar">قارئ نصوص يعمل دون إنترنت بالكامل، مزوّد بـ <span class="em">بحث دلالي بالذكاء الاصطناعي يعمل على الجهاز نفسه</span> (نموذج BERT عبر ONNX، دون أي خادم) — إلى جانب محرّك بحث صرفي مبنيّ من الصفر. منشور ومُصان على Google Play.</span>
+      <span class="t-en">A fully offline reader powered by <span class="em">on-device AI semantic search</span> (a BERT model running locally via ONNX, no server) — alongside a from-scratch morphological search engine. Shipped and maintained on Google Play.</span>
     </p>
     <div class="badge-row">
+      <span class="badge dev"><span class="t-ar">AI على الجهاز</span><span class="t-en">On-device AI</span></span>
       <span class="badge live"><span class="t-ar">منشور</span><span class="t-en">Published</span></span>
-      <span class="badge dev"><span class="t-ar">v2.1 قيد التطوير</span><span class="t-en">v2.1 in dev</span></span>
-      <span class="badge neutral">CI/CD</span>
+      <span class="badge neutral">v2.1 · CI/CD</span>
     </div>
     <div class="tags">
-      <span class="tag gold">Flutter</span><span class="tag gold">Dart</span><span class="tag">SQLite FTS5</span><span class="tag">ONNX Runtime</span><span class="tag">Provider</span><span class="tag">Morphological Search</span><span class="tag">AES encrypt</span><span class="tag">Offline-first</span>
+      <span class="tag gold">On-device AI</span><span class="tag">BERT embeddings</span><span class="tag">ONNX Runtime</span><span class="tag gold">Flutter</span><span class="tag">SQLite FTS5</span><span class="tag">Morphological Search</span><span class="tag">AES encrypt</span><span class="tag">Offline-first</span>
     </div>
 
     <div class="factbar" style="margin-top:30px">
@@ -151,8 +151,8 @@ lib/
       </div>
       <div class="feat">
         <div class="fi">02</div>
-        <h4><span class="t-ar">بحث هجين دلالي + نصّي</span><span class="t-en">Hybrid semantic + lexical search</span></h4>
-        <p><span class="t-ar">دمج ONNX Runtime لتوليد embeddings (نموذج لغوي، مكمَّم int8)، مع دمج رُتب (rank fusion) بين التشابه المتّجهي وصلة FTS5 — وتراجع سلس إلى FTS فقط عند غياب النموذج.</span><span class="t-en">ONNX Runtime for embeddings (language model, int8-quantized), with rank fusion between vector similarity and FTS5 relevance — and graceful fallback to FTS-only when the model is unavailable.</span></p>
+        <h4><span class="t-ar">🧠 بحث دلالي بالذكاء الاصطناعي على الجهاز</span><span class="t-en">🧠 On-device AI semantic search</span></h4>
+        <p><span class="t-ar">نموذج embeddings (BERT) يُشغَّل <span class="em">محلياً على الجهاز نفسه</span> عبر ONNX Runtime (مكمَّم int8) — دون أي خادم أو API سحابي. يدمج التشابه المتّجهي مع صلة FTS5 (rank fusion)، مع تراجع سلس إلى FTS عند غياب النموذج. تشغيل ML على الهاتف ذاته أصعب وأندر من مجرّد استدعاء API.</span><span class="t-en">A BERT embeddings model running <span class="em">locally on the device</span> via ONNX Runtime (int8-quantized) — no server, no cloud API. It fuses vector similarity with FTS5 relevance (rank fusion), with graceful fallback to FTS. Running ML on the phone itself is harder and rarer than just calling an API.</span></p>
       </div>
       <div class="feat">
         <div class="fi">03</div>
@@ -203,7 +203,7 @@ lib/
       <tr><td><span class="t-ar">الإطار</span><span class="t-en">Framework</span></td><td><b>Flutter 3.x</b> · Dart >=3.0 <span class="t-ar">· Material Design</span><span class="t-en">· Material Design</span></td></tr>
       <tr><td><span class="t-ar">إدارة الحالة</span><span class="t-en">State</span></td><td>Provider <span class="t-ar">+ مستودعات static</span><span class="t-en">+ static repositories</span></td></tr>
       <tr><td><span class="t-ar">قاعدة البيانات</span><span class="t-en">Database</span></td><td><b>SQLite</b> (sqflite_common_ffi · sqlite3_flutter_libs) · <b>FTS5</b> · WAL</td></tr>
-      <tr><td><span class="t-ar">الذكاء الاصطناعي</span><span class="t-en">AI / ML</span></td><td><b>ONNX Runtime</b> <span class="t-ar">· embeddings مكمَّمة (int8) · rank fusion</span><span class="t-en">· quantized embeddings (int8) · rank fusion</span></td></tr>
+      <tr><td><span class="t-ar">الذكاء الاصطناعي</span><span class="t-en">AI / ML</span></td><td><b><span class="t-ar">AI على الجهاز</span><span class="t-en">On-device AI</span></b> <span class="t-ar">· نموذج BERT embeddings عبر ONNX Runtime (مكمَّم int8) · rank fusion · بلا خادم</span><span class="t-en">· BERT embeddings via ONNX Runtime (int8) · rank fusion · no server</span></td></tr>
       <tr><td><span class="t-ar">المعالجة اللغوية</span><span class="t-en">Linguistics</span></td><td><span class="t-ar">خطّ صرف مخصّص · قاموس 9.5MB · 4 خطوط (Amiri · Cairo · Lateef · Thuluth)</span><span class="t-en">Custom morphology · 9.5MB dictionary · 4 fonts (Amiri · Cairo · Lateef · Thuluth)</span></td></tr>
       <tr><td><span class="t-ar">التشفير</span><span class="t-en">Encryption</span></td><td>crypto · encrypt (AES) <span class="t-ar">للنسخ الاحتياطي</span><span class="t-en">for backups</span></td></tr>
       <tr><td><span class="t-ar">المنصّات</span><span class="t-en">Platforms</span></td><td><span class="t-ar">أندرويد (موقّع) · iOS · ويب · ويندوز · macOS · Linux</span><span class="t-en">Android (signed) · iOS · Web · Windows · macOS · Linux</span></td></tr>

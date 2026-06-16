@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-lang="ar">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Citely — سايتلي · Ali Hashim Salman</title>
+<meta name="description" content="مساعد مستندات ثنائي اللغة بنظام RAG: إجابات مبنيّة على مستندك وحده مع استشهاد لكل ادّعاء. بحث هجين (pgvector + FTS · RRF)، حلقة وكيلية، وبثّ SSE. دراسة حالة تقنية." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="brand" href="../index.html">ALI HASHIM SALMAN <b>// AI · Flutter</b></a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="../index.html#work"><span class="t-ar">الأعمال</span><span class="t-en">Work</span></a>
+        <a href="../index.html#contact"><span class="t-ar">تواصل</span><span class="t-en">Contact</span></a>
+        <a href="../Ali_Hashim_Salman_Resume.pdf" target="_blank" rel="noopener"><span class="t-ar">السيرة</span><span class="t-en">CV</span></a>
+      </div>
+      <button class="lang-toggle" id="langBtn" aria-label="Switch language">EN</button>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap" style="padding-top:26px">
+  <a class="backlink" href="../index.html#work">
+    <span>←</span> <span class="t-ar">كل الأعمال</span><span class="t-en">All work</span>
+  </a>
+</div>
+
+<!-- HERO -->
+<header class="p-hero">
+  <div class="hero-glow"></div>
+  <div class="wrap hero">
+    <span class="domain"><span class="t-ar">AI · منتج · RAG مع استشهاد</span><span class="t-en">AI · Product · RAG with citations</span></span>
+    <h1><span class="t-en">Citely<span class="accent">سايتلي</span></span><span class="t-ar">سايتلي<span class="accent">Citely</span></span></h1>
+    <p class="tagline">
+      <span class="t-ar">مساعد مستندات ثنائي اللغة (عربي/إنجليزي): ترفع ملف PDF فتحصل على إجابة <span class="em">مبنيّة على مستندك وحده</span>، وكل ادّعاء فيها مرفق باستشهاد يشير إلى المقطع المصدر وصفحته — <span class="em">دون هلوسة</span>. يقوم على بحث هجين وحلقة وكيلية تبثّ خطواتها وإجابتها لحظياً.</span>
+      <span class="t-en">A bilingual (Arabic/English) document assistant: upload a PDF and get an answer <span class="em">grounded in your document alone</span>, with every claim carrying a citation to the exact source passage and page — <span class="em">no hallucination</span>. Built on hybrid search and an agentic loop that streams its steps and answer in real time.</span>
+    </p>
+    <div class="badge-row">
+      <span class="badge dev"><span class="t-ar">الأحدث</span><span class="t-en">Newest</span></span>
+      <span class="badge live">RAG + Citations</span>
+      <span class="badge neutral"><span class="t-ar">ثنائي اللغة</span><span class="t-en">Bilingual</span></span>
+    </div>
+    <div class="tags">
+      <span class="tag gold">RAG</span><span class="tag gold">Citations</span><span class="tag">FastAPI (async)</span><span class="tag">PostgreSQL · pgvector</span><span class="tag">Hybrid Search · RRF</span><span class="tag">Gemini</span><span class="tag">SSE Streaming</span><span class="tag">Docker</span>
+    </div>
+
+    <div class="factbar" style="margin-top:30px">
+      <div class="fact"><div class="k"><span class="t-ar">الدور</span><span class="t-en">Role</span></div><div class="v"><span class="t-ar">مطوّر منفرد — كامل</span><span class="t-en">Solo — end to end</span></div></div>
+      <div class="fact"><div class="k"><span class="t-ar">الاسترجاع</span><span class="t-en">Retrieval</span></div><div class="v"><span class="t-ar">هجين: متّجهي + نصّي · RRF</span><span class="t-en">Hybrid: vector + lexical · RRF</span></div></div>
+      <div class="fact"><div class="k"><span class="t-ar">الإجابة</span><span class="t-en">Answering</span></div><div class="v"><span class="t-ar">وكيلية · بثّ SSE · استشهاد</span><span class="t-en">Agentic · SSE stream · cited</span></div></div>
+      <div class="fact"><div class="k"><span class="t-ar">المكدّس</span><span class="t-en">Stack</span></div><div class="v">FastAPI · Postgres · Gemini · Docker</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- OVERVIEW -->
+<section class="psec">
+  <div class="wrap">
+    <h2><span class="num">01</span><span class="t-ar">نظرة عامة</span><span class="t-en">Overview</span></h2>
+    <p class="lead-p">
+      <span class="t-ar">بنيتُ Citely لأعالج العيب الأكبر في مساعدات المستندات: الإجابات التي تبدو واثقة لكنها مُختلَقة. في Citely كل جملة في الإجابة مربوطة بمصدرها في مستندك — بالمقطع والصفحة — فتتحقّق بنفسك بدل أن تثق عمياءً.</span>
+      <span class="t-en">I built Citely to fix the biggest flaw in document assistants: confident-sounding answers that are actually fabricated. In Citely every sentence is tied to its source in your document — passage and page — so you verify instead of trusting blindly.</span>
+    </p>
+    <p>
+      <span class="t-ar">ترفع ملف PDF (عربياً أو إنجليزياً)، فيُحلَّل ويُقطَّع وتُحسَب له embeddings تُخزَّن في PostgreSQL عبر pgvector. عند السؤال يجري <span class="em">بحث هجين</span> يدمج الإشارة الدلالية (تشابه المتّجهات) والإشارة المعجمية (بحث نصّي كامل في PostgreSQL) بخوارزمية <span class="em">Reciprocal Rank Fusion</span>. ثم تتولّى حلقة وكيلية صياغة الإجابة من المقاطع المسترجَعة وحدها، وتبثّها رمزاً برمز مع بطاقات المصادر.</span>
+      <span class="t-en">You upload a PDF (Arabic or English); it's parsed, chunked, and embedded into PostgreSQL via pgvector. At question time a <span class="em">hybrid search</span> fuses the semantic signal (vector similarity) and the lexical signal (PostgreSQL full-text search) with <span class="em">Reciprocal Rank Fusion</span>. An agentic loop then composes the answer from the retrieved passages only, streaming it token-by-token alongside source cards.</span>
+    </p>
+    <p>
+      <span class="t-ar">الواجهة ثنائية اللغة بالكامل مع دعم RTL/LTR، وتُظهِر خطوات الوكيل (استرجاع ← مصادر ← كتابة) أثناء عملها — لتكون التجربة شفّافة بقدر ما هي موثّقة. المشروع مبنيّ من الصفر بمعمارية نظيفة ومُحوّى بـ Docker.</span>
+      <span class="t-en">The interface is fully bilingual with RTL/LTR support, and surfaces the agent's steps (retrieve → sources → write) as they happen — making the experience as transparent as it is grounded. The whole thing is built from scratch with clean architecture and containerized with Docker.</span>
+    </p>
+  </div>
+</section>
+
+<!-- SCREENSHOTS -->
+<section class="psec">
+  <div class="wrap">
+    <h2><span class="num">02</span><span class="t-ar">لقطات</span><span class="t-en">Screenshots</span></h2>
+    <p class="sub"><span class="t-ar">لقطات حقيقية من التطبيق وهو يعمل محلياً</span><span class="t-en">Real screenshots of the running app</span></p>
+    <div class="gallery">
+      <figure class="gshot">
+        <div class="shot"><span class="ph-tag">01</span><img src="../assets/img/citely/01-home.png" alt="Citely — Arabic upload screen" loading="lazy" /></div>
+        <figcaption><span class="t-ar">الواجهة (عربي · RTL) — رفع المستند</span><span class="t-en">Home (Arabic · RTL) — upload</span></figcaption>
+      </figure>
+      <figure class="gshot">
+        <div class="shot"><span class="ph-tag">02</span><img src="../assets/img/citely/02-answer-ar.png" alt="Citely — cited answer with source cards" loading="lazy" /></div>
+        <figcaption><span class="t-ar">إجابة موثّقة باستشهادات [n] + بطاقات المصادر (صفحة)</span><span class="t-en">A cited answer with [n] citations + source cards (page)</span></figcaption>
+      </figure>
+      <figure class="gshot">
+        <div class="shot"><span class="ph-tag">03</span><img src="../assets/img/citely/04-home-en.png" alt="Citely — English interface" loading="lazy" /></div>
+        <figcaption><span class="t-ar">الواجهة نفسها بالإنجليزية (LTR)</span><span class="t-en">The same interface in English (LTR)</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ARCHITECTURE -->
+<section class="psec">
+  <div class="wrap">
+    <h2><span class="num">03</span><span class="t-ar">المعمارية</span><span class="t-en">Architecture</span></h2>
+    <p class="sub"><span class="t-ar">FastAPI (async) فوق PostgreSQL + pgvector، مع طبقة خدمات تفصل الفهرسة عن الاسترجاع عن الوكيل</span><span class="t-en">FastAPI (async) over PostgreSQL + pgvector, with a service layer separating indexing, retrieval, and the agent</span></p>
+    <div class="diagram">
+<pre><span class="dim">// تدفّق غير متزامن بالكامل · SQLAlchemy 2.0 + asyncpg</span>
+app/
+├─ api/        <span class="dim">documents (رفع · فهرسة خلفية) · chat (بثّ SSE)</span>
+├─ services/
+│  ├─ <span class="hl">indexing</span>     <span class="dim">PyMuPDF → تقطيع منزلق (900/150) → embeddings (دفعات)</span>
+│  ├─ <span class="hl">retrieval</span>    <span class="dim">بحث متّجهي (cosine) + نصّي (ts_rank) → دمج RRF</span>
+│  └─ <span class="hl">agent</span>        <span class="dim">استرجاع → مصادر → توليد مُستشهِد (بثّ)</span>
+├─ ai/gemini   <span class="dim">embeddings (768-بُعد) + توليد بالبثّ</span>
+└─ web/        <span class="dim">واجهة SPA ثنائية اللغة (RTL/LTR)</span>
+
+<span class="lp">PostgreSQL + pgvector:</span>
+  documents   <span class="dim">حالة · تقدّم · عدد الصفحات/المقاطع</span>
+  chunks      <span class="dim">content · <span class="hl">embedding Vector(768)</span> · content_tsv (GIN)</span>
+              <span class="dim">فهرس متّجهي (cosine &lt;=&gt;) + فهرس نصّي كامل (tsvector)</span></pre>
+    </div>
+    <ul class="bullets" style="margin-top:24px">
+      <li><span class="t-ar"><b>بحث هجين بدمج RRF:</b> أدمج ترتيب البحث المتّجهي (تشابه دلالي) مع ترتيب البحث النصّي الكامل في PostgreSQL (تطابق الكلمات والأرقام والأسماء) عبر Reciprocal Rank Fusion (K=60) — يلتقط الهجين ما يفوت كلّاً منهما منفرداً.</span><span class="t-en"><b>Hybrid search with RRF fusion:</b> I merge the vector ranking (semantic) with PostgreSQL full-text ranking (exact words, numbers, names) via Reciprocal Rank Fusion (K=60) — the hybrid catches what either alone would miss.</span></li>
+      <li><span class="t-ar"><b>فهرسة غير حاجبة:</b> الرفع يُرجِع فوراً، والتحليل + التقطيع + حساب الـembeddings (على دفعات) يجري كمهمّة خلفية مع تحديث تقدّم حيّ يستعلم عنه العميل.</span><span class="t-en"><b>Non-blocking indexing:</b> upload returns immediately; parsing + chunking + embedding (in batches) run as a background task with live progress the client polls.</span></li>
+      <li><span class="t-ar"><b>بثّ عبر SSE:</b> الوكيل يبثّ أحداثاً متسلسلة (status · sources · token · done) فتُظهِر الواجهة خطواته ومصادره وإجابته وهي تُكتَب — بدل انتظار ردّ كامل.</span><span class="t-en"><b>SSE streaming:</b> the agent emits a sequence of events (status · sources · token · done), so the UI shows its steps, sources, and answer as they're written — instead of waiting for one full response.</span></li>
+      <li><span class="t-ar"><b>التأريض مفروض بالتصميم:</b> يُمنَح النموذج المقاطع المرقّمة فقط ويُطالَب بالاستشهاد بعد كل ادّعاء، وإن غاب الجواب عن المصادر يقولها صراحةً بدل اختلاقه.</span><span class="t-en"><b>Grounding by design:</b> the model is given only the numbered passages and required to cite after every claim; if the answer isn't in the sources, it says so rather than inventing it.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- KEY FEATURES -->
+<section class="psec">
+  <div class="wrap">
+    <h2><span class="num">04</span><span class="t-ar">أبرز الميزات التقنية</span><span class="t-en">Key technical features</span></h2>
+    <div class="feat-grid">
+      <div class="feat">
+        <div class="fi">01</div>
+        <h4><span class="t-ar">بحث هجين (متّجهي + نصّي) بدمج RRF</span><span class="t-en">Hybrid (vector + lexical) search with RRF</span></h4>
+        <p><span class="t-ar">استعلامان متوازيان: تشابه cosine عبر pgvector، وترتيب ts_rank عبر بحث PostgreSQL النصّي الكامل (websearch_to_tsquery)، يُدمجان بـ Reciprocal Rank Fusion لقائمة واحدة أدقّ.</span><span class="t-en">Two parallel queries: cosine similarity via pgvector and ts_rank via PostgreSQL full-text search (websearch_to_tsquery), fused with Reciprocal Rank Fusion into one sharper ranked list.</span></p>
+      </div>
+      <div class="feat">
+        <div class="fi">02</div>
+        <h4><span class="t-ar">استشهاد لكل ادّعاء + بطاقات مصادر</span><span class="t-en">A citation per claim + source cards</span></h4>
+        <p><span class="t-ar">يُلزَم النموذج بوضع [n] بعد كل جملة، وتعرض الواجهة بطاقة لكل مصدر فيها عنوان المستند والصفحة ومقتطف — فيتحقّق القارئ من كل ادّعاء بنقرة.</span><span class="t-en">The model must place [n] after each sentence, and the UI shows a card per source with the document title, page, and a snippet — so the reader can verify every claim at a glance.</span></p>
+      </div>
+      <div class="feat">
+        <div class="fi">03</div>
+        <h4><span class="t-ar">حلقة وكيلية شفّافة بالبثّ</span><span class="t-en">Transparent agentic loop, streamed</span></h4>
+        <p><span class="t-ar">الوكيل يبثّ خطواته (استرجاع ← مصادر ← كتابة) لحظياً عبر SSE، فالمستخدم يرى المنطق يجري لا مجرّد ناتج نهائي — شفافية تبني الثقة.</span><span class="t-en">The agent streams its steps (retrieve → sources → write) live over SSE, so the user sees the reasoning unfold, not just a final output — transparency that builds trust.</span></p>
+      </div>
+      <div class="feat">
+        <div class="fi">04</div>
+        <h4><span class="t-ar">ثنائية اللغة فعلية (عربي/إنجليزي · RTL/LTR)</span><span class="t-en">Truly bilingual (Arabic/English · RTL/LTR)</span></h4>
+        <p><span class="t-ar">الواجهة تتبدّل بين العربية والإنجليزية باتجاه صحيح، والإجابة تُكتَب بلغة السؤال نفسها، والبحث يعمل على مستندات بأي من اللغتين عبر embeddings متعدّدة اللغات.</span><span class="t-en">The UI flips between Arabic and English with correct direction, the answer is written in the question's own language, and search works on documents in either language via multilingual embeddings.</span></p>
+      </div>
+      <div class="feat">
+        <div class="fi">05</div>
+        <h4><span class="t-ar">فهرسة غير متزامنة على دفعات</span><span class="t-en">Async, batched indexing</span></h4>
+        <p><span class="t-ar">تحليل PyMuPDF ثم تقطيع منزلق بتداخل، وحساب embeddings على دفعات في مهمّة خلفية مع تتبّع تقدّم — يُبقي الرفع سريعاً والاستيعاب قابلاً للتوسّع.</span><span class="t-en">PyMuPDF parsing, overlapping sliding-window chunking, and batched embedding in a background task with progress tracking — keeping upload snappy and ingestion scalable.</span></p>
+      </div>
+      <div class="feat">
+        <div class="fi">06</div>
+        <h4><span class="t-ar">مكدّس غير متزامن من الطرف للطرف</span><span class="t-en">End-to-end async stack</span></h4>
+        <p><span class="t-ar">FastAPI + SQLAlchemy 2.0 + asyncpg، مع جلسات غير متزامنة وفهارس مُحسّنة (GIN للنصّ، فهرس متّجهي للتشابه) — ومُحوّى بالكامل بـ Docker للتشغيل والنشر.</span><span class="t-en">FastAPI + SQLAlchemy 2.0 + asyncpg, with async sessions and tuned indexes (GIN for text, a vector index for similarity) — fully containerized with Docker for run and deploy.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEEP DIVE -->
+<section class="psec">
+  <div class="wrap">
+    <h2><span class="num">05</span><span class="t-ar">قرارات هندسية</span><span class="t-en">Engineering decisions</span></h2>
+    <div class="callout">
+      <b><span class="t-ar">لماذا بحث هجين بدل بحث متّجهي خالص؟</span><span class="t-en">Why hybrid search instead of pure vector search?</span></b><br/>
+      <span class="t-ar">البحث المتّجهي بارع في المعنى لكنه يضعف أمام التطابق الحرفي: الأسماء، الأرقام، المصطلحات النادرة. البحث النصّي الكامل يلتقطها بدقّة. بدمج الترتيبين عبر RRF (K=60) أحصل على ما يجيده كلٌّ منهما دون معايرة أوزان هشّة — وهي الطريقة التي تعتمدها أنظمة الاسترجاع الجادّة.</span>
+      <span class="t-en">Vector search is great at meaning but weak on literal matches: names, numbers, rare terms. Full-text search nails those. Fusing both rankings with RRF (K=60) gives me the strengths of each without brittle weight tuning — the approach serious retrieval systems rely on.</span>
+    </div>
+    <div class="callout">
+      <b><span class="t-ar">لماذا PostgreSQL + pgvector بدل قاعدة متّجهات منفصلة؟</span><span class="t-en">Why PostgreSQL + pgvector over a separate vector DB?</span></b><br/>
+      <span class="t-ar">وضع المتّجهات والنصّ في قاعدة واحدة يتيح البحث الهجين داخل المحرّك نفسه، ويُبقي البيانات متّسقة بلا مزامنة بين مخزنين، ويبسّط النشر والتشغيل — مع الاحتفاظ بقوّة SQL والفهارس والمعاملات.</span>
+      <span class="t-en">Keeping vectors and text in one database enables hybrid search inside the same engine, keeps data consistent with no two-store sync, and simplifies deploy/ops — while retaining the power of SQL, indexes, and transactions.</span>
+    </div>
+    <div class="callout note">
+      <b><span class="t-ar">ملاحظة صادقة عن الحالة</span><span class="t-en">An honest status note</span></b><br/>
+      <span class="t-ar">Citely مشروع جديد بُني ليُبرز نمطاً إنتاجياً لـ RAG مؤرَّض. النسخة الحالية تدعم PDF فقط، وتستخدم نموذج Gemini عبر API (لا استضافة محلّية للنموذج)، وتشغّل دورة وكيلية واحدة قصيرة. الخطوات التالية الطبيعية: دعم DOCX/الصور بـ OCR، إعادة ترتيب (reranking) بعد الدمج، وتقييم استرجاع مُؤتمَت.</span>
+      <span class="t-en">Citely is a new project built to showcase a production pattern for grounded RAG. The current build supports PDF only, uses Gemini via API (no self-hosted model), and runs a single short agentic pass. Natural next steps: DOCX/image (OCR) support, a reranking stage after fusion, and automated retrieval evaluation.</span>
+    </div>
+  </div>
+</section>
+
+<!-- STACK -->
+<section class="psec">
+  <div class="wrap">
+    <h2><span class="num">06</span><span class="t-ar">التقنيات</span><span class="t-en">Tech stack</span></h2>
+    <table class="stack-table">
+      <tr><td><span class="t-ar">الخادم</span><span class="t-en">Backend</span></td><td><b>FastAPI</b> (async) · <span class="t-ar">بثّ SSE عبر StreamingResponse</span><span class="t-en">SSE via StreamingResponse</span></td></tr>
+      <tr><td><span class="t-ar">قاعدة البيانات</span><span class="t-en">Database</span></td><td><b>PostgreSQL 16</b> · <b>pgvector</b> · <span class="t-ar">بحث نصّي كامل (tsvector · GIN)</span><span class="t-en">full-text search (tsvector · GIN)</span></td></tr>
+      <tr><td><span class="t-ar">الوصول للبيانات</span><span class="t-en">Data access</span></td><td><b>SQLAlchemy 2.0</b> (async) · asyncpg</td></tr>
+      <tr><td><span class="t-ar">الاسترجاع</span><span class="t-en">Retrieval</span></td><td><span class="t-ar">متّجهي (cosine) + معجمي (ts_rank) · دمج RRF (K=60) · top-k=6</span><span class="t-en">vector (cosine) + lexical (ts_rank) · RRF fusion (K=60) · top-k=6</span></td></tr>
+      <tr><td><span class="t-ar">الذكاء الاصطناعي</span><span class="t-en">AI</span></td><td><b>Google Gemini</b> · <span class="t-ar">embeddings (768-بُعد) + توليد بالبثّ</span><span class="t-en">embeddings (768-dim) + streaming generation</span></td></tr>
+      <tr><td><span class="t-ar">معالجة المستندات</span><span class="t-en">Documents</span></td><td>PyMuPDF · <span class="t-ar">تقطيع منزلق (900 حرف / تداخل 150)</span><span class="t-en">sliding-window chunking (900 chars / 150 overlap)</span></td></tr>
+      <tr><td><span class="t-ar">الواجهة</span><span class="t-en">Frontend</span></td><td><span class="t-ar">SPA ثنائية اللغة (RTL/LTR) · fetch + ReadableStream لقراءة SSE</span><span class="t-en">bilingual SPA (RTL/LTR) · fetch + ReadableStream for SSE</span></td></tr>
+      <tr><td><span class="t-ar">التشغيل والنشر</span><span class="t-en">Run &amp; deploy</span></td><td><b>Docker</b> · docker-compose · <span class="t-ar">جاهز للنشر (Render blueprint)</span><span class="t-en">deploy-ready (Render blueprint)</span></td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- PROJECT NAV -->
+<div class="wrap">
+  <div class="proj-nav">
+    <a href="zaad.html">
+      <span class="lbl"><span class="t-ar">السابق</span><span class="t-en">Previous</span></span>
+      ← Zaad
+    </a>
+    <a href="hakimai.html" style="text-align:end">
+      <span class="lbl"><span class="t-ar">التالي</span><span class="t-en">Next</span></span>
+      HakimAI →
+    </a>
+  </div>
+</div>
+
+<footer>
+  <div class="foot-inner">
+    <span>© <span id="yr"></span> <span class="t-ar">علي هاشم سلمان</span><span class="t-en">Ali Hashim Salman</span></span>
+    <span class="sig">عليّ هاشم سلمان</span>
+    <span><span class="t-ar">النجف، العراق</span><span class="t-en">Najaf, Iraq</span></span>
+  </div>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

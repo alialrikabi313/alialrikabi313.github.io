@@ -53,9 +53,9 @@
 
     <div class="factbar" style="margin-top:30px">
       <div class="fact"><div class="k"><span class="t-ar">الدور</span><span class="t-en">Role</span></div><div class="v"><span class="t-ar">مطوّر منفرد (6 وحدات)</span><span class="t-en">Solo full-stack (6 modules)</span></div></div>
-      <div class="fact"><div class="k"><span class="t-ar">الحجم</span><span class="t-en">Scale</span></div><div class="v"><b>~90K</b> <span class="t-ar">سطر</span><span class="t-en">lines total</span></div></div>
+      <div class="fact"><div class="k"><span class="t-ar">النطاق</span><span class="t-en">Scope</span></div><div class="v"><span class="t-ar">6 وحدات · multi-tenant</span><span class="t-en">6 modules · multi-tenant</span></div></div>
       <div class="fact"><div class="k">Backend</div><div class="v"><b>~103</b> <span class="t-ar">endpoint · 39 خدمة</span><span class="t-en">endpoints · 39 services</span></div></div>
-      <div class="fact"><div class="k">Mobile</div><div class="v"><b>185</b> <span class="t-ar">ملف Dart · ~30K سطر</span><span class="t-en">Dart files · ~30K lines</span></div></div>
+      <div class="fact"><div class="k">Mobile</div><div class="v"><span class="t-ar">Flutter · DRM video · تلعيب</span><span class="t-en">Flutter · DRM video · gamification</span></div></div>
     </div>
   </div>
 </header>
@@ -116,7 +116,7 @@
 
 <span class="lp">Multi-tenancy:</span> every Firestore doc carries <span class="hl">instructorId/schoolId</span>
    → every service verifies ownership <span class="hl">BEFORE</span> read/write
-   → PLUS Firestore Rules (<span class="dim">300 LOC</span>) on web clients  =  <span class="lp">defense in depth</span>
+   → PLUS Firestore Rules on web clients  =  <span class="lp">defense in depth</span>
 
 <span class="lp">Local-first dev:</span> Firebase Emulator + mocked Bunny/Gemini
    → <span class="dim">zero GCP creds needed to run the whole platform</span></pre>
@@ -191,7 +191,7 @@
     <h2><span class="num">06</span><span class="t-ar">التقنيات</span><span class="t-en">Tech stack</span></h2>
     <table class="stack-table">
       <tr><td>Backend</td><td><b>FastAPI 0.115</b> · Python 3.12 · uvicorn · Pydantic v2</td></tr>
-      <tr><td><span class="t-ar">قاعدة البيانات</span><span class="t-en">Database</span></td><td><b>Firestore</b> <span class="t-ar">(Native, nam5 متعدّد المناطق)</span><span class="t-en">(Native, nam5 multi-region)</span> · Firestore Rules (300 LOC)</td></tr>
+      <tr><td><span class="t-ar">قاعدة البيانات</span><span class="t-en">Database</span></td><td><b>Firestore</b> <span class="t-ar">(Native, nam5 متعدّد المناطق)</span><span class="t-en">(Native, nam5 multi-region)</span> · Firestore Rules</td></tr>
       <tr><td><span class="t-ar">المصادقة</span><span class="t-en">Auth</span></td><td><b>Firebase Auth</b> (OTP) + JWT <span class="t-ar">custom claims (role · instructorId)</span><span class="t-en">custom claims (role · instructorId)</span></td></tr>
       <tr><td><span class="t-ar">التخزين/التحديد</span><span class="t-en">Cache / Limit</span></td><td><b>Redis 7</b> (Cloud Memorystore)</td></tr>
       <tr><td><span class="t-ar">الفيديو</span><span class="t-en">Video</span></td><td><b>Bunny.net Stream</b> · Widevine/FairPlay DRM · HLS (better_player_plus)</td></tr>

@@ -53,8 +53,8 @@
 
     <div class="factbar" style="margin-top:30px">
       <div class="fact"><div class="k"><span class="t-ar">الدور</span><span class="t-en">Role</span></div><div class="v"><span class="t-ar">مطوّر منفرد — كامل</span><span class="t-en">Solo — end to end</span></div></div>
-      <div class="fact"><div class="k"><span class="t-ar">الحجم</span><span class="t-en">Scale</span></div><div class="v"><b>27K</b> <span class="t-ar">سطر · 128 ملف</span><span class="t-en">lines · 128 files</span></div></div>
-      <div class="fact"><div class="k"><span class="t-ar">الاختبارات</span><span class="t-en">Tests</span></div><div class="v"><b>15</b> <span class="t-ar">ملف · 1.6K سطر</span><span class="t-en">files · 1.6K lines</span></div></div>
+      <div class="fact"><div class="k"><span class="t-ar">النطاق</span><span class="t-en">Scope</span></div><div class="v"><span class="t-ar">14 ميزة · offline-first</span><span class="t-en">14 features · offline-first</span></div></div>
+      <div class="fact"><div class="k"><span class="t-ar">الاختبارات</span><span class="t-en">Tests</span></div><div class="v"><b>15</b> <span class="t-ar">ملف اختبار</span><span class="t-en">test files</span></div></div>
       <div class="fact"><div class="k"><span class="t-ar">المنصّات</span><span class="t-en">Platforms</span></div><div class="v"><span class="t-ar">أندرويد + 5 أخرى</span><span class="t-en">Android + 5 more</span></div></div>
     </div>
   </div>
@@ -120,7 +120,7 @@ lib/
 ├─ main.dart            <span class="dim">init: settings → hydrate derivatives cache → maintenance</span>
 ├─ core/               <span class="dim">theme · arabic morphology utils · shared widgets</span>
 └─ features/
-   ├─ <span class="hl">books/</span>           <span class="dim">reader engine (~2.8K LOC) · TOC · page cache (10-page cap)</span>
+   ├─ <span class="hl">books/</span>           <span class="dim">reader engine · TOC · page cache (10-page cap)</span>
    ├─ <span class="hl">search/</span>          <span class="dim">FTS5 + morphology orchestrator (16 files)</span>
    │   └─ <span class="lp">two-phase:</span> <span class="dim">fast (no derivatives) → if &lt;50 hits → full morphology</span>
    ├─ <span class="hl">semantic_search/</span> <span class="dim">ONNX embedder · vector index · rank fusion (v2.1)</span>

@@ -53,7 +53,7 @@
 
     <div class="factbar" style="margin-top:30px">
       <div class="fact"><div class="k"><span class="t-ar">الدور</span><span class="t-en">Role</span></div><div class="v"><span class="t-ar">مطوّر منفرد full-stack</span><span class="t-en">Solo full-stack</span></div></div>
-      <div class="fact"><div class="k"><span class="t-ar">الحجم</span><span class="t-en">Scale</span></div><div class="v"><b>~21K</b> <span class="t-ar">سطر Python · 87 ملف</span><span class="t-en">lines Python · 87 files</span></div></div>
+      <div class="fact"><div class="k"><span class="t-ar">المعمارية</span><span class="t-en">Architecture</span></div><div class="v"><span class="t-ar">async · 8 API routers</span><span class="t-en">async · 8 API routers</span></div></div>
       <div class="fact"><div class="k"><span class="t-ar">الاختبارات</span><span class="t-en">Tests</span></div><div class="v"><b>97</b></div></div>
       <div class="fact"><div class="k"><span class="t-ar">العملاء</span><span class="t-en">Clients</span></div><div class="v"><span class="t-ar">Flutter (موبايل+سطح مكتب) + ويب Next.js</span><span class="t-en">Flutter (mobile+desktop) + Next.js web</span></div></div>
     </div>
@@ -69,8 +69,8 @@
       <span class="t-en">Doctors record a consultation in the app; the audio is sent <span class="em">directly</span> to Google Gemini 2.5 Pro — with no separate transcription step (no Whisper, no intermediate ASR engine) — along with specialty-specific prompts and patient context (history, allergies, clinic drug list).</span>
     </p>
     <p>
-      <span class="t-ar">يُعيد Gemini ردّاً منظَّماً بصيغة JSON: ملاحظات SOAP، تشخيص مع رموز ICD-10، ومستويات ثقة. ثم يشغّل الـ backend <span class="em">محرّك تفاعلات دوائية محلّياً</span> مقابل قاعدة بيانات صيدلانية عراقية مُنسَّقة (~1000 سطر): جرعات حقيقية، موانع استعمال، تعديلات أطفال حسب الوزن، وعلامات للحمل. ويولّد وصفات PDF بإظهار سليم (RTL)، ويصدّر السجلات إلى FHIR R4 لتكامل أنظمة EHR في المستشفيات. ثم يراجع الطبيب ويعدّل ويوقّع ويعتمد.</span>
-      <span class="t-en">Gemini returns structured JSON: SOAP notes, diagnosis + ICD-10 codes, and confidence levels. The backend then runs a <span class="em">local drug-interaction engine</span> against a curated ~1000-line Iraqi pharmaceutical database (real dosing, contraindications, weight-based pediatric adjustments, pregnancy flags). It generates PDF prescriptions with proper RTL rendering, and exports records to FHIR R4 for hospital EHR integration. The doctor then reviews, edits, signs, and finalizes.</span>
+      <span class="t-ar">يُعيد Gemini ردّاً منظَّماً بصيغة JSON: ملاحظات SOAP، تشخيص مع رموز ICD-10، ومستويات ثقة. ثم يشغّل الـ backend <span class="em">محرّك تفاعلات دوائية محلّياً</span> مقابل قاعدة بيانات صيدلانية عراقية مُنسَّقة: جرعات حقيقية، موانع استعمال، تعديلات أطفال حسب الوزن، وعلامات للحمل. ويولّد وصفات PDF بإظهار سليم (RTL)، ويصدّر السجلات إلى FHIR R4 لتكامل أنظمة EHR في المستشفيات. ثم يراجع الطبيب ويعدّل ويوقّع ويعتمد.</span>
+      <span class="t-en">Gemini returns structured JSON: SOAP notes, diagnosis + ICD-10 codes, and confidence levels. The backend then runs a <span class="em">local drug-interaction engine</span> against a curated Iraqi pharmaceutical database (real dosing, contraindications, weight-based pediatric adjustments, pregnancy flags). It generates PDF prescriptions with proper RTL rendering, and exports records to FHIR R4 for hospital EHR integration. The doctor then reviews, edits, signs, and finalizes.</span>
     </p>
     <p style="font-size:.82rem;color:var(--muted);margin-top:6px">
       <span class="t-ar">* الـ backend والمعمارية هما الإنجاز الأساسي والجاهز؛ لوحة الويب لا تزال نماذج أولية ببيانات وهمية (انظر القسم 05).</span>
@@ -154,7 +154,7 @@
       <div class="feat">
         <div class="fi">02</div>
         <h4><span class="t-ar">محرّك سلامة دوائية محلّي حتمي</span><span class="t-en">Local deterministic drug-safety engine</span></h4>
-        <p><span class="t-ar">قاعدة أدوية عراقية مُنسَّقة (~1000 سطر): تفاعلات (مثل Warfarin+Amoxicillin)، موانع استعمال، وجرعات أطفال حسب الوزن — لا تعتمد على الـ LLM، فهي عديمة الحالة وحتمية وقابلة للتدقيق.</span><span class="t-en">A curated ~1000-line Iraqi drug DB: interactions (e.g. Warfarin+Amoxicillin), contraindications, and weight-based pediatric dosing — NOT relying on the LLM, so it's stateless, deterministic, and auditable.</span></p>
+        <p><span class="t-ar">قاعدة أدوية عراقية مُنسَّقة: تفاعلات (مثل Warfarin+Amoxicillin)، موانع استعمال، وجرعات أطفال حسب الوزن — لا تعتمد على الـ LLM، فهي عديمة الحالة وحتمية وقابلة للتدقيق.</span><span class="t-en">A curated Iraqi drug DB: interactions (e.g. Warfarin+Amoxicillin), contraindications, and weight-based pediatric dosing — NOT relying on the LLM, so it's stateless, deterministic, and auditable.</span></p>
       </div>
       <div class="feat">
         <div class="fi">03</div>

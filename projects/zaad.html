@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-lang="ar">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>زاد — Zaad · Ali Hashim Salman</title>
+<meta name="description" content="تطبيق Flutter + Firebase منشور على Google Play: منصّة تجمع التواصل اللحظي والتعليم التفاعلي والمسابقات. ‎147 ملف Dart · ~95K سطر · 7 Cloud Functions. دراسة حالة تقنية." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="brand" href="../index.html">ALI HASHIM SALMAN <b>// AI · Flutter</b></a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="../index.html#work"><span class="t-ar">الأعمال</span><span class="t-en">Work</span></a>
+        <a href="../index.html#contact"><span class="t-ar">تواصل</span><span class="t-en">Contact</span></a>
+        <a href="../Ali_Hashim_Salman_Resume.pdf" target="_blank" rel="noopener"><span class="t-ar">السيرة</span><span class="t-en">CV</span></a>
+      </div>
+      <button class="lang-toggle" id="langBtn" aria-label="Switch language">EN</button>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap" style="padding-top:26px">
+  <a class="backlink" href="../index.html#work">
+    <span>←</span> <span class="t-ar">كل الأعمال</span><span class="t-en">All work</span>
+  </a>
+</div>
+
+<!-- HERO -->
+<header class="p-hero">
+  <div class="hero-glow"></div>
+  <div class="wrap hero">
+    <span class="domain"><span class="t-ar">موبايل · منشور على Google Play</span><span class="t-en">Mobile · Live on Google Play</span></span>
+    <h1><span class="t-en">Zaad<span class="accent">زاد</span></span><span class="t-ar">زاد</span></h1>
+    <p class="tagline">
+      <span class="t-ar">منصّة مجتمعية على Flutter وFirebase تجمع ثلاثة عوالم في تطبيق واحد: <span class="em">تواصل لحظي</span> (محادثات ومجموعات)، <span class="em">تعليم تفاعلي</span> بمسارات وكتب، و<span class="em">مسابقات وألعاب معرفية</span> بلوحات صدارة — منشورة على Google Play لمجتمع «قادة الإيمان».</span>
+      <span class="t-en">A community platform on Flutter &amp; Firebase that fuses three worlds in one app: <span class="em">real-time communication</span> (chat &amp; groups), <span class="em">interactive learning</span> with paths and a library, and <span class="em">knowledge competitions &amp; games</span> with leaderboards — published on Google Play for the "Qādat al-Īmān" community.</span>
+    </p>
+    <div class="badge-row">
+      <span class="badge live"><span class="t-ar">منشور</span><span class="t-en">Published</span></span>
+      <span class="badge dev">v1.0.5</span>
+      <span class="badge neutral">Firebase</span>
+    </div>
+    <div class="tags">
+      <span class="tag gold">Flutter</span><span class="tag gold">Dart</span><span class="tag">Firebase</span><span class="tag">Cloud Firestore</span><span class="tag">Cloud Functions</span><span class="tag">Riverpod</span><span class="tag">go_router</span><span class="tag">FCM</span><span class="tag">Real-time</span>
+    </div>
+
+    <div class="factbar" style="margin-top:30px">
+      <div class="fact"><div class="k"><span class="t-ar">الدور</span><span class="t-en">Role</span></div><div class="v"><span class="t-ar">مطوّر منفرد — كامل</span><span class="t-en">Solo — end to end</span></div></div>
+      <div class="fact"><div class="k"><span class="t-ar">الحجم</span><span class="t-en">Scale</span></div><div class="v"><b>~95K</b> <span class="t-ar">سطر · 147 ملف</span><span class="t-en">lines · 147 files</span></div></div>
+      <div class="fact"><div class="k"><span class="t-ar">الخادم</span><span class="t-en">Backend</span></div><div class="v"><b>7</b> <span class="t-ar">Cloud Functions · Firestore</span><span class="t-en">Cloud Functions · Firestore</span></div></div>
+      <div class="fact"><div class="k"><span class="t-ar">المنصّات</span><span class="t-en">Platforms</span></div><div class="v"><span class="t-ar">أندرويد (منشور) + iOS/ويب</span><span class="t-en">Android (live) + iOS/Web</span></div></div>
+    </div>
+  </div>
+</header>
+
+<!-- OVERVIEW -->
+<section class="psec">
+  <div class="wrap">
+    <h2><span class="num">01</span><span class="t-ar">نظرة عامة</span><span class="t-en">Overview</span></h2>
+    <p class="lead-p">
+      <span class="t-ar">زاد ليس تطبيقاً واحداً، بل ثلاثة أنظمة في واحد: شبكة تواصل اجتماعي، ومنصّة تعليمية متدرّجة، ومحرّك مسابقات وتلعيب — كلّها مبنيّة على Flutter وFirebase ومنشورة فعلاً على Google Play.</span>
+      <span class="t-en">Zaad isn't one app — it's three systems in one: a social network, a tiered education platform, and a competition/gamification engine — all built on Flutter and Firebase and actually shipped on Google Play.</span>
+    </p>
+    <p>
+      <span class="t-ar"><span class="em">التواصل:</span> منشورات وتفاعلات لحظية، محادثات مجموعات بأسلوب واتساب (رتب إدارية، ردود، إيصالات قراءة، أنواع رسائل متعددة)، ورسائل مباشرة. <span class="em">التعليم:</span> «رحلة تعلّم» بأسلوب Duolingo بخمس فئات وثلاثة مستويات متدرّجة، ومكتبة معرفة فيها كتب PDF ومرئيات ومقالات قابلة للتنزيل. <span class="em">المسابقات:</span> أسئلة مؤقّتة، ألعاب تنافسية، نقاط تُجمَع، ولوحات صدارة شهرية للأفراد والمجموعات مع أوسمة.</span>
+      <span class="t-en"><span class="em">Communication:</span> real-time posts and reactions, WhatsApp-style group chat (admin roles, replies, read receipts, multiple message types), and direct messages. <span class="em">Education:</span> a Duolingo-style "learning journey" with five categories and three progressive levels, plus a knowledge library of downloadable PDFs, videos, and articles. <span class="em">Competitions:</span> timed questions, competitive games, points, and monthly leaderboards for individuals and groups with badges.</span>
+    </p>
+    <p>
+      <span class="t-ar">الدخول مغلق على المجتمع عبر <span class="em">أكواد وصول فريدة</span> (لا تسجيل عامّ)، مع تحكّم بالأدوار على خمسة مستويات. الإشعارات تُدار عبر سبع Cloud Functions تُطلَق على الأحداث (إعجاب، تعليق، رسالة، نقاط، طلب انضمام) وتُرسَل عبر FCM وتُحفَظ في Firestore.</span>
+      <span class="t-en">Access is closed to the community via <span class="em">unique access codes</span> (no public signup), with five-tier role-based access control. Notifications are driven by seven Cloud Functions triggered on events (like, comment, message, points, join request), delivered via FCM and persisted in Firestore.</span>
+    </p>
+    <div class="p-links" style="margin-top:18px">
+      <a href="https://play.google.com/store/apps/details?id=com.alialrikabi313.qadaiman" target="_blank" rel="noopener"><span class="t-ar">Google Play</span><span class="t-en">Google Play</span> <span class="arr">↗</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- SCREENSHOTS -->
+<section class="psec">
+  <div class="wrap">
+    <h2><span class="num">02</span><span class="t-ar">لقطات</span><span class="t-en">Screenshots</span></h2>
+    <p class="sub"><span class="t-ar">لقطات حقيقية من التطبيق على المتجر</span><span class="t-en">Real screenshots from the app's store listing</span></p>
+    <div class="gallery">
+      <figure class="gshot">
+        <div class="shot"><span class="ph-tag">01</span><img src="../assets/img/zaad/01-home.png" alt="Zaad — home / social feed" loading="lazy" /></div>
+        <figcaption><span class="t-ar">الرئيسية والتواصل</span><span class="t-en">Home &amp; social feed</span></figcaption>
+      </figure>
+      <figure class="gshot">
+        <div class="shot"><span class="ph-tag">02</span><img src="../assets/img/zaad/02-learning.png" alt="Zaad — learning journey" loading="lazy" /></div>
+        <figcaption><span class="t-ar">رحلة التعلّم (متدرّجة)</span><span class="t-en">Learning journey (tiered)</span></figcaption>
+      </figure>
+      <figure class="gshot">
+        <div class="shot"><span class="ph-tag">03</span><img src="../assets/img/zaad/03-library.png" alt="Zaad — knowledge library" loading="lazy" /></div>
+        <figcaption><span class="t-ar">مكتبة المعرفة</span><span class="t-en">Knowledge library</span></figcaption>
+      </figure>
+      <figure class="gshot">
+        <div class="shot"><span class="ph-tag">04</span><img src="../assets/img/zaad/04-competitions.png" alt="Zaad — competitions" loading="lazy" /></div>
+        <figcaption><span class="t-ar">المسابقات والألعاب</span><span class="t-en">Competitions &amp; games</span></figcaption>
+      </figure>
+      <figure class="gshot">
+        <div class="shot"><span class="ph-tag">05</span><img src="../assets/img/zaad/05-leaderboard.png" alt="Zaad — leaderboard" loading="lazy" /></div>
+        <figcaption><span class="t-ar">لوحة الصدارة</span><span class="t-en">Leaderboard</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ARCHITECTURE -->
+<section class="psec">
+  <div class="wrap">
+    <h2><span class="num">03</span><span class="t-ar">المعمارية</span><span class="t-en">Architecture</span></h2>
+    <p class="sub"><span class="t-ar">Flutter (Clean Architecture · feature-first) فوق Firebase لحظي، مع منطق خادمي في Cloud Functions</span><span class="t-en">Flutter (clean architecture · feature-first) over real-time Firebase, with server logic in Cloud Functions</span></p>
+    <div class="diagram">
+<pre><span class="dim">// ~14 ميزة مستقلة · Riverpod + go_router (حُرّاس مصادقة)</span>
+lib/
+├─ core/        <span class="dim">services · router · theme · widgets مشتركة</span>
+└─ features/
+   ├─ <span class="hl">home / social</span>      <span class="dim">منشورات · تعليقات · ستوري (snapshots لحظية)</span>
+   ├─ <span class="hl">chat_groups / dm</span>   <span class="dim">رسائل: نص/صورة/ملف/صوت · رتب · إيصالات قراءة</span>
+   ├─ <span class="hl">competitions</span>       <span class="dim">مسابقات مؤقّتة · ألعاب · نقاط</span>
+   ├─ <span class="hl">learning / courses</span> <span class="dim">5 فئات × 3 مستويات · تتبّع تقدّم</span>
+   ├─ <span class="hl">library</span>            <span class="dim">PDF · فيديو · مقالات · تنزيل</span>
+   └─ leaderboard · profile · tasks · notifications · auth
+
+<span class="lp">Firebase:</span>
+  Firestore   <span class="dim">13+ مجموعة · فهارس مُحسّنة · قواعد أمان صارمة (RBAC)</span>
+  <span class="hl">Cloud Functions</span> <span class="dim">7 triggers → FCM + حفظ الإشعار في Firestore</span>
+  Storage     <span class="dim">صور · PDF · فيديو</span>     Auth <span class="dim">أكواد وصول مغلقة</span></pre>
+    </div>
+    <ul class="bullets" style="margin-top:24px">
+      <li><span class="t-ar"><b>تزامن لحظي عبر Firestore snapshots:</b> الخلاصة والرسائل ولوحات الصدارة تتحدّث مباشرةً، مع ترقيم صفحات (20–50 عنصراً للدفعة) للحدّ من القراءات.</span><span class="t-en"><b>Real-time sync via Firestore snapshots:</b> feed, messages, and leaderboards update live, with pagination (20–50 items per batch) to limit reads.</span></li>
+      <li><span class="t-ar"><b>منطق خادمي في 7 Cloud Functions:</b> تُطلَق على الأحداث وتبثّ الإشعارات بكتابات دفعية (batch) لعشرات الأعضاء، عبر قنوات إشعار أندرويد منفصلة.</span><span class="t-en"><b>Server logic in 7 Cloud Functions:</b> triggered on events, broadcasting notifications via batch writes to dozens of members across separate Android notification channels.</span></li>
+      <li><span class="t-ar"><b>قواعد أمان Firestore صارمة:</b> وصول قائم على الأدوار (5 مستويات)، قيود على مستوى المجموعة والمجموعات الفرعية، وأكواد وصول للتحقّق قبل الدخول.</span><span class="t-en"><b>Strict Firestore security rules:</b> role-based access (5 tiers), collection- and subcollection-level restrictions, and access codes for pre-auth validation.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- KEY FEATURES -->
+<section class="psec">
+  <div class="wrap">
+    <h2><span class="num">04</span><span class="t-ar">أبرز الميزات التقنية</span><span class="t-en">Key technical features</span></h2>
+    <div class="feat-grid">
+      <div class="feat">
+        <div class="fi">01</div>
+        <h4><span class="t-ar">محرّك محادثة لحظي متعدّد المستخدمين</span><span class="t-en">Real-time multi-user chat engine</span></h4>
+        <p><span class="t-ar">مجموعات بأسلوب واتساب: ردود على الرسائل، إيصالات قراءة، حذف ناعم، أنواع رسائل (نص/صورة/ملف/صوت/فيديو)، تحكّم إداري، وطلبات انضمام — إضافةً إلى رسائل مباشرة 1:1.</span><span class="t-en">WhatsApp-style groups: message replies, read receipts, soft delete, message types (text/image/file/audio/video), admin controls, and join requests — plus 1:1 direct messages.</span></p>
+      </div>
+      <div class="feat">
+        <div class="fi">02</div>
+        <h4><span class="t-ar">محرّك مسابقات وتلعيب</span><span class="t-en">Competition &amp; gamification engine</span></h4>
+        <p><span class="t-ar">أسئلة مؤقّتة (40 ثانية) بتسجيل نقاط لحظي وردود فعل متحرّكة، ألعاب تنافسية، نظام نقاط مزدوج (عامّة دائمة + ترتيبية شهرية)، أوسمة، ولوحات صدارة للأفراد والمجموعات.</span><span class="t-en">Timed questions (40s) with live scoring and animated feedback, competitive games, a dual points system (permanent global + monthly ranking), badges, and individual/group leaderboards.</span></p>
+      </div>
+      <div class="feat">
+        <div class="fi">03</div>
+        <h4><span class="t-ar">مسارات تعلّم متدرّجة</span><span class="t-en">Tiered learning paths</span></h4>
+        <p><span class="t-ar">«رحلة تعلّم» بأسلوب Duolingo: خمس فئات × ثلاثة مستويات بعُقد تقدّم مرئية وفتح متسلسل للدروس، مع حفظ تقدّم كل مستخدم.</span><span class="t-en">A Duolingo-style "learning journey": five categories × three levels with visual progress nodes and sequential lesson unlocking, persisting each user's progress.</span></p>
+      </div>
+      <div class="feat">
+        <div class="fi">04</div>
+        <h4><span class="t-ar">مكتبة معرفة متعدّدة الوسائط</span><span class="t-en">Multimedia knowledge library</span></h4>
+        <p><span class="t-ar">كتب PDF (عارضان للتوافق)، مقاطع فيديو ومرئيات YouTube بمشغّل مخصّص، ومقالات — مع بحث وتنزيل للقراءة دون اتصال.</span><span class="t-en">PDF books (dual viewers for compatibility), videos and YouTube content with a custom player, and articles — with search and download for offline reading.</span></p>
+      </div>
+      <div class="feat">
+        <div class="fi">05</div>
+        <h4><span class="t-ar">خطّ إشعارات (Cloud Functions + FCM)</span><span class="t-en">Notification pipeline (Cloud Functions + FCM)</span></h4>
+        <p><span class="t-ar">7 دوال تُطلَق على النشاط وتبثّ إشعارات بكتابات دفعية، مع حفظها في Firestore لمركز إشعارات داخلي موثوق، وقنوات أندرويد منفصلة (رسائل/مهام/عام).</span><span class="t-en">7 functions triggered on activity, broadcasting notifications via batch writes and persisting them in Firestore for a reliable in-app center, with separate Android channels (messages/tasks/general).</span></p>
+      </div>
+      <div class="feat">
+        <div class="fi">06</div>
+        <h4><span class="t-ar">مصادقة مغلقة + RBAC</span><span class="t-en">Closed-community auth + RBAC</span></h4>
+        <p><span class="t-ar">دخول عبر أكواد وصول فريدة (لا تسجيل عامّ) مع تحكّم بالأدوار على خمسة مستويات، مُطبَّق في قواعد Firestore وفي الواجهة معاً — مع حماية لقطات الشاشة للشاشات الحسّاسة.</span><span class="t-en">Sign-in via unique access codes (no public signup) with five-tier role-based access control, enforced in both Firestore rules and the client — plus screenshot protection on sensitive screens.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEEP DIVE -->
+<section class="psec">
+  <div class="wrap">
+    <h2><span class="num">05</span><span class="t-ar">قرارات هندسية</span><span class="t-en">Engineering decisions</span></h2>
+    <div class="callout">
+      <b><span class="t-ar">لماذا أكواد وصول بدل التسجيل العامّ؟</span><span class="t-en">Why access codes instead of public signup?</span></b><br/>
+      <span class="t-ar">المنصّة لمجتمع مغلق، فالعضوية تُمنَح بكود فريد يُستهلَك مرّة واحدة بدل فتح التسجيل للعموم. هذا يمنع الدخول غير المصرّح ويبسّط الإشراف، ويُطبَّق على مستوى قواعد Firestore وطبقة المصادقة معاً.</span>
+      <span class="t-en">The platform serves a closed community, so membership is granted by a one-time access code rather than open public signup. This prevents unauthorized access and simplifies moderation, enforced at both the Firestore-rules and auth layers.</span>
+    </div>
+    <div class="callout note">
+      <b><span class="t-ar">ملاحظة صادقة عن الحالة</span><span class="t-en">An honest status note</span></b><br/>
+      <span class="t-ar">التطبيق منشور ويعمل لمستخدمين حقيقيين (v1.0.5)، لكن تغطية الاختبارات الآلية ضعيفة ولا يوجد خطّ CI/CD، وأسئلة المسابقات مُضمَّنة في الأصول بدل قاعدة بيانات ديناميكية. قرارات مقبولة لمشروع فردي مشحون، لكنها أوّل ما سأحصّنه عند التوسّع.</span>
+      <span class="t-en">The app is published and serving real users (v1.0.5), but automated test coverage is light, there's no CI/CD pipeline, and quiz questions are bundled in assets rather than a dynamic database. Reasonable trade-offs for a shipped solo project — and the first things I'd harden at scale.</span>
+    </div>
+  </div>
+</section>
+
+<!-- STACK -->
+<section class="psec">
+  <div class="wrap">
+    <h2><span class="num">06</span><span class="t-ar">التقنيات</span><span class="t-en">Tech stack</span></h2>
+    <table class="stack-table">
+      <tr><td><span class="t-ar">الإطار</span><span class="t-en">Framework</span></td><td><b>Flutter 3.9+</b> · Dart 3.9 <span class="t-ar">· Material 3</span><span class="t-en">· Material 3</span></td></tr>
+      <tr><td><span class="t-ar">إدارة الحالة</span><span class="t-en">State</span></td><td><b>Riverpod</b> (+ code-gen) <span class="t-ar">· freezed · json_serializable</span><span class="t-en">· freezed · json_serializable</span></td></tr>
+      <tr><td><span class="t-ar">التنقّل</span><span class="t-en">Navigation</span></td><td><b>go_router</b> <span class="t-ar">مع حُرّاس مصادقة · ~82 شاشة</span><span class="t-en">with auth guards · ~82 screens</span></td></tr>
+      <tr><td><span class="t-ar">الخادم</span><span class="t-en">Backend</span></td><td><b>Firebase:</b> Cloud Firestore · <b>Cloud Functions</b> (7) · Storage · FCM · Auth</td></tr>
+      <tr><td><span class="t-ar">اللحظية والبيانات</span><span class="t-en">Real-time &amp; data</span></td><td><span class="t-ar">Firestore snapshots · فهارس مُحسّنة · ترقيم · قواعد أمان RBAC</span><span class="t-en">Firestore snapshots · optimized indexes · pagination · RBAC rules</span></td></tr>
+      <tr><td><span class="t-ar">الوسائط</span><span class="t-en">Media</span></td><td>video_player · chewie · flutter_pdfview · pdfx · audioplayers · image_cropper</td></tr>
+      <tr><td><span class="t-ar">الواجهة</span><span class="t-en">UI</span></td><td><span class="t-ar">Cairo (خط عربي) · flutter_animate · lottie · shimmer · cached_network_image</span><span class="t-en">Cairo (Arabic font) · flutter_animate · lottie · shimmer · cached_network_image</span></td></tr>
+      <tr><td><span class="t-ar">المنصّات</span><span class="t-en">Platforms</span></td><td><span class="t-ar">أندرويد (موقّع ومنشور) · iOS · ويب · Windows</span><span class="t-en">Android (signed &amp; published) · iOS · Web · Windows</span></td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- PROJECT NAV -->
+<div class="wrap">
+  <div class="proj-nav">
+    <a href="qabas.html">
+      <span class="lbl"><span class="t-ar">السابق</span><span class="t-en">Previous</span></span>
+      ← Qabas
+    </a>
+    <a href="hakimai.html" style="text-align:end">
+      <span class="lbl"><span class="t-ar">التالي</span><span class="t-en">Next</span></span>
+      HakimAI →
+    </a>
+  </div>
+</div>
+
+<footer>
+  <div class="foot-inner">
+    <span>© <span id="yr"></span> <span class="t-ar">علي هاشم سلمان</span><span class="t-en">Ali Hashim Salman</span></span>
+    <span class="sig">عليّ هاشم سلمان</span>
+    <span><span class="t-ar">النجف، العراق</span><span class="t-en">Najaf, Iraq</span></span>
+  </div>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

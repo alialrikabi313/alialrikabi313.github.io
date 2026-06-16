@@ -89,6 +89,11 @@ header{position:relative;padding:clamp(60px,11vw,120px) 0 clamp(48px,7vw,84px)}
 .stats b{color:var(--ink);font-weight:600}
 .stats span{display:inline-flex;align-items:center;gap:9px}
 .stats span::before{content:"";width:5px;height:5px;background:var(--accent);transform:rotate(45deg);display:inline-block}
+.hero-contact{display:flex;flex-wrap:wrap;gap:8px 24px;margin-top:24px;padding-top:20px;border-top:1px solid var(--line-soft);font-family:var(--mono);font-size:.85rem}
+[data-lang="ar"] .hero-contact{font-family:var(--ar);font-size:.92rem}
+.hero-contact a{display:inline-flex;align-items:center;gap:8px;color:var(--text);transition:color .2s}
+.hero-contact a:hover{color:var(--accent)}
+.hero-contact .ic{color:var(--accent)}
 
 /* ---------- SECTIONS ---------- */
 section{padding:clamp(54px,8vw,96px) 0;border-top:1px solid var(--line-soft)}

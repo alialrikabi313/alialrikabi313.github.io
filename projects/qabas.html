@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-lang="ar">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>منصّة قبس — Qabas · Ali Hashim Salman</title>
+<meta name="description" content="منصّة تعليم إلكتروني SaaS متعدّدة المستأجرين للمعلّمين في العراق: backend بـ FastAPI، تطبيق طالب Flutter، لوحتا مدرّس ومشرف، موقع تعريفي، وبنية تحتية بـ Terraform. دراسة حالة تقنية." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="brand" href="../index.html">ALI HASHIM SALMAN <b>// AI · Flutter</b></a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="../index.html#work"><span class="t-ar">الأعمال</span><span class="t-en">Work</span></a>
+        <a href="../index.html#contact"><span class="t-ar">تواصل</span><span class="t-en">Contact</span></a>
+        <a href="../Ali_Hashim_Salman_Resume.pdf" target="_blank" rel="noopener"><span class="t-ar">السيرة</span><span class="t-en">CV</span></a>
+      </div>
+      <button class="lang-toggle" id="langBtn" aria-label="Switch language">EN</button>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap" style="padding-top:26px">
+  <a class="backlink" href="../index.html#work">
+    <span>←</span> <span class="t-ar">كل الأعمال</span><span class="t-en">All work</span>
+  </a>
+</div>
+
+<!-- HERO -->
+<header class="p-hero">
+  <div class="hero-glow"></div>
+  <div class="wrap hero">
+    <span class="domain"><span class="t-ar">فُل-ستاك · SaaS تعليمي</span><span class="t-en">Full-Stack · EdTech SaaS</span></span>
+    <h1><span class="t-en">Qabas<span class="accent">منصّة قبس</span></span><span class="t-ar">منصّة قبس</span></h1>
+    <p class="tagline">
+      <span class="t-ar">منصّة تعليم إلكتروني SaaS متكاملة ومتعدّدة المستأجرين للمعلّمين في العراق — backend، وتطبيق طالب، ولوحتا مدرّس ومشرف، وموقع تعريفي، وبنية تحتية بالكود.</span>
+      <span class="t-en">A complete multi-tenant e-learning SaaS for educators in Iraq — backend, student app, instructor & admin panels, marketing site, and infrastructure as code.</span>
+    </p>
+    <div class="badge-row">
+      <span class="badge neutral"><span class="t-ar">6 وحدات</span><span class="t-en">6 modules</span></span>
+      <span class="badge live"><span class="t-ar">~88% تغطية backend</span><span class="t-en">~88% backend coverage</span></span>
+      <span class="badge dev"><span class="t-ar">غير منشور بعد</span><span class="t-en">Not yet deployed</span></span>
+    </div>
+    <div class="tags">
+      <span class="tag gold">FastAPI</span><span class="tag gold">Flutter</span><span class="tag">Firestore</span><span class="tag">Bunny.net</span><span class="tag">Gemini</span><span class="tag">Terraform</span><span class="tag">Astro</span><span class="tag">Multi-tenant</span>
+    </div>
+
+    <div class="factbar" style="margin-top:30px">
+      <div class="fact"><div class="k"><span class="t-ar">الدور</span><span class="t-en">Role</span></div><div class="v"><span class="t-ar">مطوّر منفرد (6 وحدات)</span><span class="t-en">Solo full-stack (6 modules)</span></div></div>
+      <div class="fact"><div class="k"><span class="t-ar">الحجم</span><span class="t-en">Scale</span></div><div class="v"><b>~90K</b> <span class="t-ar">سطر</span><span class="t-en">lines total</span></div></div>
+      <div class="fact"><div class="k">Backend</div><div class="v"><b>~103</b> <span class="t-ar">endpoint · 39 خدمة</span><span class="t-en">endpoints · 39 services</span></div></div>
+      <div class="fact"><div class="k">Mobile</div><div class="v"><b>185</b> <span class="t-ar">ملف Dart · ~30K سطر</span><span class="t-en">Dart files · ~30K lines</span></div></div>
+    </div>
+  </div>
+</header>
+
+<!-- OVERVIEW -->
+<section class="psec">
+  <div class="wrap">
+    <h2><span class="num">01</span><span class="t-ar">نظرة عامة</span><span class="t-en">Overview</span></h2>
+    <p class="lead-p">
+      <span class="t-ar">قبس منصّة تعليم SaaS متعدّدة المستأجرين تستهدف المعلّمين في العراق، مبنيّة عبر ستّ وحدات: (١) backend — FastAPI بـ ~103 endpoint REST و39 خدمة؛ (٢) تطبيق موبايل — تطبيق طالب كامل بـ Flutter (تشغيل فيديو، محادثة مدرّس ذكي، منتدى، تلعيب، رسائل، إشعارات)؛ (٣) لوحة المدرّس — Flutter Web (إدارة الدورات والدروس، مولّد أكواد التفعيل، رفع الفيديو، إدارة المنتدى، البثّ)؛ (٤) لوحة المشرف — Flutter Web (حسابات المدرّسين، الفواتير، لوحات استهلاك الذكاء الاصطناعي، الإشراف)؛ (٥) الموقع — موقع تعريفي بـ Astro (ثنائي اللغة، RTL)؛ (٦) البنية التحتية — Terraform (مشاريع GCP، Firebase، Cloud Run، Secret Manager، Artifact Registry).</span>
+      <span class="t-en">A multi-tenant education SaaS targeting educators in Iraq, built across SIX modules: (1) backend — FastAPI, ~103 REST endpoints, 39 services; (2) mobile — a full Flutter student app (video playback, AI tutor chat, forum, gamification, messaging, notifications); (3) instructor panel — Flutter Web (course/lesson management, activation-code generator, video upload, forum moderation, broadcasts); (4) admin panel — Flutter Web (instructor accounts, invoices, AI-usage dashboards, moderation); (5) website — Astro marketing site (bilingual, RTL); (6) infra — Terraform (GCP projects, Firebase, Cloud Run, Secret Manager, Artifact Registry).</span>
+    </p>
+    <p>
+      <span class="t-ar">يعتمد نموذج العمل على <span class="em">أكواد التفعيل</span> بدل الدفع المباشر — وهو ما يناسب اقتصاد العراق النقدي. ملاحظة صادقة: الكود مكتمل والـ backend مُختبَر جيّداً، لكنّه <span class="em">متعمّداً غير منشور بعد</span> (الـ Terraform مُتحقَّق منه محليّاً، لكنه لم يُطبَّق على مشروع GCP حيّ).</span>
+      <span class="t-en">The business model uses <span class="em">activation codes</span> instead of direct payment — suited to Iraq's cash economy. Honest note: the code is complete and the backend is well-tested, but it is <span class="em">intentionally not yet deployed</span> (Terraform is locally validated, not applied).</span>
+    </p>
+    <p style="font-size:.82rem;color:var(--muted);margin-top:6px">
+      <span class="t-ar">* المنصّة غير منشورة بعد؛ الأرقام مأخوذة من الكود والاختبارات المحليّة.</span>
+      <span class="t-en">* The platform is not yet deployed; figures are taken from the code and local tests.</span>
+    </p>
+  </div>
+</section>
+
+<!-- SCREENSHOTS -->
+<section class="psec">
+  <div class="wrap">
+    <h2><span class="num">02</span><span class="t-ar">لقطات</span><span class="t-en">Screenshots</span></h2>
+    <p class="sub"><span class="t-ar">لقطات حقيقية للوحتي الويب (Flutter Web) — مصادقة ببريد وكلمة مرور ورمز تحقّق ثنائي (2FA)</span><span class="t-en">Real screenshots of the two web panels (Flutter Web) — email/password sign-in with 2FA</span></p>
+    <div class="gallery">
+      <figure class="gshot">
+        <div class="shot wide"><span class="ph-tag">01</span><img src="../assets/img/qabas/instr-01.png" alt="Qabas — instructor panel sign in" loading="lazy" /></div>
+        <figcaption><span class="t-ar">لوحة الأستاذ — تسجيل الدخول (2FA)</span><span class="t-en">Instructor panel — sign in (2FA)</span></figcaption>
+      </figure>
+      <figure class="gshot">
+        <div class="shot wide"><span class="ph-tag">02</span><img src="../assets/img/qabas/admin-01.png" alt="Qabas — admin panel sign in" loading="lazy" /></div>
+        <figcaption><span class="t-ar">لوحة الإدارة — تسجيل الدخول (2FA)</span><span class="t-en">Admin panel — sign in (2FA)</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ARCHITECTURE -->
+<section class="psec">
+  <div class="wrap">
+    <h2><span class="num">03</span><span class="t-ar">المعمارية</span><span class="t-en">Architecture</span></h2>
+    <p class="sub"><span class="t-ar">عزل متعدّد المستأجرين بدفاع متعدّد الطبقات + تطوير محليّ أوّلاً (emulators + mocks)</span><span class="t-en">Multi-tenant isolation with defense in depth + local-first dev (emulators + mocks)</span></p>
+    <div class="diagram">
+<pre><span class="dim">// multi-tenant EdTech SaaS · 6 modules</span>
+<span class="lp">Mobile (Flutter)</span> ─┐
+<span class="lp">Admin  (Flutter Web)</span> ─┼──▶ /api/v1 REST ──▶ <span class="hl">Cloudflare</span> ──▶ <span class="hl">Cloud Run</span>
+<span class="lp">Instructor (Flutter Web)</span> ─┘                                  │
+                                                       <span class="dim">FastAPI backend · 26 routers in api/v1</span>
+                                                          │
+            ┌───────────────┬─────────────┬──────────────┼──────────────┐
+            ▼               ▼             ▼              ▼              ▼
+   <span class="hl">Firestore</span>        <span class="hl">Redis</span>       <span class="hl">Bunny.net</span>       <span class="hl">Gemini</span>      Secret Manager
+   (Native, nam5)     (cache/limit)   (video/DRM)     (AI/SSE)     · Artifact Reg.
+
+<span class="lp">Multi-tenancy:</span> every Firestore doc carries <span class="hl">instructorId/schoolId</span>
+   → every service verifies ownership <span class="hl">BEFORE</span> read/write
+   → PLUS Firestore Rules (<span class="dim">300 LOC</span>) on web clients  =  <span class="lp">defense in depth</span>
+
+<span class="lp">Local-first dev:</span> Firebase Emulator + mocked Bunny/Gemini
+   → <span class="dim">zero GCP creds needed to run the whole platform</span></pre>
+    </div>
+    <ul class="bullets" style="margin-top:24px">
+      <li><span class="t-ar"><b>عزل المستأجرين على مستويين:</b> قواعد Firestore (على العميل) + فحوصات ملكيّة في طبقة الخدمات (على الـ backend) — لا تسرّب لبيانات بين المستأجرين.</span><span class="t-en"><b>Two-level tenant isolation:</b> Firestore Rules (client) + service-layer ownership checks (backend) — no cross-tenant data leakage.</span></li>
+      <li><span class="t-ar"><b>تطوير محليّ أوّلاً:</b> محاكي Firebase مع mocks لـ Bunny وGemini يجعل المنصّة كاملةً تعمل بلا أي بيانات اعتماد GCP.</span><span class="t-en"><b>Local-first dev:</b> Firebase Emulator with mocked Bunny and Gemini lets the whole platform run with zero GCP credentials.</span></li>
+      <li><span class="t-ar"><b>توزيع نقطة الدخول:</b> Cloudflare أمام Cloud Run، وكلّ العملاء (موبايل ومشرف ومدرّس) يستهلكون نفس واجهة /api/v1 REST.</span><span class="t-en"><b>Single entry point:</b> Cloudflare in front of Cloud Run, with all clients (mobile, admin, instructor) consuming the same /api/v1 REST surface.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- KEY FEATURES -->
+<section class="psec">
+  <div class="wrap">
+    <h2><span class="num">04</span><span class="t-ar">أبرز الميزات التقنية</span><span class="t-en">Key technical features</span></h2>
+    <div class="feat-grid">
+      <div class="feat">
+        <div class="fi">01</div>
+        <h4><span class="t-ar">عزل متعدّد المستأجرين على مستويين</span><span class="t-en">Multi-tenant isolation at two levels</span></h4>
+        <p><span class="t-ar">قواعد Firestore (على العميل) + فحوصات ملكيّة في طبقة الخدمات بالـ backend؛ لا تسرّب لبيانات بين المستأجرين.</span><span class="t-en">Firestore Rules (client) + backend service-layer ownership checks; no cross-tenant data leakage.</span></p>
+      </div>
+      <div class="feat">
+        <div class="fi">02</div>
+        <h4><span class="t-ar">نظام أكواد التفعيل</span><span class="t-en">Activation-code system</span></h4>
+        <p><span class="t-ar">توليد / تحقّق / استهلاك الأكواد مع سجلّ كامل (ledger)؛ يناسب سوقاً نادر فيه الدفع بالبطاقات.</span><span class="t-en">Generate / validate / consume codes with a full ledger; fits a market where card payments are uncommon.</span></p>
+      </div>
+      <div class="feat">
+        <div class="fi">03</div>
+        <h4><span class="t-ar">مدرّس ذكي ببثّ SSE</span><span class="t-en">AI tutor with streaming SSE</span></h4>
+        <p><span class="t-ar">يرى الطلاب المدرّس يولّد أسئلة الاختبارات والملخّصات والشروح في الوقت الحقيقي؛ بحث متّجهي على محتوى الدورة؛ وتراجع إلى mock عند غياب Gemini.</span><span class="t-en">Students watch the tutor generate quiz questions, summaries, and explanations in real time; vector search over course content; mock fallback when Gemini is unavailable.</span></p>
+      </div>
+      <div class="feat">
+        <div class="fi">04</div>
+        <h4><span class="t-ar">فيديو محمي بـ DRM</span><span class="t-en">DRM-protected video</span></h4>
+        <p><span class="t-ar">Bunny.net Stream مع Widevine (أندرويد) / FairPlay (iOS)؛ رموز تشغيل من الخادم؛ تشغيل أصيل عبر ExoPlayer/AVPlayer بواسطة better_player_plus.</span><span class="t-en">Bunny.net Stream with Widevine (Android) / FairPlay (iOS); server-side playback tokens; native ExoPlayer/AVPlayer playback via better_player_plus.</span></p>
+      </div>
+      <div class="feat">
+        <div class="fi">05</div>
+        <h4><span class="t-ar">توزيع white-label</span><span class="t-en">White-label distribution</span></h4>
+        <p><span class="t-ar">معرّفات تطبيق أندرويد لكلّ مدرسة عبر Flutter flavors؛ نسخة iOS واحدة مع محلِّل كود-مدرسة عند أوّل تشغيل؛ قاعدة كود واحدة بثلاث استراتيجيات نشر.</span><span class="t-en">Android per-school app IDs via Flutter flavors; iOS single binary with a school-code resolver at first launch; one codebase, three deploy strategies.</span></p>
+      </div>
+      <div class="feat">
+        <div class="fi">06</div>
+        <h4><span class="t-ar">تعريب i18n ثنائي اللغة</span><span class="t-en">Bilingual i18n</span></h4>
+        <p><span class="t-ar">العربية افتراضاً مع RTL وأرقام عربية-هندية (١٢٣)، وتبديل للإنجليزية؛ بانسجام عبر الموبايل ولوحات الويب ورسائل أخطاء الـ backend.</span><span class="t-en">Arabic-native default with RTL and Arabic-Indic digits (١٢٣), English toggle; consistent across mobile, web panels, and backend error messages.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEEP DIVE -->
+<section class="psec">
+  <div class="wrap">
+    <h2><span class="num">05</span><span class="t-ar">قرارات هندسية</span><span class="t-en">Engineering decisions</span></h2>
+    <div class="callout">
+      <b><span class="t-ar">Firestore بدل Postgres، وFlutter للوحات الويب</span><span class="t-en">Firestore over Postgres, Flutter for the web panels</span></b><br/>
+      <span class="t-ar">موثّق في الـ ADRs. يناسب Firestore نموذج العزل متعدّد المستأجرين والمبني على المستخدم؛ ويعيد Flutter Web استخدام قاعدة كود الموبايل في لوحتي المشرف والمدرّس (مقايضة متعمّدة لإعادة استخدام الكود مقابل بنية React/Next). والتطوير المحليّ أوّلاً (emulators + mocks) يعني أنّ المنصّة كلّها تعمل بلا أي بيانات اعتماد GCP.</span>
+      <span class="t-en">Documented in ADRs. Firestore fits the multi-tenant, per-user isolation model; Flutter Web reuses the mobile codebase for the admin/instructor panels (a deliberate code-reuse tradeoff vs a React/Next stack). Local-first dev (emulators + mocks) means the whole platform runs with zero GCP credentials.</span>
+    </div>
+    <div class="callout note">
+      <b><span class="t-ar">الحالة بصدق</span><span class="t-en">Honest status</span></b><br/>
+      <span class="t-ar">مكتمل من ناحية التصميم والكود مع ~88% تغطية اختبار للـ backend، لكنّه متعمّداً <span class="em">غير منشور للإنتاج</span> — الـ Terraform مُتحقَّق منه محليّاً ولم يُطبَّق قطّ على مشروع GCP حيّ، والخدمات الخارجية (Bunny، Gemini) تعمل بوضع mock في التطوير. الشفافية أولاً.</span>
+      <span class="t-en">Complete on the design/code side with ~88% backend test coverage, but intentionally <span class="em">NOT production-deployed</span> — the Terraform is locally validated, never applied to a live GCP project, and third-party services (Bunny, Gemini) run in mock mode in dev. Be transparent.</span>
+    </div>
+  </div>
+</section>
+
+<!-- STACK -->
+<section class="psec">
+  <div class="wrap">
+    <h2><span class="num">06</span><span class="t-ar">التقنيات</span><span class="t-en">Tech stack</span></h2>
+    <table class="stack-table">
+      <tr><td>Backend</td><td><b>FastAPI 0.115</b> · Python 3.12 · uvicorn · Pydantic v2</td></tr>
+      <tr><td><span class="t-ar">قاعدة البيانات</span><span class="t-en">Database</span></td><td><b>Firestore</b> <span class="t-ar">(Native, nam5 متعدّد المناطق)</span><span class="t-en">(Native, nam5 multi-region)</span> · Firestore Rules (300 LOC)</td></tr>
+      <tr><td><span class="t-ar">المصادقة</span><span class="t-en">Auth</span></td><td><b>Firebase Auth</b> (OTP) + JWT <span class="t-ar">custom claims (role · instructorId)</span><span class="t-en">custom claims (role · instructorId)</span></td></tr>
+      <tr><td><span class="t-ar">التخزين/التحديد</span><span class="t-en">Cache / Limit</span></td><td><b>Redis 7</b> (Cloud Memorystore)</td></tr>
+      <tr><td><span class="t-ar">الفيديو</span><span class="t-en">Video</span></td><td><b>Bunny.net Stream</b> · Widevine/FairPlay DRM · HLS (better_player_plus)</td></tr>
+      <tr><td><span class="t-ar">الذكاء الاصطناعي</span><span class="t-en">AI</span></td><td><b>Google Gemini</b> (Flash/Pro) <span class="t-ar">عبر genai SDK · بثّ SSE</span><span class="t-en">via genai SDK · streaming SSE</span></td></tr>
+      <tr><td>Mobile</td><td><b>Flutter 3.27</b> (Riverpod 2.6 · go_router · Drift · flutter_secure_storage)</td></tr>
+      <tr><td><span class="t-ar">لوحات الويب</span><span class="t-en">Web panels</span></td><td><b>Flutter Web</b> <span class="t-ar">(نفس قاعدة الكود)</span><span class="t-en">(same codebase)</span></td></tr>
+      <tr><td><span class="t-ar">الموقع</span><span class="t-en">Website</span></td><td><b>Astro 4</b> · Tailwind · TypeScript · i18n</td></tr>
+      <tr><td><span class="t-ar">البنية التحتية</span><span class="t-en">Infra</span></td><td><b>Terraform 1.6</b> (Cloud Run · Workload Identity · Secret Manager · Artifact Registry)</td></tr>
+      <tr><td>CI/CD</td><td><b>GitHub Actions</b> (pytest · ruff · mypy · bandit · gitleaks) · Docker <span class="t-ar">(متعدّد المراحل، non-root)</span><span class="t-en">(multi-stage, non-root)</span></td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- PROJECT NAV -->
+<div class="wrap">
+  <div class="proj-nav">
+    <a href="arabiq.html">
+      <span class="lbl"><span class="t-ar">السابق</span><span class="t-en">Previous</span></span>
+      <span class="t-ar">← عربِق</span><span class="t-en">← Arabiq</span>
+    </a>
+    <a href="hawza.html" style="text-align:end">
+      <span class="lbl"><span class="t-ar">التالي</span><span class="t-en">Next</span></span>
+      <span class="t-ar">منصّة الحوزة →</span><span class="t-en">Hawza Platform →</span>
+    </a>
+  </div>
+</div>
+
+<footer>
+  <div class="foot-inner">
+    <span>© <span id="yr"></span> <span class="t-ar">علي هاشم سلمان</span><span class="t-en">Ali Hashim Salman</span></span>
+    <span class="sig">عليّ هاشم سلمان</span>
+    <span><span class="t-ar">النجف، العراق</span><span class="t-en">Najaf, Iraq</span></span>
+  </div>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

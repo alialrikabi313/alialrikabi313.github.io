@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-lang="ar">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>عربِق — Arabiq · Ali Hashim Salman</title>
+<meta name="description" content="مساعد بحث بقدرتين: حلقة RAG وكيلية تبثّ استدلالها مباشرةً، وخطّ OCR عالي الدقّة يحوّل ملفات PDF الممسوحة إلى Word. دراسة حالة تقنية." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="brand" href="../index.html">ALI HASHIM SALMAN <b>// AI · Flutter</b></a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="../index.html#work"><span class="t-ar">الأعمال</span><span class="t-en">Work</span></a>
+        <a href="../index.html#contact"><span class="t-ar">تواصل</span><span class="t-en">Contact</span></a>
+        <a href="../Ali_Hashim_Salman_Resume.pdf" target="_blank" rel="noopener"><span class="t-ar">السيرة</span><span class="t-en">CV</span></a>
+      </div>
+      <button class="lang-toggle" id="langBtn" aria-label="Switch language">EN</button>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap" style="padding-top:26px">
+  <a class="backlink" href="../index.html#work">
+    <span>←</span> <span class="t-ar">كل الأعمال</span><span class="t-en">All work</span>
+  </a>
+</div>
+
+<!-- HERO -->
+<header class="p-hero">
+  <div class="hero-glow"></div>
+  <div class="wrap hero">
+    <span class="domain"><span class="t-ar">ذكاء اصطناعي · منتج</span><span class="t-en">AI · Product</span></span>
+    <h1><span class="t-en">Arabiq<span class="accent">عربِق</span></span><span class="t-ar">عربِق</span></h1>
+    <p class="tagline">
+      <span class="t-ar">مساعد بحث بقدرتين: حلقة <span class="em">RAG وكيلية</span> تبثّ استدلالها مباشرةً أثناء عمله، وخطّ OCR عالي الدقّة يحوّل ملفات PDF الممسوحة إلى مستندات Word.</span>
+      <span class="t-en">A research assistant with two capabilities — an <span class="em">agentic RAG loop</span> that streams its reasoning live, and a high-fidelity OCR pipeline that converts scanned PDFs to Word.</span>
+    </p>
+    <div class="badge-row">
+      <span class="badge live"><span class="t-ar">يعمل محلياً (Docker)</span><span class="t-en">Runs locally (Docker)</span></span>
+      <span class="badge neutral"><span class="t-ar">95 اختبار</span><span class="t-en">95 tests</span></span>
+      <span class="badge dev"><span class="t-ar">دفع Stripe: مبدئي</span><span class="t-en">Stripe: stubbed</span></span>
+    </div>
+    <div class="tags">
+      <span class="tag gold">FastAPI</span><span class="tag gold">Python 3.12</span><span class="tag">Agentic RAG</span><span class="tag">pgvector</span><span class="tag">PostgreSQL</span><span class="tag">Redis + ARQ</span><span class="tag">Gemini</span><span class="tag gold">Flutter</span><span class="tag">WebSocket</span><span class="tag">OCR Pipeline</span>
+    </div>
+
+    <div class="factbar" style="margin-top:30px">
+      <div class="fact"><div class="k"><span class="t-ar">الدور</span><span class="t-en">Role</span></div><div class="v"><span class="t-ar">مطوّر منفرد — full-stack</span><span class="t-en">Solo full-stack</span></div></div>
+      <div class="fact"><div class="k"><span class="t-ar">الخلفية</span><span class="t-en">Backend</span></div><div class="v"><b>114</b> <span class="t-ar">ملف Python · ~9.3K سطر</span><span class="t-en">Python files · ~9.3K lines</span></div></div>
+      <div class="fact"><div class="k"><span class="t-ar">الواجهة</span><span class="t-en">Frontend</span></div><div class="v"><b>53</b> <span class="t-ar">ملف Dart · ~6.8K سطر</span><span class="t-en">Dart files · ~6.8K lines</span></div></div>
+      <div class="fact"><div class="k"><span class="t-ar">الاختبارات</span><span class="t-en">Tests</span></div><div class="v"><b>95</b></div></div>
+    </div>
+  </div>
+</header>
+
+<!-- OVERVIEW -->
+<section class="psec">
+  <div class="wrap">
+    <h2><span class="num">01</span><span class="t-ar">نظرة عامة</span><span class="t-en">Overview</span></h2>
+    <p class="lead-p">
+      <span class="t-ar">عربِق قدرتان متمايزتان: بحث RAG وكيلي يبثّ استدلاله مباشرةً، وتحويل عالي الدقّة من PDF إلى Word.</span>
+      <span class="t-en">Arabiq has two distinct capabilities: an agentic RAG search that streams its reasoning live, and a high-fidelity PDF→Word conversion.</span>
+    </p>
+    <p>
+      <span class="t-ar"><b>(1) بحث RAG وكيلي:</b> يرفع المستخدمون ملفات PDF (كتباً) داخل مكتبات ويطرحون أسئلتهم؛ فتقوم <span class="em">حلقة وكيل متعدّدة التكرارات</span> بتحليل السؤال ← تخطيط الاسترجاع (بحث دلالي + بحث نصّي + جلب صفحات) ← تنفيذ الأدوات ← تقييم النتائج (كافية / جزئية / غير كافية) ← إعادة التخطيط عند الحاجة (حتى 5 تكرارات) ← تركيب إجابة نهائية مع اقتباس المصادر (الكتاب — المؤلّف — الصفحة). وتُبثّ خطوات الاستدلال مباشرةً عبر WebSocket فيرى المستخدم الوكيل وهو «يفكّر».</span>
+      <span class="t-en"><b>(1) Agentic RAG search:</b> users upload PDFs (books) into libraries and ask questions; a <span class="em">multi-iteration agent loop</span> analyzes the question → plans retrieval (semantic + text search + page fetch) → executes tools → evaluates results (sufficient / partial / insufficient) → re-plans if needed (up to 5 iterations) → synthesizes a final answer with source citations (book — author — page). It streams its reasoning live over WebSocket so users watch the agent think.</span>
+    </p>
+    <p>
+      <span class="t-ar"><b>(2) تحويل PDF←Word عالي الدقّة:</b> خطّ OCR متعدّد المرّات (تحليل الجودة ← استخراج هجين ← تحقّق ← كشف البنية) يمزج استخراج النصّ بـ PyMuPDF (للملفات القابلة للبحث) مع Gemini Vision (للملفات الممسوحة/الصورية)، ويكتشف ويصحّح النصّ المشوّه والنصّ المعكوس/المرآتي، ويُخرج مستند <code>.docx</code> منسَّقاً بصيغة RTL سليمة.</span>
+      <span class="t-en"><b>(2) High-fidelity PDF→Word conversion:</b> a multi-pass OCR pipeline (quality analysis → hybrid extraction → verification → structure detection) mixes PyMuPDF text extraction (searchable PDFs) with Gemini Vision (scanned/image PDFs), detects and corrects garbled text and reversed/mirrored text, and outputs a properly formatted RTL <code>.docx</code>.</span>
+    </p>
+    <p>
+      <span class="t-ar">التأريض (grounding) حقيقي: المقاطع المُقتبَسة هي مقاطع فعلية من الكتب بأرقام صفحاتها، تُسترجَع عبر بحث دلالي ومعجمي.</span>
+      <span class="t-en">Grounding is real: passages are actual chunks with page numbers, retrieved by semantic + lexical search.</span>
+    </p>
+  </div>
+</section>
+
+<!-- SCREENSHOTS -->
+<section class="psec">
+  <div class="wrap">
+    <h2><span class="num">02</span><span class="t-ar">لقطات</span><span class="t-en">Screenshots</span></h2>
+    <p class="sub"><span class="t-ar">لقطات حقيقية من تطبيق Flutter</span><span class="t-en">Real screenshots from the Flutter app</span></p>
+    <div class="gallery">
+      <figure class="gshot">
+        <div class="shot"><span class="ph-tag">01</span><img src="../assets/img/arabiq/preview.jpg" alt="Arabiq — reader" loading="lazy" /></div>
+        <figcaption><span class="t-ar">قارئ الكتب</span><span class="t-en">Book reader</span></figcaption>
+      </figure>
+      <figure class="gshot">
+        <div class="shot"><span class="ph-tag">02</span><img src="../assets/img/arabiq/ob-1.png" alt="Arabiq — smart chat onboarding" loading="lazy" /></div>
+        <figcaption><span class="t-ar">تعريف: محادثة ذكية</span><span class="t-en">Onboarding: smart chat</span></figcaption>
+      </figure>
+      <figure class="gshot">
+        <div class="shot"><span class="ph-tag">03</span><img src="../assets/img/arabiq/ob-3.png" alt="Arabiq — advanced search onboarding" loading="lazy" /></div>
+        <figcaption><span class="t-ar">تعريف: بحث متقدّم</span><span class="t-en">Onboarding: advanced search</span></figcaption>
+      </figure>
+      <figure class="gshot">
+        <div class="shot"><span class="ph-tag">04</span><img src="../assets/img/arabiq/ob-5.png" alt="Arabiq — sign in" loading="lazy" /></div>
+        <figcaption><span class="t-ar">تسجيل الدخول</span><span class="t-en">Sign in</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ARCHITECTURE -->
+<section class="psec">
+  <div class="wrap">
+    <h2><span class="num">03</span><span class="t-ar">المعمارية</span><span class="t-en">Architecture</span></h2>
+    <p class="sub"><span class="t-ar">واجهة Flutter ← REST + WebSocket ← FastAPI ← محرّك RAG وكيلي + بحث pgvector + قاعدة + عمّال خلفيون</span><span class="t-en">Flutter ← REST + WebSocket ← FastAPI ← agentic RAG engine + pgvector search + DB + background workers</span></p>
+    <div class="diagram">
+<pre><span class="dim">// Flutter app ── REST + WebSocket ──▶ FastAPI</span>
+Flutter app
+  ├─ REST   <span class="dim">/api/v1/chat · /books · /search</span>
+  └─ <span class="lp">WebSocket</span> <span class="dim">/ws/{conv_id}  (live agent reasoning stream)</span>
+        │
+        ▼
+<span class="hl">FastAPI</span>
+  ├─ <span class="hl">Agentic RAG engine</span>
+  │     <span class="lp">analyze → plan → execute → evaluate → synthesize</span> <span class="dim">(loop · ≤5 iters)</span>
+  ├─ <span class="hl">pgvector</span> <span class="dim">semantic + lexical search</span>
+  ├─ PostgreSQL
+  │     <span class="dim">User/Subscription · Library/Book/Bookmark</span>
+  │     <span class="dim">Conversation/Message · DailyUsageSummary</span>
+  ├─ Redis
+  └─ <span class="lp">ARQ workers</span>
+        ├─ book_processor   <span class="dim">OCR + index + chunk</span>
+        ├─ pdf_converter    <span class="dim">PDF → Word</span>
+        └─ usage_aggregator <span class="dim">nightly usage rollup</span></pre>
+    </div>
+    <ul class="bullets" style="margin-top:24px">
+      <li><span class="t-ar"><b>فصل واضح للطبقات:</b> الواجهة تتحدّث عبر REST للعمليات المتزامنة، وعبر WebSocket لبثّ خطوات الوكيل لحظياً.</span><span class="t-en"><b>Clear layer separation:</b> the frontend talks REST for synchronous ops and WebSocket for live agent-step streaming.</span></li>
+      <li><span class="t-ar"><b>عمل ثقيل خارج دورة الطلب:</b> المهام الطويلة (OCR، الفهرسة، التحويل) تُدفع إلى عمّال ARQ على Redis بدل حجب الطلب.</span><span class="t-en"><b>Heavy work off the request cycle:</b> long jobs (OCR, indexing, conversion) are pushed to ARQ workers on Redis rather than blocking the request.</span></li>
+      <li><span class="t-ar"><b>تأريض حقيقي:</b> pgvector يخدم بحثاً دلالياً ومعجمياً هجيناً يُرجع مقاطع فعلية بأرقام صفحاتها للاقتباس.</span><span class="t-en"><b>Real grounding:</b> pgvector serves hybrid semantic + lexical search returning actual chunks with page numbers for citation.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- KEY FEATURES -->
+<section class="psec">
+  <div class="wrap">
+    <h2><span class="num">04</span><span class="t-ar">أبرز الميزات التقنية</span><span class="t-en">Key technical features</span></h2>
+    <div class="feat-grid">
+      <div class="feat">
+        <div class="fi">01</div>
+        <h4><span class="t-ar">حلقة وكيلية متعدّدة التكرارات ببثّ مباشر</span><span class="t-en">Multi-iteration agentic loop with live streaming</span></h4>
+        <p><span class="t-ar">يستدلّ عبر عدّة تكرارات بحث، ويبثّ كل خطوة (التحليل، الخطّة، التقييم) عبر WebSocket؛ ويعيد التخطيط تلقائياً (حتى 5 تكرارات) عندما تكون النتائج غير كافية.</span><span class="t-en">Reasons through multiple search iterations, streams each step (analysis, plan, evaluation) over WebSocket; auto re-plans (up to 5 iterations) when results are insufficient.</span></p>
+      </div>
+      <div class="feat">
+        <div class="fi">02</div>
+        <h4><span class="t-ar">خطّ OCR هجين</span><span class="t-en">Hybrid OCR pipeline</span></h4>
+        <p><span class="t-ar">يوجّه ملفات PDF القابلة للبحث إلى PyMuPDF (سريع) والملفات الصورية/الممسوحة إلى Gemini Vision (دقّة عالية)، صفحة واحدة لكل طلب حفاظاً على الدقّة، مع تراجع سلس عند الفشل.</span><span class="t-en">Routes searchable PDFs to PyMuPDF (fast) and image/scanned PDFs to Gemini Vision (high accuracy), one page per request for fidelity, with graceful fallback.</span></p>
+      </div>
+      <div class="feat">
+        <div class="fi">03</div>
+        <h4><span class="t-ar">كشف جودة النصّ وتصحيحه آلياً</span><span class="t-en">Text quality detection &amp; auto-correction</span></h4>
+        <p><span class="t-ar">استدلالات إحصائية (أداة التعريف «ال» تمثّل نحو 25% من الكلمات العربية؛ فإن تجاوزتها الصيغ التالفة، كان النصّ مشوّهاً)، وكشف النصّ المعكوس/المرآتي، وإصلاح التشكيل والكلمات المقطوعة.</span><span class="t-en">Statistical heuristics (the definite article "ال" is ~25% of Arabic words; if corrupted forms exceed it, the text is garbled), reversed/mirrored text detection, diacritic and split-word fixes.</span></p>
+      </div>
+      <div class="feat">
+        <div class="fi">04</div>
+        <h4><span class="t-ar">pgvector + خدمة embeddings</span><span class="t-en">pgvector + embedding service</span></h4>
+        <p><span class="t-ar">تُفهرَس المقاطع بـ embeddings؛ يدعم embeddings من Gemini (موثوقة) أو embeddings محلية اختيارية على GPU؛ بحث هجين دلالي + بالكلمات المفتاحية.</span><span class="t-en">Passages indexed with embeddings; supports Gemini embeddings (reliable) or optional local GPU embeddings; semantic + keyword hybrid search.</span></p>
+      </div>
+      <div class="feat">
+        <div class="fi">05</div>
+        <h4><span class="t-ar">هرمية موارد بنطاق المستخدم</span><span class="t-en">User-scoped resource hierarchy</span></h4>
+        <p><span class="t-ar">مكتبات ← كتب ← إشارات مرجعية؛ والمحادثات مقيَّدة بنطاق مكتبة كاملة أو كتاب واحد؛ معزولة تماماً لكل مستخدم.</span><span class="t-en">Libraries → Books → Bookmarks; conversations scoped library-wide or to a single book; fully isolated per user.</span></p>
+      </div>
+      <div class="feat">
+        <div class="fi">06</div>
+        <h4><span class="t-ar">فوترة وتحديد معدّل حقيقيان</span><span class="t-en">Real billing &amp; rate limiting</span></h4>
+        <p><span class="t-ar">تتبّع استخدام على مستوى الرسالة، حصص شهرية تُفرَض قبل الطلب، بدمج الأيام المكتملة (DailyUsageSummary) مع صفوف «اليوم» الحيّة لتفادي الثغرات عند تشغيل المجمِّع الليلي.</span><span class="t-en">Message-level usage tracking, monthly quotas enforced pre-request, combining completed days (DailyUsageSummary) + live "today" rows to avoid gaps when the nightly aggregator runs.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEEP DIVE -->
+<section class="psec">
+  <div class="wrap">
+    <h2><span class="num">05</span><span class="t-ar">قرارات هندسية</span><span class="t-en">Engineering decisions</span></h2>
+    <div class="callout">
+      <b><span class="t-ar">حلقة وكيلية مقابل سؤال/جواب ساكن</span><span class="t-en">Agentic loop vs static QA</span></b><br/>
+      <span class="t-ar">بدلاً من تمريرة واحدة «استرجِع ثمّ أجِب»، يقيّم الوكيل ما إذا كانت المقاطع المُسترجَعة تجيب فعلاً عن السؤال، ويعيد التخطيط إن لم تفعل؛ وبثّ الاستدلال يجعل العملية شفّافة وقابلة للتنقيح.</span>
+      <span class="t-en">Instead of a single retrieve-then-answer pass, the agent evaluates whether retrieved passages actually answer the question and re-plans if not; streaming the reasoning makes the process transparent and debuggable.</span>
+    </div>
+    <div class="callout note">
+      <b><span class="t-ar">الحالة بصدق</span><span class="t-en">Honest status</span></b><br/>
+      <span class="t-ar">يعمل بالكامل عبر Docker Compose مع 95 اختباراً ناجحاً (التبعيات الثقيلة مُحاكاة في conftest). الثغرات المعروفة: مسار دفع Stripe مبدئي (المخطّط وتحديد المعدّل موجودان، بلا خصم فعلي)؛ حالة مهمة PDF←Word في الذاكرة (عامل وحيد)؛ إعداد CORS مفتوح على مصراعيه في تهيئة التطوير؛ وFlutter Web غير مُختبَر (الأولوية للموبايل). الشفافية أولاً.</span>
+      <span class="t-en">Runs fully via Docker Compose with 95 passing tests (heavy deps stubbed in conftest). Known gaps: the Stripe payment flow is stubbed (schema + rate limiting exist, no real charges); PDF→Word job state is in-memory (single-worker); CORS is wide-open in the dev config; Flutter Web is untested (mobile-first). Be transparent.</span>
+    </div>
+  </div>
+</section>
+
+<!-- STACK -->
+<section class="psec">
+  <div class="wrap">
+    <h2><span class="num">06</span><span class="t-ar">التقنيات</span><span class="t-en">Tech stack</span></h2>
+    <table class="stack-table">
+      <tr><td><span class="t-ar">الخلفية</span><span class="t-en">Backend</span></td><td><b>FastAPI</b> · Python 3.12 <span class="t-ar">(غير متزامن)</span><span class="t-en">(async)</span></td></tr>
+      <tr><td><span class="t-ar">قاعدة البيانات</span><span class="t-en">Database</span></td><td><b>PostgreSQL + pgvector</b> · SQLAlchemy async + asyncpg · Alembic <span class="t-ar">(3 ترحيلات)</span><span class="t-en">(3 migrations)</span></td></tr>
+      <tr><td><span class="t-ar">التخزين/الطابور</span><span class="t-en">Cache / Queue</span></td><td><b>Redis</b> + ARQ <span class="t-ar">عمّال</span><span class="t-en">workers</span></td></tr>
+      <tr><td><span class="t-ar">الذكاء/RAG</span><span class="t-en">AI / RAG</span></td><td><b>Google Gemini</b> <span class="t-ar">(نصّ · رؤية · embeddings)</span><span class="t-en">(text · vision · embeddings)</span> · <span class="t-ar">sentence-transformers محلية اختيارية (GPU)</span><span class="t-en">optional local sentence-transformers (GPU)</span></td></tr>
+      <tr><td><span class="t-ar">المستندات</span><span class="t-en">Documents</span></td><td>PyMuPDF · python-docx · Pillow</td></tr>
+      <tr><td><span class="t-ar">معالجة النصوص</span><span class="t-en">Text processing (NLP)</span></td><td>PyArabic <span class="t-ar">· استدلالات جودة OCR مخصّصة</span><span class="t-en">· custom OCR-quality heuristics</span></td></tr>
+      <tr><td><span class="t-ar">الواجهة</span><span class="t-en">Frontend</span></td><td><b>Flutter 3.5</b> <span class="t-ar">(Riverpod · go_router · Dio + WebSocket)</span><span class="t-en">(Riverpod · go_router · Dio + WebSocket)</span></td></tr>
+      <tr><td>DevOps</td><td>Docker Compose · structlog · GitHub Actions <span class="t-ar">(95 اختباراً)</span><span class="t-en">(95 tests)</span></td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- PROJECT NAV -->
+<div class="wrap">
+  <div class="proj-nav">
+    <a href="makeembedding.html">
+      <span class="lbl"><span class="t-ar">السابق</span><span class="t-en">Previous</span></span>
+      ← MakeEmbedding
+    </a>
+    <a href="qabas.html" style="text-align:end">
+      <span class="lbl"><span class="t-ar">التالي</span><span class="t-en">Next</span></span>
+      <span class="t-ar">منصّة قبس →</span><span class="t-en">Qabas →</span>
+    </a>
+  </div>
+</div>
+
+<footer>
+  <div class="foot-inner">
+    <span>© <span id="yr"></span> <span class="t-ar">علي هاشم سلمان</span><span class="t-en">Ali Hashim Salman</span></span>
+    <span class="sig">عليّ هاشم سلمان</span>
+    <span><span class="t-ar">النجف، العراق</span><span class="t-en">Najaf, Iraq</span></span>
+  </div>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

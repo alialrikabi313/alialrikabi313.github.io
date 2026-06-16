@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-lang="ar">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MakeEmbedding — تدوير · Ali Hashim Salman</title>
+<meta name="description" content="إطار RAG كامل مبنيّ من الصفر: تحليل المستندات، تقطيع، embeddings، استرجاع هجين، إعادة ترتيب، وتوليد موثَّق — بنواة مجال خالية من الاعتماديات. دراسة حالة تقنية." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="brand" href="../index.html">ALI HASHIM SALMAN <b>// AI · Flutter</b></a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="../index.html#work"><span class="t-ar">الأعمال</span><span class="t-en">Work</span></a>
+        <a href="../index.html#contact"><span class="t-ar">تواصل</span><span class="t-en">Contact</span></a>
+        <a href="../Ali_Hashim_Salman_Resume.pdf" target="_blank" rel="noopener"><span class="t-ar">السيرة</span><span class="t-en">CV</span></a>
+      </div>
+      <button class="lang-toggle" id="langBtn" aria-label="Switch language">EN</button>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap" style="padding-top:26px">
+  <a class="backlink" href="../index.html#work">
+    <span>←</span> <span class="t-ar">كل الأعمال</span><span class="t-en">All work</span>
+  </a>
+</div>
+
+<!-- HERO -->
+<header class="p-hero">
+  <div class="hero-glow"></div>
+  <div class="wrap hero">
+    <span class="domain"><span class="t-ar">ذكاء اصطناعي · بنية تحتية</span><span class="t-en">AI · Infrastructure</span></span>
+    <h1>MakeEmbedding<span class="accent">تدوير</span></h1>
+    <p class="tagline">
+      <span class="t-ar">إطار يبني نظام RAG <span class="em">كاملاً من الصفر</span> — تحليل المستندات، التقطيع، الـ embeddings، الاسترجاع الهجين، إعادة الترتيب، والتوليد الموثَّق بالاستشهادات — مع نواة مجال خالية تماماً من الاعتماديات.</span>
+      <span class="t-en">A framework that builds a COMPLETE RAG system from scratch — parsing, chunking, embeddings, hybrid retrieval, reranking, and cited generation — with a dependency-free domain core.</span>
+    </p>
+    <div class="badge-row">
+      <span class="badge dev"><span class="t-ar">beta v0.2.0</span><span class="t-en">beta v0.2.0</span></span>
+      <span class="badge live"><span class="t-ar">589 اختبار</span><span class="t-en">589 tests</span></span>
+      <span class="badge neutral"><span class="t-ar">CI · 3 أنظمة</span><span class="t-en">CI · 3 OSes</span></span>
+    </div>
+    <div class="tags">
+      <span class="tag gold">Python</span><span class="tag gold">RAG</span><span class="tag">Clean Architecture</span><span class="tag">Poetry monorepo</span><span class="tag">Hybrid search</span><span class="tag">BM25 + RRF</span><span class="tag">Cross-encoder rerank</span><span class="tag">ONNX</span><span class="tag">FastAPI</span><span class="tag">PyQt6</span>
+    </div>
+
+    <div class="factbar" style="margin-top:30px">
+      <div class="fact"><div class="k"><span class="t-ar">الدور</span><span class="t-en">Role</span></div><div class="v"><span class="t-ar">مطوّر منفرد</span><span class="t-en">Solo</span></div></div>
+      <div class="fact"><div class="k"><span class="t-ar">الحجم</span><span class="t-en">Scale</span></div><div class="v"><b>~19K</b> <span class="t-ar">سطر · 228 وحدة · 4 حزم</span><span class="t-en">lines · 228 modules · 4 packages</span></div></div>
+      <div class="fact"><div class="k"><span class="t-ar">الاختبارات</span><span class="t-en">Tests</span></div><div class="v"><b>589</b></div></div>
+      <div class="fact"><div class="k">CI</div><div class="v"><span class="t-ar">3 أنظمة × بايثون 3.11/3.12</span><span class="t-en">3 OSes × Python 3.11/3.12</span></div></div>
+    </div>
+  </div>
+</header>
+
+<!-- OVERVIEW -->
+<section class="psec">
+  <div class="wrap">
+    <h2><span class="num">01</span><span class="t-ar">نظرة عامة</span><span class="t-en">Overview</span></h2>
+    <p class="lead-p">
+      <span class="t-ar">إطار RAG متكامل من البداية إلى النهاية، مبنيّ فعلاً من الصفر — وليس غلافاً حول LangChain. المسار الكامل: تحليل المستندات (PDF، DOCX، TXT، HTML، EPUB، PPTX، XLSX، والصور عبر OCR، والصوت عبر STT) ← تقطيع (8+ استراتيجيات) ← embeddings ← مخزن متّجهات ← بحث هجين (متّجهات كثيفة + BM25 يُدمَجان بالـ Reciprocal-Rank Fusion) ← إعادة ترتيب بـ cross-encoder ← توليد RAG باستشهادات على مستوى المقطع.</span>
+      <span class="t-en">An end-to-end RAG framework, genuinely built from scratch — not a LangChain wrapper. The pipeline: document parsing (PDF, DOCX, TXT, HTML, EPUB, PPTX, XLSX, images via OCR, audio via STT) → chunking (8+ strategies) → embeddings → vector store → hybrid search (dense vectors + BM25 fused with Reciprocal-Rank Fusion) → cross-encoder reranking → RAG generation with chunk-level citations.</span>
+    </p>
+    <p>
+      <span class="t-ar">يشحن الإطار واجهة سطر أوامر <code>tadweer</code> (init/add/index/search/status/eval)، ومعالج واجهة سطح مكتب بـ PyQt6، وخادم REST بـ FastAPI، وأهداف تصدير ONNX + حزمة مدمجة، ومنظومة تقييم (MRR، Recall@k، nDCG@k). دعم متعدّد اللغات <span class="em">مدمج في كامل المسار وليس مُلصقاً عليه لاحقاً</span>. الحالة: الإصدار v0.2.0، المرحلة الثالثة مكتملة في معظمها.</span>
+      <span class="t-en">It ships a <code>tadweer</code> CLI (init/add/index/search/status/eval), a PyQt6 desktop GUI wizard, a FastAPI REST server, ONNX + embedded-bundle export targets, and an evaluation harness (MRR, Recall@k, nDCG@k). Multilingual support is <span class="em">baked in across the whole pipeline, not bolted on</span>. Status: v0.2.0, Phase 3 mostly complete.</span>
+    </p>
+  </div>
+</section>
+
+<!-- SCREENSHOTS -->
+<section class="psec">
+  <div class="wrap">
+    <h2><span class="num">02</span><span class="t-ar">لقطات</span><span class="t-en">Screenshots</span></h2>
+    <p class="sub"><span class="t-ar">مخرجات حقيقية من الأداة: جلسة CLI فعلية وقياسات الاسترجاع</span><span class="t-en">Real output from the tool: an actual CLI session and retrieval benchmarks</span></p>
+    <div class="gallery">
+      <figure class="gshot">
+        <div class="shot wide"><span class="ph-tag">01</span><img src="../assets/img/makeembedding/01-cli.png" alt="Tadweer CLI — index & search" loading="lazy" /></div>
+        <figcaption><span class="t-ar">جلسة CLI: فهرسة وبحث فعلي</span><span class="t-en">CLI session: real index &amp; search</span></figcaption>
+      </figure>
+      <figure class="gshot">
+        <div class="shot wide"><span class="ph-tag">02</span><img src="../assets/img/makeembedding/03-benchmark.png" alt="Tadweer retrieval benchmarks" loading="lazy" /></div>
+        <figcaption><span class="t-ar">قياسات الاسترجاع (MRR · nDCG)</span><span class="t-en">Retrieval benchmarks (MRR · nDCG)</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ARCHITECTURE -->
+<section class="psec">
+  <div class="wrap">
+    <h2><span class="num">03</span><span class="t-ar">المعمارية</span><span class="t-en">Architecture</span></h2>
+    <p class="sub"><span class="t-ar">معمارية نظيفة متعدّدة الطبقات + انعكاس الاعتماديات (DIP) — النواة تستورد صفر اعتماديات خارجية</span><span class="t-en">Layered clean architecture + dependency inversion — the core imports zero external deps</span></p>
+    <div class="diagram">
+<pre><span class="dim">// clean / layered architecture · dependency inversion pivot</span>
+
+┌─ <span class="hl">Presentation</span>      <span class="dim">tadweer CLI (Typer+Rich) · PyQt6 desktop wizard</span>
+│
+├─ <span class="hl">Application</span>       <span class="dim">pipeline orchestration · config · wiring (DI)</span>
+│
+├─ <span class="lp">Domain</span>           <span class="dim">models · interfaces (ABCs) · pure logic</span>
+│   └─ <span class="lp">imports ZERO external deps</span>  <span class="dim">← the dependency-inversion pivot</span>
+│
+└─ <span class="hl">Infrastructure</span>   <span class="dim">parsers · model loading · DB adapters</span>
+    <span class="dim">heavy libs (torch · chromadb · qdrant · openai)</span>
+    <span class="dim">lazy-loaded via Poetry extras · live ONLY here, behind ABCs</span>
+
+<span class="lp">Data pipeline:</span>
+  docs → <span class="hl">parse</span> → <span class="hl">chunk</span> → <span class="hl">embed</span> → <span class="hl">store</span>
+       → <span class="hl">search</span>(dense + BM25 → <span class="lp">RRF</span>) → <span class="hl">rerank</span> → <span class="hl">generate</span>(<span class="lp">+citations</span>)</pre>
+    </div>
+    <ul class="bullets" style="margin-top:24px">
+      <li><span class="t-ar"><b>محور انعكاس الاعتماديات:</b> طبقة المجال (Domain) تحوي النماذج والواجهات والمنطق الصافي وتستورد صفر اعتماديات خارجية؛ كل التفاصيل الثقيلة تنزل إلى البنية التحتية خلف واجهات مجرّدة (ABCs).</span><span class="t-en"><b>Dependency-inversion pivot:</b> the Domain layer holds models, interfaces, and pure logic and imports zero external deps; all heavy details drop down into Infrastructure behind ABCs.</span></li>
+      <li><span class="t-ar"><b>تحميل كسول للمكتبات الثقيلة:</b> torch وchromadb وqdrant وopenai تُحمَّل عند الحاجة فقط عبر Poetry extras، وتعيش حصراً في طبقة البنية التحتية.</span><span class="t-en"><b>Lazy-loaded heavy libs:</b> torch, chromadb, qdrant, and openai are loaded only when needed via Poetry extras, and live exclusively in the Infrastructure layer.</span></li>
+      <li><span class="t-ar"><b>مسار بيانات واضح:</b> مستندات ← تحليل ← تقطيع ← embed ← تخزين ← بحث (كثيف + BM25 ← RRF) ← إعادة ترتيب ← توليد مع استشهادات.</span><span class="t-en"><b>Explicit data pipeline:</b> docs → parse → chunk → embed → store → search (dense + BM25 → RRF) → rerank → generate with citations.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- KEY FEATURES -->
+<section class="psec">
+  <div class="wrap">
+    <h2><span class="num">04</span><span class="t-ar">أبرز الميزات التقنية</span><span class="t-en">Key technical features</span></h2>
+    <div class="feat-grid">
+      <div class="feat">
+        <div class="fi">01</div>
+        <h4><span class="t-ar">تصميم متعدّد اللغات</span><span class="t-en">Language-agnostic design</span></h4>
+        <p><span class="t-ar">تطبيع الحركات والألف والياء والتطويل (قابل للضبط لكل وضع بحث)، كشف حدود الجمل الواعي باللغة، وكشف الترميز للنصوص المختلطة عربي/إنجليزي — ولكل مرحلة نصّية حالات اختبار خاصة بها.</span><span class="t-en">Diacritic/alef/ya/tatweel normalization (configurable per search mode), language-aware sentence boundary detection, and encoding detection for mixed Arabic/English scripts — every text stage has dedicated test cases.</span></p>
+      </div>
+      <div class="feat">
+        <div class="fi">02</div>
+        <h4><span class="t-ar">بحث هجين بـ Reciprocal-Rank Fusion</span><span class="t-en">Hybrid search with Reciprocal-Rank Fusion</span></h4>
+        <p><span class="t-ar">يدمج المتّجهات الكثيفة + BM25 مخصّص؛ على مجموعة الاختبار: متّجه MiniLM 0.940 MRR ← هجين 0.986 ← هجين + إعادة ترتيب 1.000.</span><span class="t-en">Combines dense vectors + a custom BM25; on the test corpus: MiniLM vector 0.940 MRR → hybrid 0.986 → hybrid+rerank 1.000.</span></p>
+      </div>
+      <div class="feat">
+        <div class="fi">03</div>
+        <h4><span class="t-ar">إعادة ترتيب على مرحلتين</span><span class="t-en">Two-stage reranking</span></h4>
+        <p><span class="t-ar">استرجاع المرحلة الأولى ثم cross-encoder (BAAI/bge-reranker-v2-m3) لرفع الدقّة؛ ونتائج المُعيد ترتيبها مُخزَّنة مؤقتاً لكل (استعلام، مقطع).</span><span class="t-en">First-stage retrieval, then a cross-encoder (BAAI/bge-reranker-v2-m3) for precision; reranker results are cached per (query, chunk).</span></p>
+      </div>
+      <div class="feat">
+        <div class="fi">04</div>
+        <h4><span class="t-ar">+8 استراتيجيات تقطيع</span><span class="t-en">8+ chunking strategies</span></h4>
+        <p><span class="t-ar">تكراري، جُملي، رمزي (token)، واعٍ بالمستند، دلالي (كشف تحوّل الموضوع عبر cosine)، هرمي، متعدّد المتّجهات، وsmall-to-big (يحلّ مشكلة فقدان السياق).</span><span class="t-en">Recursive, sentence, token, document-aware, semantic (topic-shift detection via cosine), hierarchical, multi-vector, and small-to-big (solves lost-context).</span></p>
+      </div>
+      <div class="feat">
+        <div class="fi">05</div>
+        <h4><span class="t-ar">فهرسة آمنة ضد الأعطال بنقاط تحقّق</span><span class="t-en">Crash-safe indexing with manifest checkpointing</span></h4>
+        <p><span class="t-ar">تُكتَب نتيجة كل ملف (البصمة، المقاطع، الحالة) تدريجياً؛ وإعادة التشغيل تستأنف من حيث توقّفت وتتخطّى الملفات غير المتغيّرة.</span><span class="t-en">Each file's result (fingerprint, chunks, status) is written incrementally; re-runs resume where they stopped and skip unchanged files.</span></p>
+      </div>
+      <div class="feat">
+        <div class="fi">06</div>
+        <h4><span class="t-ar">أهداف تصدير مكتفية ذاتياً</span><span class="t-en">Self-contained export targets</span></h4>
+        <p><span class="t-ar">نماذج ONNX (بلا torch وقت الاستدلال)، حِزَم مدمجة (vectors.f32 + chunks.json + meta، تُقرأ ببايثون صرف)، وخادم REST بـ FastAPI مع حقن اعتماديات.</span><span class="t-en">ONNX models (no torch at inference), embedded bundles (vectors.f32 + chunks.json + meta, readable with pure Python), and a FastAPI REST server with dependency injection.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEEP DIVE -->
+<section class="psec">
+  <div class="wrap">
+    <h2><span class="num">05</span><span class="t-ar">قرارات هندسية</span><span class="t-en">Engineering decisions</span></h2>
+    <div class="callout">
+      <b><span class="t-ar">امتلاك الطبقات التي تهمّ</span><span class="t-en">Owning the layers that matter</span></b><br/>
+      <span class="t-ar">نواة المجال تستورد صفر اعتماديات خارجية؛ مخازن المتّجهات (Chroma/Qdrant/FAISS) والـ embedders (sentence-transformers) ونماذج اللغة (Ollama/OpenAI/Anthropic/Gemini) تجلس جميعها خلف واجهات (ABCs)، وتُحمَّل كسولاً عبر Poetry extras. هذا يجعل النظام قابلاً للاختبار بـ fakes وقابلاً للتوسعة من أطراف ثالثة. ويُفرَض ذلك بفحص أنواع mypy الصارم.</span>
+      <span class="t-en">The domain core imports zero external dependencies; vector stores (Chroma/Qdrant/FAISS), embedders (sentence-transformers), and LLMs (Ollama/OpenAI/Anthropic/Gemini) all sit behind interfaces (ABCs), lazy-loaded via Poetry extras. This makes the system testable with fakes and pluggable for third parties — enforced with mypy strict typing.</span>
+    </div>
+    <div class="callout note">
+      <b><span class="t-ar">الحالة بصراحة</span><span class="t-en">Honest status</span></b><br/>
+      <span class="t-ar">الإصدار v0.2.0 هو beta وليس v1.0. واجهة PyQt6 مُتحقَّق منها بلا شاشة (Qt offscreen) لكنها لم تُختبر بعد على شاشة حقيقية؛ ومجموعة الـ benchmark المنشورة صغيرة (12 مستنداً، 36 سؤالاً — توضيحية، شغّل منظومة التقييم على بياناتك أنت)؛ وخطوة النشر على PyPI لا تزال يدوية. الشفافية أولاً.</span>
+      <span class="t-en">v0.2.0 is beta, not v1.0. The PyQt6 GUI is validated headless (offscreen Qt) but not yet exercised on a real display; the published benchmark corpus is small (12 docs, 36 questions — illustrative, run the eval harness on your own data); the PyPI publish step is still manual. Be transparent.</span>
+    </div>
+  </div>
+</section>
+
+<!-- STACK -->
+<section class="psec">
+  <div class="wrap">
+    <h2><span class="num">06</span><span class="t-ar">التقنيات</span><span class="t-en">Tech stack</span></h2>
+    <table class="stack-table">
+      <tr><td><span class="t-ar">اللغة</span><span class="t-en">Language</span></td><td><b>Python 3.11+</b> <span class="t-ar">(مُختبَر على 3.12) · Poetry monorepo (4 حزم)</span><span class="t-en">(tested 3.12) · Poetry monorepo (4 packages)</span></td></tr>
+      <tr><td><span class="t-ar">النواة (بلا اعتماديات ثقيلة)</span><span class="t-en">Core (no heavy deps)</span></td><td>pydantic 2.5 · loguru · beautifulsoup4 · PyYAML</td></tr>
+      <tr><td>Embeddings</td><td><span class="t-ar">sentence-transformers (كسول) — multilingual-e5 · BGE-M3 · Jina · Arctic</span><span class="t-en">sentence-transformers (lazy) — multilingual-e5 · BGE-M3 · Jina · Arctic</span></td></tr>
+      <tr><td><span class="t-ar">مخازن المتّجهات</span><span class="t-en">Vector stores</span></td><td><span class="t-ar">في الذاكرة · ChromaDB · Qdrant · FAISS (خلف واجهة VectorStore)</span><span class="t-en">in-memory · ChromaDB · Qdrant · FAISS (behind a VectorStore interface)</span></td></tr>
+      <tr><td><span class="t-ar">البحث</span><span class="t-en">Search</span></td><td><span class="t-ar">بحث متّجهي مخصّص · BM25 مخصّص · HyDE · إعادة ترتيب cross-encoder</span><span class="t-en">custom vector search · custom BM25 · HyDE · cross-encoder rerank</span></td></tr>
+      <tr><td>LLMs</td><td><span class="t-ar">Ollama · OpenAI · Anthropic · Gemini (خلف واجهة LLMProvider)</span><span class="t-en">Ollama · OpenAI · Anthropic · Gemini (behind an LLMProvider ABC)</span></td></tr>
+      <tr><td><span class="t-ar">المحلّلات</span><span class="t-en">Parsers</span></td><td><span class="t-ar">PyMuPDF · python-docx · ebooklib · python-pptx · Tesseract (OCR) · Whisper (STT)</span><span class="t-en">PyMuPDF · python-docx · ebooklib · python-pptx · Tesseract (OCR) · Whisper (STT)</span></td></tr>
+      <tr><td>CLI / GUI</td><td>Typer + Rich · PyQt6</td></tr>
+      <tr><td><span class="t-ar">الخادم / التصدير</span><span class="t-en">Server / Export</span></td><td><span class="t-ar">FastAPI + uvicorn · ONNX (onnxruntime) · حِزَم مدمجة</span><span class="t-en">FastAPI + uvicorn · ONNX (onnxruntime) · embedded bundles</span></td></tr>
+      <tr><td><span class="t-ar">الجودة</span><span class="t-en">Quality</span></td><td><span class="t-ar">mypy صارم · ruff · black · isort · pre-commit · 4 مسارات CI (فحص، مصفوفة اختبارات، تقييم ليلي، توثيق)</span><span class="t-en">mypy strict · ruff · black · isort · pre-commit · 4 CI workflows (lint, tests matrix, nightly eval, docs)</span></td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- PROJECT NAV -->
+<div class="wrap">
+  <div class="proj-nav">
+    <a href="hajj-library.html">
+      <span class="lbl"><span class="t-ar">السابق</span><span class="t-en">Previous</span></span>
+      ← <span class="t-ar">مكتبة الحج</span><span class="t-en">Hajj Library</span>
+    </a>
+    <a href="arabiq.html" style="text-align:end">
+      <span class="lbl"><span class="t-ar">التالي</span><span class="t-en">Next</span></span>
+      <span class="t-ar">عربِق</span><span class="t-en">Arabiq</span> →
+    </a>
+  </div>
+</div>
+
+<footer>
+  <div class="foot-inner">
+    <span>© <span id="yr"></span> <span class="t-ar">علي هاشم سلمان</span><span class="t-en">Ali Hashim Salman</span></span>
+    <span class="sig">عليّ هاشم سلمان</span>
+    <span><span class="t-ar">النجف، العراق</span><span class="t-en">Najaf, Iraq</span></span>
+  </div>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

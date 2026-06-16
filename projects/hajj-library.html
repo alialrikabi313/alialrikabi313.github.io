@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-lang="ar">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>مكتبة الحج — Hajj Library · Ali Hashim Salman</title>
+<meta name="description" content="تطبيق Flutter منشور على Google Play: قارئ نصوص offline-first مع بحث صرفي ودلالي بـ ONNX. دراسة حالة تقنية." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="brand" href="../index.html">ALI HASHIM SALMAN <b>// AI · Flutter</b></a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="../index.html#work"><span class="t-ar">الأعمال</span><span class="t-en">Work</span></a>
+        <a href="../index.html#contact"><span class="t-ar">تواصل</span><span class="t-en">Contact</span></a>
+        <a href="../Ali_Hashim_Salman_Resume.pdf" target="_blank" rel="noopener"><span class="t-ar">السيرة</span><span class="t-en">CV</span></a>
+      </div>
+      <button class="lang-toggle" id="langBtn" aria-label="Switch language">EN</button>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap" style="padding-top:26px">
+  <a class="backlink" href="../index.html#work">
+    <span>←</span> <span class="t-ar">كل الأعمال</span><span class="t-en">All work</span>
+  </a>
+</div>
+
+<!-- HERO -->
+<header class="p-hero">
+  <div class="hero-glow"></div>
+  <div class="wrap hero">
+    <span class="domain"><span class="t-ar">موبايل · منشور على Google Play</span><span class="t-en">Mobile · Live on Google Play</span></span>
+    <h1><span class="t-en">Hajj Library<span class="accent">مكتبة الحج</span></span><span class="t-ar">مكتبة الحج</span></h1>
+    <p class="tagline">
+      <span class="t-ar">قارئ نصوص تراثية يعمل دون إنترنت بالكامل، بمحرّك بحث صرفي مبنيّ من الصفر وبحث دلالي بالـ embeddings عبر ONNX — منشور ومُصان على Google Play.</span>
+      <span class="t-en">A fully offline reader for heritage texts, with a from-scratch morphological search engine and ONNX-based semantic search — shipped and maintained on Google Play.</span>
+    </p>
+    <div class="badge-row">
+      <span class="badge live"><span class="t-ar">منشور</span><span class="t-en">Published</span></span>
+      <span class="badge dev"><span class="t-ar">v2.1 قيد التطوير</span><span class="t-en">v2.1 in dev</span></span>
+      <span class="badge neutral">CI/CD</span>
+    </div>
+    <div class="tags">
+      <span class="tag gold">Flutter</span><span class="tag gold">Dart</span><span class="tag">SQLite FTS5</span><span class="tag">ONNX Runtime</span><span class="tag">Provider</span><span class="tag">Morphological Search</span><span class="tag">AES encrypt</span><span class="tag">Offline-first</span>
+    </div>
+
+    <div class="factbar" style="margin-top:30px">
+      <div class="fact"><div class="k"><span class="t-ar">الدور</span><span class="t-en">Role</span></div><div class="v"><span class="t-ar">مطوّر منفرد — كامل</span><span class="t-en">Solo — end to end</span></div></div>
+      <div class="fact"><div class="k"><span class="t-ar">الحجم</span><span class="t-en">Scale</span></div><div class="v"><b>27K</b> <span class="t-ar">سطر · 128 ملف</span><span class="t-en">lines · 128 files</span></div></div>
+      <div class="fact"><div class="k"><span class="t-ar">الاختبارات</span><span class="t-en">Tests</span></div><div class="v"><b>15</b> <span class="t-ar">ملف · 1.6K سطر</span><span class="t-en">files · 1.6K lines</span></div></div>
+      <div class="fact"><div class="k"><span class="t-ar">المنصّات</span><span class="t-en">Platforms</span></div><div class="v"><span class="t-ar">أندرويد + 5 أخرى</span><span class="t-en">Android + 5 more</span></div></div>
+    </div>
+  </div>
+</header>
+
+<!-- OVERVIEW -->
+<section class="psec">
+  <div class="wrap">
+    <h2><span class="num">01</span><span class="t-ar">نظرة عامة</span><span class="t-en">Overview</span></h2>
+    <p class="lead-p">
+      <span class="t-ar">مكتبة الحج تطبيق قراءة علمية يعمل بالكامل دون اتصال. يشحن قاعدة بيانات SQLite مضغوطة (~35MB) وقاموساً لغوياً (~9.5MB)، ويتيح قراءة آلاف الصفحات التراثية مع أدوات قارئ متكاملة — كل ذلك بلا أي تتبّع أو إعلانات أو Firebase.</span>
+      <span class="t-en">Hajj Library is a scholarly reading app that works entirely offline. It ships a compressed SQLite database (~35MB) and a linguistic dictionary (~9.5MB), letting users read thousands of heritage pages with a full reader toolkit — with zero tracking, ads, or Firebase.</span>
+    </p>
+    <p>
+      <span class="t-ar">التحدّي الحقيقي ليس عرض النص، بل <span class="em">البحث بشكل صحيح</span>: مطابقة الكلمات رغم اختلاف الهمزات والتاء المربوطة والألف المقصورة، وتوسعة الجذور إلى مشتقّاتها، وكلّ ذلك بسرعة فورية على الهاتف ودون خادم. بنيتُ لهذا خطّ معالجة صرفي من أربع مراحل، وأضفتُ في الإصدار 2.1 بحثاً دلالياً يدمج التشابه المتّجهي مع البحث النصّي.</span>
+      <span class="t-en">The real challenge isn't rendering text — it's <span class="em">searching correctly</span>: matching words across hamza, tā' marbūṭa, and alef-maqsūra variants, expanding roots into their derivatives, all instantly on-device with no server. I built a four-stage morphological pipeline for this, and in v2.1 added semantic search that fuses vector similarity with lexical retrieval.</span>
+    </p>
+    <div class="p-links" style="margin-top:18px">
+      <a href="https://play.google.com/store/apps/details?id=com.alialrikabi313.hajbook" target="_blank" rel="noopener"><span class="t-ar">Google Play</span><span class="t-en">Google Play</span> <span class="arr">↗</span></a>
+      <a href="https://apps.apple.com/us/app/id6763322865" target="_blank" rel="noopener"><span class="t-ar">App Store</span><span class="t-en">App Store</span> <span class="arr">↗</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- SCREENSHOTS -->
+<section class="psec">
+  <div class="wrap">
+    <h2><span class="num">02</span><span class="t-ar">لقطات</span><span class="t-en">Screenshots</span></h2>
+    <p class="sub"><span class="t-ar">لقطات حقيقية من التطبيق على المتجر</span><span class="t-en">Real screenshots from the app's store listing</span></p>
+    <div class="gallery">
+      <figure class="gshot">
+        <div class="shot"><span class="ph-tag">01</span><img src="../assets/img/hajj/01-home.png" alt="Hajj Library — home / library" loading="lazy" /></div>
+        <figcaption><span class="t-ar">الرئيسية والمكتبة</span><span class="t-en">Home &amp; library</span></figcaption>
+      </figure>
+      <figure class="gshot">
+        <div class="shot"><span class="ph-tag">02</span><img src="../assets/img/hajj/02-reader.png" alt="Hajj Library — reader" loading="lazy" /></div>
+        <figcaption><span class="t-ar">القارئ</span><span class="t-en">Reader</span></figcaption>
+      </figure>
+      <figure class="gshot">
+        <div class="shot"><span class="ph-tag">03</span><img src="../assets/img/hajj/03-search.png" alt="Hajj Library — search with morphology options" loading="lazy" /></div>
+        <figcaption><span class="t-ar">البحث وخيارات الصرف</span><span class="t-en">Search &amp; morphology options</span></figcaption>
+      </figure>
+      <figure class="gshot">
+        <div class="shot"><span class="ph-tag">04</span><img src="../assets/img/hajj/04-advanced-search.png" alt="Hajj Library — advanced search" loading="lazy" /></div>
+        <figcaption><span class="t-ar">البحث المتقدّم</span><span class="t-en">Advanced search</span></figcaption>
+      </figure>
+      <figure class="gshot">
+        <div class="shot"><span class="ph-tag">05</span><img src="../assets/img/hajj/05-collection.png" alt="Hajj Library — collection browse" loading="lazy" /></div>
+        <figcaption><span class="t-ar">تصفّح المجموعة</span><span class="t-en">Collection browse</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ARCHITECTURE -->
+<section class="psec">
+  <div class="wrap">
+    <h2><span class="num">03</span><span class="t-ar">المعمارية</span><span class="t-en">Architecture</span></h2>
+    <p class="sub"><span class="t-ar">feature-first + طبقات نظيفة، مستودعات ثابتة (static) لتبسيط الـ isolates والاختبار</span><span class="t-en">Feature-first + clean layers, static repositories for isolate-safety and testing</span></p>
+    <div class="diagram">
+<pre><span class="dim">// 14 ميزة مستقلة · feature-first</span>
+lib/
+├─ main.dart            <span class="dim">init: settings → hydrate derivatives cache → maintenance</span>
+├─ core/               <span class="dim">theme · arabic morphology utils · shared widgets</span>
+└─ features/
+   ├─ <span class="hl">books/</span>           <span class="dim">reader engine (~2.8K LOC) · TOC · page cache (10-page cap)</span>
+   ├─ <span class="hl">search/</span>          <span class="dim">FTS5 + morphology orchestrator (16 files)</span>
+   │   └─ <span class="lp">two-phase:</span> <span class="dim">fast (no derivatives) → if &lt;50 hits → full morphology</span>
+   ├─ <span class="hl">semantic_search/</span> <span class="dim">ONNX embedder · vector index · rank fusion (v2.1)</span>
+   ├─ highlights · notes · bookmarks · collections · clippings
+   ├─ reading_stats · reading_books · drawings
+   └─ backup/          <span class="dim">JSON export/import · AES · transactional rollback</span>
+
+<span class="lp">Search flow:</span>  input → SearchUtils → MatchQueryBuilder → SearchDb
+            → 1000+ FTS rows → <span class="hl">background isolate</span> (score + snippet)</pre>
+    </div>
+    <ul class="bullets" style="margin-top:24px">
+      <li><span class="t-ar"><b>كشف المخطّط بثلاث طبقات:</b> يتعرّف تلقائياً على ثلاث بنى لقاعدة البيانات (جديدة بجداول pages + pages_fts، قديمة بـ FTS5، واحتياطية SQLite عادية) دون كسر — مع ترقية إصدار عبر ثابت <code>_dbVersion</code>.</span><span class="t-en"><b>Three-tier schema detection:</b> auto-adapts to three database layouts (new pages + pages_fts, legacy FTS5, plain-SQLite fallback) without breaking, with version migration via a <code>_dbVersion</code> constant.</span></li>
+      <li><span class="t-ar"><b>مستودعات ثابتة بلا حاوية DI:</b> الحالة في حقول static + SharedPreferences، ما يبسّط الاختبار والتوافق مع الـ isolates.</span><span class="t-en"><b>Static repositories, no DI container:</b> state in static fields + SharedPreferences, simplifying tests and isolate compatibility.</span></li>
+      <li><span class="t-ar"><b>بحث على مرحلتين:</b> المرحلة الأولى بلا توسعة جذور (سريعة) — إن أعادت ≥50 نتيجة توقّفت؛ وإلا تُفعَّل المرحلة الثانية بالصرف الكامل.</span><span class="t-en"><b>Two-phase search:</b> phase one runs without root expansion (fast); if it returns ≥50 results it stops, otherwise full morphology kicks in.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- KEY FEATURES -->
+<section class="psec">
+  <div class="wrap">
+    <h2><span class="num">04</span><span class="t-ar">أبرز الميزات التقنية</span><span class="t-en">Key technical features</span></h2>
+    <div class="feat-grid">
+      <div class="feat">
+        <div class="fi">01</div>
+        <h4><span class="t-ar">خطّ صرف من الصفر</span><span class="t-en">From-scratch morphology engine</span></h4>
+        <p><span class="t-ar">تطبيع الهمزات، مطابقة المتشابهات (ة/ه، ى/ي، ض/ظ)، وتوسعة الجذور إلى المشتقّات عبر قاموس مدمج 9.5MB — مع ذاكرة LRU وكاش دائم لتفادي إعادة تحليل الكلمات.</span><span class="t-en">Hamza normalization, confusable matching (ة/ه, ى/ي, ض/ظ), and root→derivative expansion via an embedded 9.5MB dictionary — with LRU and persistent caching to avoid re-analyzing words.</span></p>
+      </div>
+      <div class="feat">
+        <div class="fi">02</div>
+        <h4><span class="t-ar">بحث هجين دلالي + نصّي</span><span class="t-en">Hybrid semantic + lexical search</span></h4>
+        <p><span class="t-ar">دمج ONNX Runtime لتوليد embeddings (نموذج لغوي، مكمَّم int8)، مع دمج رُتب (rank fusion) بين التشابه المتّجهي وصلة FTS5 — وتراجع سلس إلى FTS فقط عند غياب النموذج.</span><span class="t-en">ONNX Runtime for embeddings (language model, int8-quantized), with rank fusion between vector similarity and FTS5 relevance — and graceful fallback to FTS-only when the model is unavailable.</span></p>
+      </div>
+      <div class="feat">
+        <div class="fi">03</div>
+        <h4><span class="t-ar">offline-first بالكامل</span><span class="t-en">Fully offline-first</span></h4>
+        <p><span class="t-ar">قاعدة SQLite مضغوطة 35MB تُستخرَج وقت التشغيل، وضع WAL، تخزين مؤقّت للصفحات بسقف ذاكرة، حفظ موضع القراءة تلقائياً — بلا أي اعتماد على الشبكة.</span><span class="t-en">A 35MB compressed SQLite DB extracted at runtime, WAL mode, page caching with a memory cap, auto-saved reading position — with zero network dependency.</span></p>
+      </div>
+      <div class="feat">
+        <div class="fi">04</div>
+        <h4><span class="t-ar">حماية بيانات حقيقية</span><span class="t-en">Real data protection</span></h4>
+        <p><span class="t-ar">نسخ احتياطي بمعاملات قابلة للتراجع (rollback)، كتابة متسلسلة آمنة لـ SharedPreferences، قراءة JSON آمنة (المدخلات التالفة لا تُسقط التطبيق)، وتشفير AES اختياري.</span><span class="t-en">Transactional backup with rollback, serialized safe SharedPreferences writes, safe JSON deserialization (corrupt entries don't crash the app), and optional AES encryption.</span></p>
+      </div>
+      <div class="feat">
+        <div class="fi">05</div>
+        <h4><span class="t-ar">أدوات قارئ غنية</span><span class="t-en">Rich reader toolkit</span></h4>
+        <p><span class="t-ar">تظليل بأربعة ألوان، ملاحظات بوسوم وتصدير Markdown، إشارات ملوّنة، طبقة رسم/تأشير، تمرير متّصل، نوافذ حواشٍ، 4 خطوط، وإحصاءات قراءة بأهداف يومية.</span><span class="t-en">Four-color highlights, tagged notes with Markdown export, colored bookmarks, a drawing layer, continuous scroll, footnote popups, 4 fonts, and reading stats with daily goals.</span></p>
+      </div>
+      <div class="feat">
+        <div class="fi">06</div>
+        <h4><span class="t-ar">جاهزية إنتاج</span><span class="t-en">Production readiness</span></h4>
+        <p><span class="t-ar">إعداد توقيع APK، سياسة خصوصية منشورة بمعرّف الحزمة، CI عبر GitHub Actions (تحليل + اختبار + بناء)، وتثبيت متعمّد لإصدارات SQLite لتفادي فشل البناء على الشبكات البطيئة.</span><span class="t-en">APK signing config, a published privacy policy matching the package ID, GitHub Actions CI (analyze + test + build), and deliberate SQLite version pinning to avoid build failures on slow networks.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEEP DIVE -->
+<section class="psec">
+  <div class="wrap">
+    <h2><span class="num">05</span><span class="t-ar">قرارات هندسية</span><span class="t-en">Engineering decisions</span></h2>
+    <div class="callout">
+      <b><span class="t-ar">لماذا مستودعات static بدل Riverpod/Bloc؟</span><span class="t-en">Why static repositories instead of Riverpod/Bloc?</span></b><br/>
+      <span class="t-ar">التطبيق أحادي المستخدم وoffline؛ إطار إدارة حالة ثقيل سيكون هندسة زائدة. الحقول الثابتة + SharedPreferences تجعل المنطق قابلاً للاختبار ومتوافقاً مع الـ isolates التي تعالج آلاف صفوف البحث في الخلفية. القرار موثّق في ARCHITECTURE.md.</span>
+      <span class="t-en">The app is single-user and offline; a heavy state framework would be over-engineering. Static fields + SharedPreferences keep logic testable and compatible with the isolates that process thousands of search rows in the background. The decision is documented in ARCHITECTURE.md.</span>
+    </div>
+    <div class="callout note">
+      <b><span class="t-ar">تثبيت إصدارات SQLite عمداً</span><span class="t-en">Deliberate SQLite version pinning</span></b><br/>
+      <span class="t-ar">إصدارات sqlite3_flutter_libs الأحدث تستخدم native-assets hooks تفشل على الشبكات المتقطّعة وقت البناء؛ لذا ثُبِّتت على 0.5.x عمداً. تفصيلة صغيرة لكنها تعكس فهماً لسلسلة البناء وظروف العمل المحلية.</span>
+      <span class="t-en">Newer sqlite3_flutter_libs versions use native-assets hooks that fail on intermittent networks at build time, so it's pinned to 0.5.x on purpose. A small detail, but it reflects an understanding of the build chain and local working conditions.</span>
+    </div>
+  </div>
+</section>
+
+<!-- STACK -->
+<section class="psec">
+  <div class="wrap">
+    <h2><span class="num">06</span><span class="t-ar">التقنيات</span><span class="t-en">Tech stack</span></h2>
+    <table class="stack-table">
+      <tr><td><span class="t-ar">الإطار</span><span class="t-en">Framework</span></td><td><b>Flutter 3.x</b> · Dart >=3.0 <span class="t-ar">· Material Design</span><span class="t-en">· Material Design</span></td></tr>
+      <tr><td><span class="t-ar">إدارة الحالة</span><span class="t-en">State</span></td><td>Provider <span class="t-ar">+ مستودعات static</span><span class="t-en">+ static repositories</span></td></tr>
+      <tr><td><span class="t-ar">قاعدة البيانات</span><span class="t-en">Database</span></td><td><b>SQLite</b> (sqflite_common_ffi · sqlite3_flutter_libs) · <b>FTS5</b> · WAL</td></tr>
+      <tr><td><span class="t-ar">الذكاء الاصطناعي</span><span class="t-en">AI / ML</span></td><td><b>ONNX Runtime</b> <span class="t-ar">· embeddings مكمَّمة (int8) · rank fusion</span><span class="t-en">· quantized embeddings (int8) · rank fusion</span></td></tr>
+      <tr><td><span class="t-ar">المعالجة اللغوية</span><span class="t-en">Linguistics</span></td><td><span class="t-ar">خطّ صرف مخصّص · قاموس 9.5MB · 4 خطوط (Amiri · Cairo · Lateef · Thuluth)</span><span class="t-en">Custom morphology · 9.5MB dictionary · 4 fonts (Amiri · Cairo · Lateef · Thuluth)</span></td></tr>
+      <tr><td><span class="t-ar">التشفير</span><span class="t-en">Encryption</span></td><td>crypto · encrypt (AES) <span class="t-ar">للنسخ الاحتياطي</span><span class="t-en">for backups</span></td></tr>
+      <tr><td><span class="t-ar">المنصّات</span><span class="t-en">Platforms</span></td><td><span class="t-ar">أندرويد (موقّع) · iOS · ويب · ويندوز · macOS · Linux</span><span class="t-en">Android (signed) · iOS · Web · Windows · macOS · Linux</span></td></tr>
+      <tr><td>CI/CD</td><td>GitHub Actions <span class="t-ar">(flutter analyze · test · build APK)</span><span class="t-en">(flutter analyze · test · build APK)</span></td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- PROJECT NAV -->
+<div class="wrap">
+  <div class="proj-nav">
+    <a href="hakimai.html">
+      <span class="lbl"><span class="t-ar">السابق</span><span class="t-en">Previous</span></span>
+      ← HakimAI
+    </a>
+    <a href="makeembedding.html" style="text-align:end">
+      <span class="lbl"><span class="t-ar">التالي</span><span class="t-en">Next</span></span>
+      MakeEmbedding →
+    </a>
+  </div>
+</div>
+
+<footer>
+  <div class="foot-inner">
+    <span>© <span id="yr"></span> <span class="t-ar">علي هاشم سلمان</span><span class="t-en">Ali Hashim Salman</span></span>
+    <span class="sig">عليّ هاشم سلمان</span>
+    <span><span class="t-ar">النجف، العراق</span><span class="t-en">Najaf, Iraq</span></span>
+  </div>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

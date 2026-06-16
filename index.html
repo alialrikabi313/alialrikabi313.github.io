@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  PORTFOLIO — Ali Hashim Salman
+  Landing page. Bilingual (Arabic default + EN toggle).
+  Project detail pages live in /projects/*.html
+  Screenshots go in /assets/img/<project>/ (see placeholders).
+  ============================================================
+-->
+<html lang="ar" dir="rtl" data-lang="ar">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ali Hashim Salman — AI &amp; Flutter Engineer</title>
+<meta name="description" content="مهندس ذكاء اصطناعي ومطوّر Flutter في النجف — RAG من الصفر، embeddings، أنظمة AI كاملة، و+30 تطبيق Flutter منشور على Google Play وApp Store." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="brand" href="index.html">ALI HASHIM SALMAN <b>// AI · Flutter</b></a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="#about"><span class="t-ar">نبذة</span><span class="t-en">About</span></a>
+        <a href="#work"><span class="t-ar">الأعمال</span><span class="t-en">Work</span></a>
+        <a href="#experience"><span class="t-ar">الخبرة</span><span class="t-en">Experience</span></a>
+        <a href="#contact"><span class="t-ar">تواصل</span><span class="t-en">Contact</span></a>
+        <a href="Ali_Hashim_Salman_Resume.pdf" target="_blank" rel="noopener"><span class="t-ar">السيرة</span><span class="t-en">CV</span></a>
+      </div>
+      <button class="lang-toggle" id="langBtn" aria-label="Switch language">EN</button>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <div class="hero-glow"></div>
+  <div class="wrap hero">
+    <span class="eyebrow">
+      <span class="t-ar">مهندس ذكاء اصطناعي ومطوّر Flutter · النجف، العراق</span>
+      <span class="t-en">AI Engineer &amp; Flutter Developer · Najaf, Iraq</span>
+    </span>
+    <h1>
+      <span class="t-ar">مهندس ذكاء اصطناعي ومطوّر <span class="hl">Flutter</span> بخبرة خمس سنوات.</span>
+      <span class="t-en">AI engineer and <span class="hl">Flutter</span> developer with five years of experience.</span>
+    </h1>
+    <div class="arabic-name">علي هاشم سلمان</div>
+    <p class="lede">
+      <span class="t-ar">نشرتُ أكثر من 30 تطبيقاً على Google Play وعدّة تطبيقات على App Store. أتقن بناء أنظمة الذكاء الاصطناعي كاملةً من الصفر — RAG، embeddings، بحث متّجهي هجين، إعادة ترتيب، ودمج نماذج LLM — وأبني تطبيقات Flutter بمعمارية نظيفة، من الـbackend إلى المتجر. أُصمّم البنية وأملك الطبقات المهمّة، لا أكتفي باستدعاء API جاهز.</span>
+      <span class="t-en">I've published 30+ apps on Google Play and several on the App Store. I master building complete AI systems from scratch — RAG, embeddings, hybrid vector search, reranking, and LLM integration — and I build Flutter apps with clean architecture, from backend to store. I architect the system and own the layers that matter, not just call a ready-made API.</span>
+    </p>
+    <div class="cta-row">
+      <a class="btn primary" href="#work"><span class="t-ar">أبرز الأعمال</span><span class="t-en">Featured work</span></a>
+      <a class="btn" href="Ali_Hashim_Salman_Resume.pdf" target="_blank" rel="noopener"><span class="t-ar">السيرة الذاتية (PDF) ↓</span><span class="t-en">Résumé (PDF) ↓</span></a>
+      <a class="btn" href="https://github.com/alialrikabi313" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+    <div class="stats">
+      <span><b><span class="t-ar">5+ سنوات</span><span class="t-en">5+ years</span></b> <span class="t-ar">خبرة</span><span class="t-en">experience</span></span>
+      <span><b><span class="t-ar">+30 تطبيق</span><span class="t-en">30+ apps</span></b> <span class="t-ar">على Google Play</span><span class="t-en">on Google Play</span></span>
+      <span><b>App Store</b> <span class="t-ar">تطبيقات منشورة</span><span class="t-en">published apps</span></span>
+      <span><b><span class="t-ar">متخصّص</span><span class="t-en">Specialist</span></b> <span class="t-ar">في RAG وأنظمة الـAI</span><span class="t-en">in RAG &amp; AI systems</span></span>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="num">01</span><h2><span class="t-ar">نبذة</span><span class="t-en">About</span></h2></div>
+    <div class="about-grid reveal">
+      <p>
+        <span class="t-ar"><span class="em">علي هاشم سلمان</span> — مهندس ذكاء اصطناعي ومطوّر Flutter مقيم في النجف، بخبرة خمس سنوات في تطوير الموبايل والأنظمة. نشرتُ أكثر من 30 تطبيقاً على Google Play وعدّة تطبيقات على Apple App Store، وأنجزتُ عشرات المشاريع لزبائن ومؤسسات وشركات — بين أدوات إنتاجية وقارئات ومنصّات وأنظمة كاملة.</span>
+        <span class="t-en"><span class="em">Ali Hashim Salman</span> — an AI engineer and Flutter developer based in Najaf, Iraq, with five years of experience in mobile and systems development. I've published 30+ apps on Google Play and several on the Apple App Store, and delivered dozens of projects for clients, institutions, and companies — from productivity tools and readers to platforms and full systems.</span>
+      </p>
+      <p>
+        <span class="t-ar">أتقن بناء أنظمة الذكاء الاصطناعي كاملةً من الصفر — <span class="em">RAG، embeddings، بحث متّجهي هجين، إعادة ترتيب، وحلقات استدلال وكيلية (agentic)</span> — ودمج نماذج LLM مثل Gemini، وبناء الـ pipelines من تحليل المستندات (PDF، صور بـ OCR، صوت) إلى التوليد بالاستشهاد. وحين تتطلّب المشكلة نظاماً حقيقياً بدل استدعاء API، أبنيه طبقةً طبقة.</span>
+        <span class="t-en">I master building complete AI systems from scratch — <span class="em">RAG, embeddings, hybrid vector search, reranking, and agentic reasoning loops</span> — integrating LLMs like Gemini, and building pipelines from document parsing (PDF, OCR images, audio) to cited generation. When a problem needs a real system rather than an API call, I build it layer by layer.</span>
+      </p>
+      <p>
+        <span class="t-ar">على جانب الموبايل أبني بـ <span class="em">Flutter وDart بمعمارية نظيفة</span> (Riverpod، offline-first، وwhite-label عبر flavors). مهندس full-stack أُصمّم البنية وأملك كل طبقة — من الـbackend إلى الواجهة إلى النشر — لا أكتفي باستدعاء API جاهز.</span>
+        <span class="t-en">On mobile I build with <span class="em">Flutter and Dart in clean architecture</span> (Riverpod, offline-first, and white-label via flavors). A full-stack engineer who architects the system and owns every layer — backend, interface, and deployment — not just calling a ready-made API.</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="num">02</span><h2><span class="t-ar">أبرز الأعمال</span><span class="t-en">Featured work</span></h2></div>
+    <p class="sec-note reveal">
+      <span class="t-ar">هذه <span class="em">نماذج مختارة</span> من عملي. على مدى خمس سنوات أنجزتُ عشرات المشاريع والتطبيقات لعشرات الزبائن والمؤسسات والشركات — من تطبيقات منشورة على المتاجر، إلى أنظمة backend وذكاء اصطناعي مبنيّة من الصفر.</span>
+      <span class="t-en">These are <span class="em">selected examples</span> of my work. Over five years I've delivered dozens of projects and apps for dozens of clients, institutions, and companies — from store-published apps to backend and AI systems built from scratch.</span>
+    </p>
+
+    <!-- 01 — HakimAI -->
+    <article class="project reveal">
+      <div class="p-meta">
+        <span class="domain"><span class="t-ar">AI · صحة</span><span class="t-en">AI · Healthcare</span></span>
+        <span class="status"><span class="t-ar">مشروع رئيسي · backend يعمل</span><span class="t-en">Flagship · working backend</span></span>
+        <span class="idx">001</span>
+      </div>
+      <div class="p-body">
+        <h3>HakimAI</h3>
+        <p class="desc">
+          <span class="t-ar">مساعد توثيق طبي يحوّل المحادثة المنطوقة بين الطبيب والمريض إلى توثيق سريري مُنظَّم (SOAP، تشخيص، ICD-10) لحظياً. يرسل الصوت مباشرةً إلى Gemini مع سياق المريض، ثم يمرّ على محرّك تحقّق دوائي محلّي ويُصدّر إلى معيار FHIR R4 للتكامل مع أنظمة المستشفيات.</span>
+          <span class="t-en">A medical scribe for clinicians that turns a spoken doctor–patient conversation into structured clinical notes (SOAP, diagnosis, ICD-10) in real time — sending audio directly to Gemini with patient context, then running a local drug-interaction engine and exporting to FHIR R4 for hospital integration.</span>
+        </p>
+        <div class="p-metrics">
+          <span><b>~21K</b> <span class="t-ar">سطر Python</span><span class="t-en">lines Python</span></span>
+          <span><b>97</b> <span class="t-ar">اختبار</span><span class="t-en">tests</span></span>
+          <span><b>FastAPI · Gemini · Flutter · Next.js</b></span>
+        </div>
+        <div class="tags"><span class="tag">FastAPI</span><span class="tag">Gemini 2.5</span><span class="tag">Speech-to-Text</span><span class="tag">FHIR R4</span><span class="tag">Celery</span><span class="tag">PostgreSQL</span></div>
+        <div class="p-links"><a href="projects/hakimai.html"><span class="t-ar">عرض تفاصيل المشروع</span><span class="t-en">View project details</span> <span class="arr">↗</span></a></div>
+      </div>
+    </article>
+
+    <!-- 02 — Hajj Library -->
+    <article class="project reveal">
+      <div class="p-meta">
+        <span class="domain"><span class="t-ar">موبايل · منشور</span><span class="t-en">Mobile · Published</span></span>
+        <span class="status"><span class="t-ar">منشور على Google Play</span><span class="t-en">Live on Google Play</span></span>
+        <span class="idx">002</span>
+      </div>
+      <div class="p-body">
+        <h3><span class="t-en">Hajj Library <span class="accent">مكتبة الحج</span></span><span class="t-ar">مكتبة الحج</span></h3>
+        <p class="desc">
+          <span class="t-ar">تطبيق Flutter منشور على Google Play: قارئ نصوص يعمل دون إنترنت بالكامل، مع بحث صرفي مبنيّ خصّيصاً (تطبيع، توسعة الجذور، FTS5) وبحث دلالي بـ embeddings عبر ONNX على الجهاز. يضمّ تظليل وملاحظات ومجموعات ونسخ احتياطي مُشفّر. ~27 ألف سطر Dart.</span>
+          <span class="t-en">A Flutter app published on Google Play: a fully offline text reader with a custom morphological search (normalization, root expansion, FTS5) and on-device semantic search via ONNX embeddings. Highlights, notes, collections, and encrypted backup. ~27K lines of Dart.</span>
+        </p>
+        <div class="p-metrics">
+          <span><b>27K</b> <span class="t-ar">سطر Dart · 128 ملف</span><span class="t-en">lines · 128 files</span></span>
+          <span><b>v2.1</b> <span class="t-ar">+ سجل إصدارات</span><span class="t-en">+ changelog</span></span>
+          <span><b>CI/CD</b></span>
+        </div>
+        <div class="tags"><span class="tag">Flutter</span><span class="tag">SQLite FTS5</span><span class="tag">ONNX Runtime</span><span class="tag">Semantic Search</span><span class="tag">Offline-first</span></div>
+        <div class="p-links"><a href="projects/hajj-library.html"><span class="t-ar">عرض تفاصيل المشروع</span><span class="t-en">View project details</span> <span class="arr">↗</span></a></div>
+      </div>
+    </article>
+
+    <!-- 03 — MakeEmbedding / Tadweer -->
+    <article class="project reveal">
+      <div class="p-meta">
+        <span class="domain"><span class="t-ar">AI · بنية تحتية</span><span class="t-en">AI · Infrastructure</span></span>
+        <span class="status"><span class="t-ar">framework · 589 اختبار</span><span class="t-en">Framework · 589 tests</span></span>
+        <span class="idx">003</span>
+      </div>
+      <div class="p-body">
+        <h3>MakeEmbedding <span class="accent">تدوير</span></h3>
+        <p class="desc">
+          <span class="t-ar">framework يبني نظام RAG كاملاً من الصفر: من تحليل المستندات (PDF/DOCX/صور بـOCR/صوت) ← التقطيع (8 استراتيجيات) ← الـembeddings ← بحث هجين (متّجهي + BM25 مع RRF) ← إعادة ترتيب ← توليد بالاستشهاد. معمارية طبقية بطبقة domain بلا تبعيات، مع CLI وREST وتصدير ONNX و589 اختباراً.</span>
+          <span class="t-en">A framework that builds a complete RAG system from scratch: document parsing (PDF/DOCX/OCR/audio) → chunking (8 strategies) → embeddings → hybrid search (vector + BM25 via RRF) → reranking → cited generation. Layered architecture with a dependency-free domain core, plus CLI, REST, ONNX export, and 589 tests.</span>
+        </p>
+        <div class="p-metrics">
+          <span><b>19K</b> <span class="t-ar">سطر · 228 وحدة</span><span class="t-en">lines · 228 modules</span></span>
+          <span><b>589</b> <span class="t-ar">اختبار</span><span class="t-en">tests</span></span>
+          <span><b>CI</b> <span class="t-ar">على 3 أنظمة</span><span class="t-en">on 3 OSes</span></span>
+        </div>
+        <div class="tags"><span class="tag">Python</span><span class="tag">Hybrid Search</span><span class="tag">BM25 + RRF</span><span class="tag">Reranking</span><span class="tag">FAISS · Qdrant</span><span class="tag">ONNX</span></div>
+        <div class="p-links"><a href="projects/makeembedding.html"><span class="t-ar">عرض تفاصيل المشروع</span><span class="t-en">View project details</span> <span class="arr">↗</span></a></div>
+      </div>
+    </article>
+
+    <!-- 04 — Arabiq -->
+    <article class="project reveal">
+      <div class="p-meta">
+        <span class="domain"><span class="t-ar">AI · منتج</span><span class="t-en">AI · Product</span></span>
+        <span class="status"><span class="t-ar">full-stack · يعمل</span><span class="t-en">Full-stack · working</span></span>
+        <span class="idx">004</span>
+      </div>
+      <div class="p-body">
+        <h3>Arabiq <span class="accent">عربِق</span></h3>
+        <p class="desc">
+          <span class="t-ar">مساعد بحث بحلقة RAG وكيلية: يحلّل السؤال ← يخطّط ← يسترجع ← يقيّم ← يعيد التخطيط (حتى 5 دورات)، ويبثّ تفكيره مباشرةً عبر WebSocket مع استشهادات (الكتاب — المؤلف — الصفحة). ويضمّ خطّ OCR متقدّماً يحوّل ملفات PDF الممسوحة ضوئياً إلى Word بدقة عالية (PyMuPDF + Gemini Vision + كشف النص المُشوَّه).</span>
+          <span class="t-en">A research assistant with an agentic RAG loop: analyze → plan → retrieve → evaluate → re-plan (up to 5 iterations), streaming its reasoning live over WebSocket with citations (book — author — page). Plus an advanced OCR pipeline converting scanned PDFs to Word (PyMuPDF + Gemini Vision + garbled-text detection).</span>
+        </p>
+        <div class="p-metrics">
+          <span><b>pgvector</b> <span class="t-ar">+ ARQ workers</span><span class="t-en">+ ARQ workers</span></span>
+          <span><b>95</b> <span class="t-ar">اختبار</span><span class="t-en">tests</span></span>
+          <span><b>FastAPI · Flutter</b></span>
+        </div>
+        <div class="tags"><span class="tag">Agentic RAG</span><span class="tag">pgvector</span><span class="tag">OCR Pipeline</span><span class="tag">WebSocket</span><span class="tag">Flutter</span></div>
+        <div class="p-links"><a href="projects/arabiq.html"><span class="t-ar">عرض تفاصيل المشروع</span><span class="t-en">View project details</span> <span class="arr">↗</span></a></div>
+      </div>
+    </article>
+
+    <!-- 05 — Qabas -->
+    <article class="project reveal">
+      <div class="p-meta">
+        <span class="domain"><span class="t-ar">Full-Stack · تعليم</span><span class="t-en">Full-Stack · EdTech</span></span>
+        <span class="status"><span class="t-ar">منصّة SaaS · 6 وحدات</span><span class="t-en">SaaS platform · 6 modules</span></span>
+        <span class="idx">005</span>
+      </div>
+      <div class="p-body">
+        <h3><span class="t-en">Qabas <span class="accent">منصّة قبس</span></span><span class="t-ar">منصّة قبس التعليمية</span></h3>
+        <p class="desc">
+          <span class="t-ar">منصّة تعليمية SaaS متعدّدة المستأجرين (multi-tenant) بـ 6 وحدات: backend (FastAPI، ~103 endpoint)، تطبيق طالب (Flutter)، لوحتا مدرّس ومشرف (Flutter Web)، موقع تعريفي (Astro)، وبنية تحتية كـ code (Terraform). تتضمّن أكواد تفعيل، فيديو محميّ بـ DRM، مدرّس AI بالبثّ، وتلعيب (gamification) — مع عزل البيانات على مستوى المستند والتطبيق.</span>
+          <span class="t-en">A multi-tenant education SaaS across 6 modules: backend (FastAPI, ~103 endpoints), student app (Flutter), instructor &amp; admin panels (Flutter Web), marketing site (Astro), and infrastructure as code (Terraform). Activation codes, DRM-protected video, a streaming AI tutor, and gamification — with tenant isolation at the document and application level.</span>
+        </p>
+        <div class="p-metrics">
+          <span><b>6</b> <span class="t-ar">وحدات · ~90K سطر</span><span class="t-en">modules · ~90K lines</span></span>
+          <span><b>~88%</b> <span class="t-ar">تغطية backend</span><span class="t-en">backend coverage</span></span>
+          <span><b>Firestore · Terraform</b></span>
+        </div>
+        <div class="tags"><span class="tag">FastAPI</span><span class="tag">Flutter</span><span class="tag">Multi-tenant</span><span class="tag">Firestore</span><span class="tag">Terraform</span><span class="tag">Bunny DRM</span></div>
+        <div class="p-links"><a href="projects/qabas.html"><span class="t-ar">عرض تفاصيل المشروع</span><span class="t-en">View project details</span> <span class="arr">↗</span></a></div>
+      </div>
+    </article>
+
+    <!-- 06 — Hawza Platform -->
+    <article class="project reveal">
+      <div class="p-meta">
+        <span class="domain"><span class="t-ar">Real-time · مجتمع</span><span class="t-en">Real-time · Community</span></span>
+        <span class="status"><span class="t-ar">منصّة مراسلة وتعلّم</span><span class="t-en">Messaging &amp; learning platform</span></span>
+        <span class="idx">006</span>
+      </div>
+      <div class="p-body">
+        <h3><span class="t-en">Hawza Platform <span class="accent">منصّة الحوزة</span></span><span class="t-ar">منصّة الحوزة</span></h3>
+        <p class="desc">
+          <span class="t-ar">منصّة مراسلة وتعلّم لطلبة الحوزة: محادثات لحظية (Socket.IO مع Redis adapter للتوزيع عبر عدّة pods)، قنوات بصلاحيات، خطّ تفريغ صوتي للمحاضرات (Groq Whisper مع تقطيع ffmpeg)، بحث نصّي كامل، وإشعارات FCM. monorepo بـ NestJS + Flutter + Next.js مع مراقبة Prometheus وموثّقات تشغيل.</span>
+          <span class="t-en">A messaging &amp; learning platform for seminary students: real-time chat (Socket.IO with a Redis adapter for multi-pod fanout), permissioned channels, a lecture transcription pipeline (Groq Whisper with ffmpeg chunking), full-text search, and FCM notifications. A NestJS + Flutter + Next.js monorepo with Prometheus monitoring and ops runbooks.</span>
+        </p>
+        <div class="p-metrics">
+          <span><b>~38K</b> <span class="t-ar">سطر</span><span class="t-en">lines</span></span>
+          <span><b>NestJS · Flutter · Next.js</b></span>
+          <span><b>Socket.IO · BullMQ</b></span>
+        </div>
+        <div class="tags"><span class="tag">NestJS</span><span class="tag">Socket.IO</span><span class="tag">Prisma</span><span class="tag">BullMQ</span><span class="tag">Groq Whisper</span><span class="tag">Flutter</span></div>
+        <div class="p-links"><a href="projects/hawza.html"><span class="t-ar">عرض تفاصيل المشروع</span><span class="t-en">View project details</span> <span class="arr">↗</span></a></div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="num">03</span><h2><span class="t-ar">الخبرة والمهارات</span><span class="t-en">Experience &amp; Skills</span></h2></div>
+
+    <!-- publications band -->
+    <div class="pubs reveal">
+      <a class="pub" href="https://play.google.com/store/apps/developer?id=Ali+Al-rikabi313" target="_blank" rel="noopener">
+        <div class="big">+30 <span style="font-size:.7rem;color:var(--accent)">↗</span></div>
+        <div class="lbl"><span class="t-ar">تطبيق منشور على Google Play — اطّلع على صفحة المطوّر</span><span class="t-en">apps published on Google Play — view developer page</span></div>
+      </a>
+      <a class="pub" href="https://apps.apple.com/us/developer/ali-hashim-salman/id1829770951" target="_blank" rel="noopener">
+        <div class="big">App Store <span style="font-size:.7rem;color:var(--accent)">↗</span></div>
+        <div class="lbl"><span class="t-ar">تطبيقات منشورة على Apple App Store — صفحة المطوّر</span><span class="t-en">apps published on the Apple App Store — developer page</span></div>
+      </a>
+      <div class="pub">
+        <div class="big">5+</div>
+        <div class="lbl"><span class="t-ar">سنوات خبرة في الموبايل والأنظمة</span><span class="t-en">years of mobile &amp; systems experience</span></div>
+      </div>
+      <div class="pub">
+        <div class="big"><span class="t-ar">عشرات</span><span class="t-en">Dozens</span></div>
+        <div class="lbl"><span class="t-ar">من المشاريع لزبائن ومؤسسات وشركات (٦ منها معروضة هنا)</span><span class="t-en">of projects for clients, institutions &amp; companies (6 featured here)</span></div>
+      </div>
+    </div>
+
+    <!-- experience highlights -->
+    <div class="xp-block reveal">
+      <p class="sub-h"><span class="t-ar">أبرز الخبرات</span><span class="t-en">Experience highlights</span></p>
+      <ul class="bullets">
+        <li><span class="t-ar"><b>نشر منتجات موبايل بحجم حقيقي:</b> أكثر من 30 تطبيقاً على Google Play وعدّة تطبيقات على App Store، لزبائن ومؤسسات متعدّدة — دورة كاملة من التطوير إلى التوقيع والنشر والصيانة (منها «مكتبة الحج» المنشور على المتجرين، تطبيق offline-first ببحث متقدّم على الجهاز).</span><span class="t-en"><b>Shipping mobile products at real scale:</b> 30+ apps on Google Play and several on the App Store, for multiple clients and institutions — the full cycle from development to signing, publishing, and maintenance (including "Hajj Library," published on both stores, an offline-first app with advanced on-device search).</span></li>
+        <li><span class="t-ar"><b>بناء أنظمة RAG كاملة من الصفر:</b> تحليل مستندات، تقطيع (8 استراتيجيات)، embeddings، بحث هجين (BM25 + RRF)، إعادة ترتيب بـ cross-encoder، وتوليد بالاستشهاد — framework بـ 589 اختباراً وCI على ثلاثة أنظمة.</span><span class="t-en"><b>Building complete RAG systems from scratch:</b> document parsing, chunking (8 strategies), embeddings, hybrid search (BM25 + RRF), cross-encoder reranking, and cited generation — a framework with 589 tests and CI across three OSes.</span></li>
+        <li><span class="t-ar"><b>أنظمة AI تطبيقية:</b> مساعد توثيق طبي يحوّل المحادثة الصوتية إلى توثيق سريري مُنظَّم (Gemini + تحقّق دوائي + تصدير FHIR)، ومساعد بحث بحلقة استدلال وكيلية تبثّ تفكيرها، مع خطّ OCR عالي الدقّة للمستندات الممسوحة.</span><span class="t-en"><b>Applied AI systems:</b> a medical scribe that turns a spoken conversation into structured clinical documentation (Gemini + drug checking + FHIR export), and a research assistant with an agentic reasoning loop that streams its thinking, plus a high-fidelity OCR pipeline for scanned documents.</span></li>
+        <li><span class="t-ar"><b>منصّات full-stack:</b> منصّة تعليمية SaaS متعدّدة المستأجرين بـ 6 وحدات (backend + موبايل + لوحتان + موقع + Terraform)، ومنصّة مراسلة لحظية (Socket.IO + Redis + تفريغ صوتي بـ Whisper).</span><span class="t-en"><b>Full-stack platforms:</b> a multi-tenant education SaaS across 6 modules (backend + mobile + two panels + website + Terraform), and a real-time messaging platform (Socket.IO + Redis + Whisper transcription).</span></li>
+        <li><span class="t-ar"><b>هندسة backend وبنية تحتية:</b> FastAPI وNestJS، أنظمة غير متزامنة بطوابير معالجة، وبنية تحتية كـ code (Terraform، Docker، CI/CD، ومراقبة Prometheus).</span><span class="t-en"><b>Backend &amp; infrastructure engineering:</b> FastAPI and NestJS, asynchronous queue-based processing, and infrastructure as code (Terraform, Docker, CI/CD, and Prometheus monitoring).</span></li>
+      </ul>
+    </div>
+
+    <!-- skills grid -->
+    <p class="sub-h reveal"><span class="t-ar">المهارات التقنية</span><span class="t-en">Technical skills</span></p>
+    <div class="skills reveal">
+      <div class="skill">
+        <h4><span class="t-ar">اللغات</span><span class="t-en">Languages</span></h4>
+        <ul>
+          <li>Dart</li>
+          <li>Python</li>
+          <li>SQL · HCL (Terraform)</li>
+        </ul>
+      </div>
+      <div class="skill">
+        <h4><span class="t-ar">الموبايل (Flutter)</span><span class="t-en">Mobile (Flutter)</span></h4>
+        <ul>
+          <li>Flutter · Dart</li>
+          <li>Riverpod · Provider · go_router</li>
+          <li>Drift · SQLite / FTS5 · offline-first</li>
+          <li><span class="t-ar">Flavors / white-label · Firebase</span><span class="t-en">Flavors / white-label · Firebase</span></li>
+        </ul>
+      </div>
+      <div class="skill">
+        <h4><span class="t-ar">الذكاء الاصطناعي</span><span class="t-en">AI / ML</span></h4>
+        <ul>
+          <li><span class="t-ar">أنظمة RAG من الصفر</span><span class="t-en">RAG from scratch</span></li>
+          <li><span class="t-ar">بحث هجين (BM25 + RRF) + إعادة ترتيب</span><span class="t-en">Hybrid search (BM25 + RRF) + reranking</span></li>
+          <li><span class="t-ar">Embeddings · pgvector · FAISS · Qdrant</span><span class="t-en">Embeddings · pgvector · FAISS · Qdrant</span></li>
+          <li><span class="t-ar">حلقات وكيلية · دمج LLM (Gemini · Ollama)</span><span class="t-en">Agentic loops · LLMs (Gemini · Ollama)</span></li>
+          <li><span class="t-ar">تصدير ONNX · ASR (Whisper) · تقييم (MRR/nDCG)</span><span class="t-en">ONNX export · ASR (Whisper) · eval (MRR/nDCG)</span></li>
+        </ul>
+      </div>
+      <div class="skill">
+        <h4><span class="t-ar">الـBackend</span><span class="t-en">Backend</span></h4>
+        <ul>
+          <li>FastAPI · NestJS</li>
+          <li><span class="t-ar">REST · WebSocket / Socket.IO</span><span class="t-en">REST · WebSocket / Socket.IO</span></li>
+          <li>SQLAlchemy (async) · Prisma</li>
+          <li><span class="t-ar">عمارة الخدمات وطبقات نظيفة</span><span class="t-en">Service &amp; clean-layer architecture</span></li>
+        </ul>
+      </div>
+      <div class="skill">
+        <h4><span class="t-ar">البيانات والبنية التحتية</span><span class="t-en">Data &amp; Infra</span></h4>
+        <ul>
+          <li>PostgreSQL · Firestore · Redis</li>
+          <li>MinIO · Cloudflare R2 · S3</li>
+          <li>Docker · Terraform · Caddy</li>
+          <li><span class="t-ar">CI/CD (GitHub Actions)</span><span class="t-en">CI/CD (GitHub Actions)</span></li>
+          <li>Prometheus · Grafana · Loki</li>
+        </ul>
+      </div>
+      <div class="skill">
+        <h4><span class="t-ar">المعالجة والمستندات</span><span class="t-en">Processing &amp; Documents</span></h4>
+        <ul>
+          <li><span class="t-ar">OCR للمستندات الممسوحة</span><span class="t-en">Scanned-document OCR</span></li>
+          <li><span class="t-ar">معالجة النصوص والتطبيع</span><span class="t-en">Text processing &amp; normalization</span></li>
+          <li><span class="t-ar">تحليل المستندات (PDF · DOCX · صوت)</span><span class="t-en">Document parsing (PDF · DOCX · audio)</span></li>
+          <li><span class="t-ar">RAG على مكتبات ضخمة</span><span class="t-en">RAG over large corpora</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-wrap reveal">
+      <span class="eyebrow"><span class="t-ar">04 — تواصل</span><span class="t-en">04 — Contact</span></span>
+      <h2>
+        <span class="t-ar">متاح لأدوار هندسية ومشاريع جادّة في <span class="hl">الذكاء الاصطناعي وتطوير Flutter</span>.</span>
+        <span class="t-en">Open to engineering roles and serious projects in <span class="hl">AI and Flutter development</span>.</span>
+      </h2>
+      <div class="contact-info">
+        <a href="mailto:alialrikabi313a@gmail.com"><span class="ic">✦</span> alialrikabi313a@gmail.com</a>
+        <a href="tel:+9647819525715" dir="ltr"><span class="ic">✦</span> +964 781 952 5715</a>
+      </div>
+      <div class="contact-links">
+        <a class="btn primary" href="mailto:alialrikabi313a@gmail.com"><span class="t-ar">راسلني</span><span class="t-en">Email me</span></a>
+        <a class="btn" href="Ali_Hashim_Salman_Resume.pdf" target="_blank" rel="noopener"><span class="t-ar">تحميل السيرة (PDF)</span><span class="t-en">Download CV (PDF)</span></a>
+        <a class="btn" href="tel:+9647819525715"><span class="t-ar">اتصل</span><span class="t-en">Call</span></a>
+        <a class="btn" href="https://github.com/alialrikabi313" target="_blank" rel="noopener">GitHub ↗</a>
+        <a class="btn" href="https://play.google.com/store/apps/developer?id=Ali+Al-rikabi313" target="_blank" rel="noopener">Google Play ↗</a>
+        <a class="btn" href="https://apps.apple.com/us/developer/ali-hashim-salman/id1829770951" target="_blank" rel="noopener">App Store ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <span>© <span id="yr"></span> <span class="t-ar">علي هاشم سلمان</span><span class="t-en">Ali Hashim Salman</span></span>
+    <span class="sig">عليّ هاشم سلمان</span>
+    <span><span class="t-ar">النجف، العراق</span><span class="t-en">Najaf, Iraq</span></span>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

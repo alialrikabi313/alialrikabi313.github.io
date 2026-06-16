@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-lang="ar">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>HakimAI — حكيم · Ali Hashim Salman</title>
+<meta name="description" content="مُحرّر طبي ذكي يحوّل حوار الطبيب والمريض باللهجة العراقية إلى توثيق سريري منظَّم (SOAP · تشخيص · ICD-10) لحظياً عبر Gemini 2.5. دراسة حالة تقنية." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="brand" href="../index.html">ALI HASHIM SALMAN <b>// AI · Flutter</b></a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="../index.html#work"><span class="t-ar">الأعمال</span><span class="t-en">Work</span></a>
+        <a href="../index.html#contact"><span class="t-ar">تواصل</span><span class="t-en">Contact</span></a>
+        <a href="../Ali_Hashim_Salman_Resume.pdf" target="_blank" rel="noopener"><span class="t-ar">السيرة</span><span class="t-en">CV</span></a>
+      </div>
+      <button class="lang-toggle" id="langBtn" aria-label="Switch language">EN</button>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap" style="padding-top:26px">
+  <a class="backlink" href="../index.html#work">
+    <span>←</span> <span class="t-ar">كل الأعمال</span><span class="t-en">All work</span>
+  </a>
+</div>
+
+<!-- HERO -->
+<header class="p-hero">
+  <div class="hero-glow"></div>
+  <div class="wrap hero">
+    <span class="domain"><span class="t-ar">ذكاء اصطناعي · صحة</span><span class="t-en">AI · Healthcare</span></span>
+    <h1><span class="t-en">HakimAI<span class="accent">حكيم</span></span><span class="t-ar">حكيم<span class="accent">HakimAI</span></span></h1>
+    <p class="tagline">
+      <span class="t-ar">مُحرّر طبي يفهم اللهجة العراقية، مُوجَّه للأطباء في العراق — يحوّل حوار الطبيب والمريض المنطوق (لهجة عراقية) إلى توثيق سريري منظَّم (SOAP · تشخيص · ICD-10) لحظياً.</span>
+      <span class="t-en">A dialect-aware medical scribe for Iraqi clinicians — turns a spoken doctor-patient conversation (Iraqi dialect) into structured clinical documentation (SOAP, diagnosis, ICD-10) in real time.</span>
+    </p>
+    <div class="badge-row">
+      <span class="badge dev"><span class="t-ar">backend يعمل</span><span class="t-en">Working backend</span></span>
+      <span class="badge neutral"><span class="t-ar">واجهة ويب: نماذج أولية</span><span class="t-en">Web UI: prototype (mock data)</span></span>
+      <span class="badge neutral">Gemini 2.5</span>
+    </div>
+    <div class="tags">
+      <span class="tag gold">FastAPI</span><span class="tag gold">Python 3.11</span><span class="tag">PostgreSQL 16</span><span class="tag">SQLAlchemy async</span><span class="tag">Celery</span><span class="tag">Gemini 2.5</span><span class="tag">FHIR R4</span><span class="tag">Flutter</span><span class="tag">Next.js</span>
+    </div>
+
+    <div class="factbar" style="margin-top:30px">
+      <div class="fact"><div class="k"><span class="t-ar">الدور</span><span class="t-en">Role</span></div><div class="v"><span class="t-ar">مطوّر منفرد full-stack</span><span class="t-en">Solo full-stack</span></div></div>
+      <div class="fact"><div class="k"><span class="t-ar">الحجم</span><span class="t-en">Scale</span></div><div class="v"><b>~21K</b> <span class="t-ar">سطر Python · 87 ملف</span><span class="t-en">lines Python · 87 files</span></div></div>
+      <div class="fact"><div class="k"><span class="t-ar">الاختبارات</span><span class="t-en">Tests</span></div><div class="v"><b>97</b></div></div>
+      <div class="fact"><div class="k"><span class="t-ar">العملاء</span><span class="t-en">Clients</span></div><div class="v"><span class="t-ar">Flutter (موبايل+سطح مكتب) + ويب Next.js</span><span class="t-en">Flutter (mobile+desktop) + Next.js web</span></div></div>
+    </div>
+  </div>
+</header>
+
+<!-- OVERVIEW -->
+<section class="psec">
+  <div class="wrap">
+    <h2><span class="num">01</span><span class="t-ar">نظرة عامة</span><span class="t-en">Overview</span></h2>
+    <p class="lead-p">
+      <span class="t-ar">يسجّل الطبيب الاستشارة داخل التطبيق، فيُرسَل الصوت <span class="em">مباشرةً</span> إلى Google Gemini 2.5 Pro — دون أي خطوة تفريغ منفصلة (لا Whisper ولا محرّك ASR وسيط) — مرفقاً بتوجيهات (prompts) خاصة بالتخصّص وسياق المريض (التاريخ المرضي، الحساسيات، قائمة أدوية العيادة).</span>
+      <span class="t-en">Doctors record a consultation in the app; the audio is sent <span class="em">directly</span> to Google Gemini 2.5 Pro — with no separate transcription step (no Whisper, no intermediate ASR engine) — along with specialty-specific prompts and patient context (history, allergies, clinic drug list).</span>
+    </p>
+    <p>
+      <span class="t-ar">يُعيد Gemini ردّاً منظَّماً بصيغة JSON: ملاحظات SOAP، تشخيص مع رموز ICD-10، ومستويات ثقة. ثم يشغّل الـ backend <span class="em">محرّك تفاعلات دوائية محلّياً</span> مقابل قاعدة بيانات صيدلانية عراقية مُنسَّقة (~1000 سطر): جرعات حقيقية، موانع استعمال، تعديلات أطفال حسب الوزن، وعلامات للحمل. ويولّد وصفات PDF بإظهار سليم (RTL)، ويصدّر السجلات إلى FHIR R4 لتكامل أنظمة EHR في المستشفيات. ثم يراجع الطبيب ويعدّل ويوقّع ويعتمد.</span>
+      <span class="t-en">Gemini returns structured JSON: SOAP notes, diagnosis + ICD-10 codes, and confidence levels. The backend then runs a <span class="em">local drug-interaction engine</span> against a curated ~1000-line Iraqi pharmaceutical database (real dosing, contraindications, weight-based pediatric adjustments, pregnancy flags). It generates PDF prescriptions with proper RTL rendering, and exports records to FHIR R4 for hospital EHR integration. The doctor then reviews, edits, signs, and finalizes.</span>
+    </p>
+    <p style="font-size:.82rem;color:var(--muted);margin-top:6px">
+      <span class="t-ar">* الـ backend والمعمارية هما الإنجاز الأساسي والجاهز؛ لوحة الويب لا تزال نماذج أولية ببيانات وهمية (انظر القسم 05).</span>
+      <span class="t-en">* The backend and architecture are the core, working achievement; the web dashboard is still a prototype on mock data (see section 05).</span>
+    </p>
+  </div>
+</section>
+
+<!-- SCREENSHOTS -->
+<section class="psec">
+  <div class="wrap">
+    <h2><span class="num">02</span><span class="t-ar">لقطات</span><span class="t-en">Screenshots</span></h2>
+    <p class="sub"><span class="t-ar">لقطات حقيقية من لوحة الويب (واجهة Next.js · بيانات تجريبية)</span><span class="t-en">Real screenshots of the web dashboard (Next.js UI · demo data)</span></p>
+    <div class="gallery">
+      <figure class="gshot">
+        <div class="shot wide"><span class="ph-tag">01</span><img src="../assets/img/hakimai/dash.png" alt="HakimAI — dashboard" loading="lazy" /></div>
+        <figcaption><span class="t-ar">لوحة التحكم</span><span class="t-en">Dashboard</span></figcaption>
+      </figure>
+      <figure class="gshot">
+        <div class="shot wide"><span class="ph-tag">02</span><img src="../assets/img/hakimai/analytics.png" alt="HakimAI — analytics" loading="lazy" /></div>
+        <figcaption><span class="t-ar">الإحصائيات والتحليلات</span><span class="t-en">Analytics</span></figcaption>
+      </figure>
+      <figure class="gshot">
+        <div class="shot wide"><span class="ph-tag">03</span><img src="../assets/img/hakimai/records.png" alt="HakimAI — medical records" loading="lazy" /></div>
+        <figcaption><span class="t-ar">السجلات الطبية</span><span class="t-en">Medical records</span></figcaption>
+      </figure>
+      <figure class="gshot">
+        <div class="shot wide"><span class="ph-tag">04</span><img src="../assets/img/hakimai/appointments.png" alt="HakimAI — appointments" loading="lazy" /></div>
+        <figcaption><span class="t-ar">المواعيد</span><span class="t-en">Appointments</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ARCHITECTURE -->
+<section class="psec">
+  <div class="wrap">
+    <h2><span class="num">03</span><span class="t-ar">المعمارية</span><span class="t-en">Architecture</span></h2>
+    <p class="sub"><span class="t-ar">backend async-first · 8 routers · معالجة صوت مباشرة عبر Gemini · بثّ لحظي بـ WebSocket</span><span class="t-en">Async-first backend · 8 routers · direct audio via Gemini · real-time WebSocket streaming</span></p>
+    <div class="diagram">
+<pre><span class="dim">// clients → JWT REST + WebSocket → FastAPI → data + AI layer</span>
+
+<span class="hl">CLIENTS</span>
+├─ Flutter <span class="dim">(mobile + desktop)</span>      ┐
+└─ Next.js <span class="dim">(web dashboard)</span>         ├── <span class="lp">JWT REST  +  WebSocket</span> <span class="dim">(live transcript)</span>
+                                     ┘
+                       │
+                       ▼
+<span class="hl">FastAPI</span> <span class="dim">(async, 8 routers)</span>
+   auth · sessions · patients · records
+   prescriptions · appointments · analytics · <span class="lp">FHIR</span>
+       │
+       ├─▶ <span class="hl">Gemini 2.5 API</span>   <span class="dim">audio → structured JSON (SOAP · ICD-10)</span>
+       │                      <span class="dim">NO Whisper / no separate ASR step</span>
+       ├─▶ <span class="lp">PostgreSQL 16</span>    <span class="dim">SQLAlchemy 2.0 async · asyncpg</span>
+       ├─▶ <span class="lp">Redis + Celery</span>   <span class="dim">audio / reports / reminders queues</span>
+       └─▶ <span class="lp">MinIO</span>            <span class="dim">S3-compatible audio storage</span>
+
+<span class="hl">Celery Beat</span> <span class="dim">(scheduled, idempotent + fault-isolated)</span>
+   • <span class="dim">hourly  →</span> appointment reminders
+   • <span class="dim">daily 1am →</span> clinic reports</pre>
+    </div>
+    <ul class="bullets" style="margin-top:24px">
+      <li><span class="t-ar"><b>معالجة صوت مباشرة:</b> الصوت الخام يذهب إلى Gemini دون تفريغ نصّي وسيط، فيعود JSON منظَّماً يحوي SOAP والتشخيص ورموز ICD-10 ومستويات الثقة.</span><span class="t-en"><b>Direct audio processing:</b> raw audio goes to Gemini with no intermediate transcription, returning structured JSON with SOAP, diagnosis, ICD-10 codes, and confidence levels.</span></li>
+      <li><span class="t-ar"><b>بثّ لحظي بـ WebSocket:</b> التفريغ والنتائج تُبَثّ للعميل أثناء الجلسة بدل انتظار اكتمال المعالجة.</span><span class="t-en"><b>Real-time WebSocket streaming:</b> transcript and results stream to the client during the session instead of waiting for processing to finish.</span></li>
+      <li><span class="t-ar"><b>عمّال Celery Beat آمنون:</b> تذكيرات المواعيد كل ساعة وتقارير العيادة اليومية الساعة 1 صباحاً — مصمّمة لتكون idempotent ومعزولة الأعطال (فشل مهمّة لا يُسقط البقية).</span><span class="t-en"><b>Safe Celery Beat workers:</b> hourly appointment reminders and daily 1am clinic reports — designed to be idempotent and fault-isolated (one failing task doesn't take down the rest).</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- KEY FEATURES -->
+<section class="psec">
+  <div class="wrap">
+    <h2><span class="num">04</span><span class="t-ar">أبرز الميزات التقنية</span><span class="t-en">Key technical features</span></h2>
+    <div class="feat-grid">
+      <div class="feat">
+        <div class="fi">01</div>
+        <h4><span class="t-ar">صوت ← JSON مباشرةً (بلا تفريغ)</span><span class="t-en">Direct audio→JSON (no transcription step)</span></h4>
+        <p><span class="t-ar">يُرسِل الصوت الخام إلى Gemini مع سياق المريض ويتلقّى JSON منظَّماً مباشرة — ما يلغي زمن وتكلفة مرحلة ASR وسيطة ويتجنّب طبقة نصّية فاقدة للمعلومة في اللهجة العراقية.</span><span class="t-en">Sends raw audio to Gemini with patient context and receives structured JSON directly — eliminating the latency and cost of an intermediate ASR stage and avoiding a lossy text layer for Iraqi dialect.</span></p>
+      </div>
+      <div class="feat">
+        <div class="fi">02</div>
+        <h4><span class="t-ar">محرّك سلامة دوائية محلّي حتمي</span><span class="t-en">Local deterministic drug-safety engine</span></h4>
+        <p><span class="t-ar">قاعدة أدوية عراقية مُنسَّقة (~1000 سطر): تفاعلات (مثل Warfarin+Amoxicillin)، موانع استعمال، وجرعات أطفال حسب الوزن — لا تعتمد على الـ LLM، فهي عديمة الحالة وحتمية وقابلة للتدقيق.</span><span class="t-en">A curated ~1000-line Iraqi drug DB: interactions (e.g. Warfarin+Amoxicillin), contraindications, and weight-based pediatric dosing — NOT relying on the LLM, so it's stateless, deterministic, and auditable.</span></p>
+      </div>
+      <div class="feat">
+        <div class="fi">03</div>
+        <h4><span class="t-ar">backend async-first</span><span class="t-en">Async-first backend</span></h4>
+        <p><span class="t-ar">SQLAlchemy 2.0 async + asyncpg، وكل endpoint غير متزامن — ما يتيح التوسّع الأفقي.</span><span class="t-en">SQLAlchemy 2.0 async + asyncpg, every endpoint async — so it scales horizontally.</span></p>
+      </div>
+      <div class="feat">
+        <div class="fi">04</div>
+        <h4><span class="t-ar">تصدير FHIR R4</span><span class="t-en">FHIR R4 export</span></h4>
+        <p><span class="t-ar">موارد متوافقة مع HL7 — Patient / Condition / Medication / Observation — لتكامل أنظمة السجلات الصحية الإلكترونية (EHR) في المستشفيات.</span><span class="t-en">HL7-compliant Patient / Condition / Medication / Observation resources for hospital EHR integration.</span></p>
+      </div>
+      <div class="feat">
+        <div class="fi">05</div>
+        <h4><span class="t-ar">أمان بمستوى إنتاجي</span><span class="t-en">Production-grade security</span></h4>
+        <p><span class="t-ar">JWT مع تدوير رموز التحديث (refresh rotation)، مصادقة ثنائية TOTP، صلاحيات حسب الدور (طبيب/موظف استقبال/مدير)، سجل تدقيق في قاعدة البيانات، تعقيم المدخلات، تحديد معدّل على endpoints الذكاء الاصطناعي، وحماية من هجمات التخمين.</span><span class="t-en">JWT with refresh-token rotation, TOTP 2FA, role-based access (doctor/receptionist/admin), a database audit log, input sanitization, rate limiting on AI endpoints, and brute-force protection.</span></p>
+      </div>
+      <div class="feat">
+        <div class="fi">06</div>
+        <h4><span class="t-ar">اختبارات بلا اعتماديات خارجية</span><span class="t-en">Tests with zero external dependencies</span></h4>
+        <p><span class="t-ar">97 اختباراً تعمل على SQLite في الذاكرة مع محاكاة Gemini وS3 (conftest يرقّع أنواع PostgreSQL) — سريعة وملائمة للـ CI.</span><span class="t-en">97 tests run on in-memory SQLite with mocked Gemini and S3 (conftest patches PostgreSQL types) — fast and CI-friendly.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEEP DIVE -->
+<section class="psec">
+  <div class="wrap">
+    <h2><span class="num">05</span><span class="t-ar">قرارات هندسية</span><span class="t-en">Engineering decisions</span></h2>
+    <div class="callout">
+      <b><span class="t-ar">لماذا إرسال الصوت مباشرةً إلى Gemini بدل Whisper ثم LLM؟</span><span class="t-en">Why send audio directly to Gemini instead of Whisper→LLM?</span></b><br/>
+      <span class="t-ar">إزالة مرحلة التفريغ تقلّل الزمن والتكلفة وتتجنّب طبقة نصّية وسيطة فاقدة للمعلومة في اللهجة العراقية. المقايضة هي مرونة أقلّ إن تأخّر استجابة الـ API — وهي منطقة معترَف بها للتحصين لاحقاً.</span>
+      <span class="t-en">Removing the transcription stage cuts latency and cost and avoids a lossy intermediate text layer for Iraqi dialect. The tradeoff is less resilience if the API times out — an acknowledged area to harden.</span>
+    </div>
+    <div class="callout note">
+      <b><span class="t-ar">الحالة بصدق</span><span class="t-en">Honest status</span></b><br/>
+      <span class="t-ar">الـ backend هو الـ 80% القويّ والعامل. لوحة الويب بـ Next.js حالياً مجرّد هيكلة للـ API ببيانات وهمية (mock)، وصفحة الفوترة نموذج أوّلي بلا أي معالج دفع موصول. لذا أُقدّم الـ backend والمعمارية بوصفهما الإنجاز الفعلي بشفافية.</span>
+      <span class="t-en">The backend is the strong, working 80%. The Next.js web dashboard is currently API scaffolding using mock data, and the billing page is a mock (no payment processor wired). So I present the backend + architecture as the real achievement — transparently.</span>
+    </div>
+  </div>
+</section>
+
+<!-- STACK -->
+<section class="psec">
+  <div class="wrap">
+    <h2><span class="num">06</span><span class="t-ar">التقنيات</span><span class="t-en">Tech stack</span></h2>
+    <table class="stack-table">
+      <tr><td><span class="t-ar">الإطار</span><span class="t-en">Framework</span></td><td><b>FastAPI 0.115</b> · Python 3.11 · Pydantic v2</td></tr>
+      <tr><td><span class="t-ar">قاعدة البيانات</span><span class="t-en">Database</span></td><td><b>PostgreSQL 16</b> · SQLAlchemy 2.0 <span class="t-ar">(غير متزامن)</span><span class="t-en">(async)</span> · Alembic</td></tr>
+      <tr><td><span class="t-ar">المعالجة غير المتزامنة / الطوابير</span><span class="t-en">Async / Queue</span></td><td><b>Redis 7</b> · Celery 5.4 <span class="t-ar">(طوابير الصوت/التقارير/التذكيرات)</span><span class="t-en">(audio/reports/reminders queues)</span> · Celery Beat</td></tr>
+      <tr><td><span class="t-ar">التخزين</span><span class="t-en">Storage</span></td><td><b>MinIO</b> <span class="t-ar">(متوافق مع S3)</span><span class="t-en">(S3-compatible)</span></td></tr>
+      <tr><td><span class="t-ar">الذكاء الاصطناعي</span><span class="t-en">AI</span></td><td><b>Google Gemini 2.5</b> (Pro/Flash) — <span class="t-ar">معالجة صوت مباشرة</span><span class="t-en">direct audio processing</span></td></tr>
+      <tr><td><span class="t-ar">الأمان</span><span class="t-en">Security</span></td><td>JWT + refresh rotation · TOTP 2FA · bcrypt · <span class="t-ar">سجل تدقيق · تحديد معدّل</span><span class="t-en">audit log · rate limiting</span></td></tr>
+      <tr><td><span class="t-ar">PDF / RTL</span><span class="t-en">PDF / RTL</span></td><td>reportlab · arabic-reshaper · python-bidi (RTL)</td></tr>
+      <tr><td><span class="t-ar">موبايل / سطح المكتب</span><span class="t-en">Mobile / Desktop</span></td><td>Flutter (Riverpod · dio · record · window_manager)</td></tr>
+      <tr><td><span class="t-ar">الويب</span><span class="t-en">Web</span></td><td>Next.js 14 · React 18 · Tailwind · Recharts</td></tr>
+      <tr><td>DevOps</td><td>Docker · Caddy <span class="t-ar">(TLS تلقائي)</span><span class="t-en">(auto-TLS)</span> · Sentry/Prometheus/Grafana <span class="t-ar">(اختياري)</span><span class="t-en">(optional)</span></td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- PROJECT NAV -->
+<div class="wrap">
+  <div class="proj-nav">
+    <a href="hawza.html">
+      <span class="lbl"><span class="t-ar">السابق</span><span class="t-en">Previous</span></span>
+      ← <span class="t-ar">منصة حوزة</span><span class="t-en">Hawza Platform</span>
+    </a>
+    <a href="hajj-library.html" style="text-align:end">
+      <span class="lbl"><span class="t-ar">التالي</span><span class="t-en">Next</span></span>
+      <span class="t-ar">مكتبة الحج</span><span class="t-en">Hajj Library</span> →
+    </a>
+  </div>
+</div>
+
+<footer>
+  <div class="foot-inner">
+    <span>© <span id="yr"></span> <span class="t-ar">علي هاشم سلمان</span><span class="t-en">Ali Hashim Salman</span></span>
+    <span class="sig">عليّ هاشم سلمان</span>
+    <span><span class="t-ar">النجف، العراق</span><span class="t-en">Najaf, Iraq</span></span>
+  </div>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Ali Hashim Salman — Resume</title>
+<style>
+  /* ATS-friendly: single column, selectable text, standard headings, no layout tables/images */
+  @page { size: A4; margin: 13mm 14mm; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    color: #1a1a1a; font-size: 10.2pt; line-height: 1.36;
+  }
+  a { color: #1a4fd6; text-decoration: none; }
+
+  /* Header */
+  .name { font-size: 21pt; font-weight: 700; letter-spacing: .2px; color: #0f1b3d; }
+  .title { font-size: 11pt; font-weight: 600; color: #1a4fd6; margin-top: 2px; }
+  .contact { font-size: 9.3pt; color: #333; margin-top: 6px; }
+  .contact span.sep { color: #aaa; padding: 0 5px; }
+  .links { font-size: 9.3pt; margin-top: 2px; }
+
+  /* Sections */
+  .sec { margin-top: 13px; }
+  h2 {
+    font-size: 9.6pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1.1px;
+    color: #0f1b3d; border-bottom: 1.4px solid #0f1b3d; padding-bottom: 3px; margin-bottom: 7px;
+  }
+  p.summary { font-size: 10.2pt; line-height: 1.45; color: #2a2a2a; }
+
+  /* Skills */
+  .skill-row { margin-bottom: 4px; }
+  .skill-row .k { font-weight: 700; color: #0f1b3d; display: inline; }
+  .skill-row .v { color: #2a2a2a; }
+
+  /* Experience */
+  .job-head { display: flex; justify-content: space-between; align-items: baseline; }
+  .job-title { font-weight: 700; color: #111; font-size: 10.4pt; }
+  .job-meta { font-size: 9.3pt; color: #555; white-space: nowrap; }
+  .job-sub { font-size: 9.5pt; color: #1a4fd6; font-weight: 600; margin: 1px 0 5px; }
+  ul { list-style: disc; margin: 0; padding-left: 16px; }
+  li { margin-bottom: 4px; line-height: 1.4; padding-left: 2px; }
+  li::marker { color: #1a4fd6; }
+  li b { color: #111; }
+
+  /* Projects */
+  .proj { margin-bottom: 6px; }
+  .proj .pn { font-weight: 700; color: #111; }
+  .proj .pd { color: #2a2a2a; }
+  .proj .pt { color: #555; font-size: 9.2pt; }
+</style>
+</head>
+<body>
+
+  <div class="name">Ali Hashim Salman</div>
+  <div class="title">AI Engineer &amp; Flutter Developer</div>
+  <div class="contact">
+    Najaf, Iraq<span class="sep">·</span>+964 781 952 5715<span class="sep">·</span><a href="mailto:alialrikabi313a@gmail.com">alialrikabi313a@gmail.com</a><span class="sep">·</span><a href="https://github.com/alialrikabi313">github.com/alialrikabi313</a>
+  </div>
+  <div class="links">
+    <a href="https://play.google.com/store/apps/developer?id=Ali+Al-rikabi313">Google Play — Ali Al-rikabi313</a><span class="sep">·</span><a href="https://apps.apple.com/us/developer/ali-hashim-salman/id1829770951">App Store — Ali Hashim Salman</a>
+  </div>
+
+  <div class="sec">
+    <h2>Professional Summary</h2>
+    <p class="summary">
+      AI and mobile engineer with 5 years of experience building and shipping production software. Published
+      <b>30+ apps on Google Play</b> and several on the Apple App Store, and delivered dozens of projects for clients,
+      institutions, and companies. Specialized in end-to-end AI systems &mdash; RAG built from scratch, embeddings,
+      vector search, and LLM integration &mdash; and polished Flutter apps with clean architecture, owning every layer
+      from backend to store.
+    </p>
+  </div>
+
+  <div class="sec">
+    <h2>Technical Skills</h2>
+    <div class="skill-row"><span class="k">Languages:</span> <span class="v">Dart, Python, SQL, HCL (Terraform)</span></div>
+    <div class="skill-row"><span class="k">Mobile:</span> <span class="v">Flutter, Riverpod, go_router, Drift, SQLite / FTS5, offline-first, Flavors / white-label, Firebase</span></div>
+    <div class="skill-row"><span class="k">AI / ML:</span> <span class="v">RAG (from scratch), embeddings, hybrid search (BM25 + RRF), cross-encoder reranking, vector search (pgvector, FAISS, Qdrant), LLM integration (Gemini, Ollama), agentic loops, ONNX, ASR (Whisper), OCR</span></div>
+    <div class="skill-row"><span class="k">Backend:</span> <span class="v">FastAPI, NestJS, REST, WebSocket / Socket.IO, SQLAlchemy (async), Prisma, multi-tenant &amp; clean-layer architecture</span></div>
+    <div class="skill-row"><span class="k">Data &amp; Infra:</span> <span class="v">PostgreSQL, Firestore, Redis, S3 / MinIO / R2, Docker, Terraform, Caddy, CI/CD (GitHub Actions), Prometheus / Grafana</span></div>
+    <div class="skill-row"><span class="k">Languages (spoken):</span> <span class="v">Arabic (native), English (professional)</span></div>
+  </div>
+
+  <div class="sec">
+    <h2>Experience</h2>
+    <div class="job-head">
+      <span class="job-title">Independent Software Engineer &mdash; AI &amp; Mobile</span>
+      <span class="job-meta">2020 &ndash; Present</span>
+    </div>
+    <div class="job-sub">Freelance &middot; Najaf, Iraq</div>
+    <ul>
+      <li><b>Shipped 30+ mobile apps</b> to Google Play and several to the Apple App Store for multiple clients and institutions, owning the full lifecycle from development to signing, release, and maintenance.</li>
+      <li><b>Built complete RAG systems from scratch</b> &mdash; document parsing, chunking, embeddings, hybrid retrieval (BM25 + RRF), cross-encoder reranking, and cited generation &mdash; backed by test suites and multi-OS CI.</li>
+      <li><b>Delivered polished Flutter apps</b> with clean architecture (Riverpod, offline-first, white-label flavors), including an offline-first reader published on both app stores.</li>
+      <li><b>Developed full-stack platforms</b> &mdash; multi-tenant SaaS and real-time systems on FastAPI / NestJS with PostgreSQL / Firestore / Redis, Socket.IO, and async workers &mdash; deployed via Docker and infrastructure as code (Terraform).</li>
+      <li><b>Integrated LLMs (Gemini, Ollama)</b> into applied AI products: a medical scribe, an agentic research assistant, and high-fidelity OCR pipelines.</li>
+    </ul>
+  </div>
+
+  <div class="sec">
+    <h2>Selected Projects</h2>
+    <div class="proj">
+      <span class="pn">Hajj Library</span> &mdash; <span class="pd">Offline-first Flutter reader published on Google Play &amp; the App Store, with a custom morphological search engine and on-device ONNX semantic search.</span>
+      <span class="pt">Flutter, Dart, SQLite/FTS5, ONNX &middot; 27K LOC.</span>
+    </div>
+    <div class="proj">
+      <span class="pn">MakeEmbedding (Tadweer)</span> &mdash; <span class="pd">From-scratch RAG framework: parsing &rarr; chunking &rarr; embeddings &rarr; hybrid search &rarr; reranking &rarr; cited generation, with CLI, REST API, and ONNX export.</span>
+      <span class="pt">Python &middot; 589 tests, CI on 3 OSes.</span>
+    </div>
+    <div class="proj">
+      <span class="pn">HakimAI</span> &mdash; <span class="pd">AI medical scribe turning spoken consultations into structured clinical notes (SOAP, ICD-10) via Gemini, with a local drug-interaction engine and FHIR R4 export.</span>
+      <span class="pt">FastAPI, Gemini, Flutter, Next.js, PostgreSQL.</span>
+    </div>
+    <div class="proj">
+      <span class="pn">Qabas</span> &mdash; <span class="pd">Multi-tenant EdTech SaaS across 6 modules (backend, mobile app, web panels, website, IaC) with DRM video, a streaming AI tutor, and gamification.</span>
+      <span class="pt">FastAPI, Flutter, Firestore, Terraform, ~90K LOC.</span>
+    </div>
+  </div>
+
+
+</body>
+</html>

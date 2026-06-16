@@ -43,9 +43,12 @@
       <span class="t-en">A bilingual (Arabic/English) document assistant: upload a PDF and get an answer <span class="em">grounded in your document alone</span>, with every claim carrying a citation to the exact source passage and page — <span class="em">no hallucination</span>. Built on hybrid search and an agentic loop that streams its steps and answer in real time.</span>
     </p>
     <div class="badge-row">
+      <span class="badge live"><span class="t-ar">نسخة حيّة</span><span class="t-en">Live</span></span>
       <span class="badge dev"><span class="t-ar">الأحدث</span><span class="t-en">Newest</span></span>
-      <span class="badge live">RAG + Citations</span>
-      <span class="badge neutral"><span class="t-ar">ثنائي اللغة</span><span class="t-en">Bilingual</span></span>
+      <span class="badge neutral">RAG + Citations</span>
+    </div>
+    <div class="p-links" style="margin-top:18px">
+      <a href="https://citely-vho9.onrender.com" target="_blank" rel="noopener"><span class="t-ar">جرّب النسخة الحيّة</span><span class="t-en">Open live demo</span> <span class="arr">↗</span></a>
     </div>
     <div class="tags">
       <span class="tag gold">RAG</span><span class="tag gold">Citations</span><span class="tag">FastAPI (async)</span><span class="tag">PostgreSQL · pgvector</span><span class="tag">Hybrid Search · RRF</span><span class="tag">Gemini</span><span class="tag">SSE Streaming</span><span class="tag">Docker</span>
@@ -204,7 +207,7 @@ app/
       <tr><td><span class="t-ar">الذكاء الاصطناعي</span><span class="t-en">AI</span></td><td><b>Google Gemini</b> · <span class="t-ar">embeddings (768-بُعد) + توليد بالبثّ</span><span class="t-en">embeddings (768-dim) + streaming generation</span></td></tr>
       <tr><td><span class="t-ar">معالجة المستندات</span><span class="t-en">Documents</span></td><td>PyMuPDF · <span class="t-ar">تقطيع منزلق (900 حرف / تداخل 150)</span><span class="t-en">sliding-window chunking (900 chars / 150 overlap)</span></td></tr>
       <tr><td><span class="t-ar">الواجهة</span><span class="t-en">Frontend</span></td><td><span class="t-ar">SPA ثنائية اللغة (RTL/LTR) · fetch + ReadableStream لقراءة SSE</span><span class="t-en">bilingual SPA (RTL/LTR) · fetch + ReadableStream for SSE</span></td></tr>
-      <tr><td><span class="t-ar">التشغيل والنشر</span><span class="t-en">Run &amp; deploy</span></td><td><b>Docker</b> · docker-compose · <span class="t-ar">جاهز للنشر (Render blueprint)</span><span class="t-en">deploy-ready (Render blueprint)</span></td></tr>
+      <tr><td><span class="t-ar">التشغيل والنشر</span><span class="t-en">Run &amp; deploy</span></td><td><b>Docker</b> · docker-compose · <span class="t-ar">منشور حيّاً على Render (blueprint)</span><span class="t-en">deployed live on Render (blueprint)</span></td></tr>
     </table>
   </div>
 </section>

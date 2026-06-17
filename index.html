@@ -169,22 +169,22 @@
     <!-- 04 — Arabiq -->
     <article class="project reveal">
       <div class="p-meta">
-        <span class="domain"><span class="t-ar">AI · منتج</span><span class="t-en">AI · Product</span></span>
+        <span class="domain"><span class="t-ar">AI · مستندات + بحث وكيلي</span><span class="t-en">AI · Documents + agentic search</span></span>
         <span class="status"><span class="t-ar">full-stack · يعمل</span><span class="t-en">Full-stack · working</span></span>
         <span class="idx">004</span>
       </div>
       <div class="p-body">
         <h3>Arabiq <span class="accent">عربِق</span></h3>
         <p class="desc">
-          <span class="t-ar">مساعد بحث بحلقة RAG وكيلية: يحلّل السؤال ← يخطّط ← يسترجع ← يقيّم ← يعيد التخطيط (حتى 5 دورات)، ويبثّ تفكيره مباشرةً عبر WebSocket مع استشهادات (الكتاب — المؤلف — الصفحة). ويضمّ خطّ OCR متقدّماً يحوّل ملفات PDF الممسوحة ضوئياً إلى Word بدقة عالية (PyMuPDF + Gemini Vision + كشف النص المُشوَّه).</span>
-          <span class="t-en">A research assistant with an agentic RAG loop: analyze → plan → retrieve → evaluate → re-plan (up to 5 iterations), streaming its reasoning live over WebSocket with citations (book — author — page). Plus an advanced OCR pipeline converting scanned PDFs to Word (PyMuPDF + Gemini Vision + garbled-text detection).</span>
+          <span class="t-ar">منصّة full-stack (FastAPI + Flutter) بقدرتين متقدّمتين على المستندات: <span class="em">خطّ OCR متعدّد المرّات</span> يحوّل ملفات PDF الممسوحة ضوئياً إلى Word قابل للتحرير (PyMuPDF + Gemini Vision + كشف النص المُشوَّه والمعكوس، إخراج RTL سليم)، و<span class="em">حلقة بحث وكيلية متعدّدة الدورات</span> تخطّط ← تقيّم ← تعيد التخطيط (حتى 5 تكرارات) وتبثّ استدلالها لحظياً عبر WebSocket مع استشهادات (كتاب — مؤلّف — صفحة).</span>
+          <span class="t-en">A full-stack platform (FastAPI + Flutter) with two advanced document capabilities: a <span class="em">multi-pass OCR pipeline</span> that converts scanned PDFs to editable Word (PyMuPDF + Gemini Vision + garbled/mirrored-text correction, proper RTL output), and a <span class="em">multi-iteration agentic search loop</span> that plans → evaluates → re-plans (up to 5 iterations), streaming its reasoning live over WebSocket with citations (book — author — page).</span>
         </p>
         <div class="p-metrics">
-          <span><b>pgvector</b> <span class="t-ar">+ ARQ workers</span><span class="t-en">+ ARQ workers</span></span>
-          <span><b>95</b> <span class="t-ar">اختبار</span><span class="t-en">tests</span></span>
-          <span><b>FastAPI · Flutter</b></span>
+          <span><b>OCR</b> <span class="t-ar">PDF → Word</span><span class="t-en">PDF → Word</span></span>
+          <span><b>5×</b> <span class="t-ar">دورات الوكيل</span><span class="t-en">agent iterations</span></span>
+          <span><b>FastAPI · Flutter · pgvector</b></span>
         </div>
-        <div class="tags"><span class="tag">Agentic RAG</span><span class="tag">pgvector</span><span class="tag">OCR Pipeline</span><span class="tag">WebSocket</span><span class="tag">Flutter</span></div>
+        <div class="tags"><span class="tag gold">OCR · PDF→Word</span><span class="tag">Multi-iteration agent</span><span class="tag">pgvector</span><span class="tag">WebSocket</span><span class="tag">Gemini Vision</span><span class="tag">Flutter</span></div>
         <div class="p-links"><a href="projects/arabiq.html"><span class="t-ar">عرض تفاصيل المشروع</span><span class="t-en">View project details</span> <span class="arr">↗</span></a></div>
       </div>
     </article>

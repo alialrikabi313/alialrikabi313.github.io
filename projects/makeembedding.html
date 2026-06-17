@@ -39,7 +39,7 @@
     <span class="domain"><span class="t-ar">ذكاء اصطناعي · بنية تحتية</span><span class="t-en">AI · Infrastructure</span></span>
     <h1>MakeEmbedding<span class="accent">تدوير</span></h1>
     <p class="tagline">
-      <span class="t-ar">إطار يبني نظام RAG <span class="em">كاملاً من الصفر</span> — تحليل المستندات، التقطيع، الـ embeddings، الاسترجاع الهجين، إعادة الترتيب، والتوليد الموثَّق بالاستشهادات — مع نواة مجال خالية تماماً من الاعتماديات.</span>
+      <span class="t-ar">إطار يبني نظام RAG <span class="em">كاملاً من الصفر</span>: تحليل المستندات، والتقطيع، والـ embeddings، والاسترجاع الهجين، وإعادة الترتيب، والتوليد الموثَّق بالاستشهادات، مع نواة domain خالية تماماً من الاعتماديات.</span>
       <span class="t-en">A framework that builds a COMPLETE RAG system from scratch — parsing, chunking, embeddings, hybrid retrieval, reranking, and cited generation — with a dependency-free domain core.</span>
     </p>
     <div class="badge-row">
@@ -65,11 +65,11 @@
   <div class="wrap">
     <h2><span class="num">01</span><span class="t-ar">نظرة عامة</span><span class="t-en">Overview</span></h2>
     <p class="lead-p">
-      <span class="t-ar">إطار RAG متكامل من البداية إلى النهاية، مبنيّ فعلاً من الصفر — وليس غلافاً حول LangChain. المسار الكامل: تحليل المستندات (PDF، DOCX، TXT، HTML، EPUB، PPTX، XLSX، والصور عبر OCR، والصوت عبر STT) ← تقطيع (8+ استراتيجيات) ← embeddings ← مخزن متّجهات ← بحث هجين (متّجهات كثيفة + BM25 يُدمَجان بالـ Reciprocal-Rank Fusion) ← إعادة ترتيب بـ cross-encoder ← توليد RAG باستشهادات على مستوى المقطع.</span>
+      <span class="t-ar">إطار RAG متكامل من البداية إلى النهاية، مبنيّ فعلاً من الصفر لا غلافاً حول LangChain. والمسار كامل: تحليل المستندات (PDF، DOCX، TXT، HTML، EPUB، PPTX، XLSX، والصور عبر OCR، والصوت عبر STT) ← تقطيع (أكثر من 8 استراتيجيات) ← embeddings ← مخزن متّجهات ← بحث هجين (متّجهات كثيفة + BM25 يُدمَجان عبر Reciprocal-Rank Fusion) ← إعادة ترتيب عبر cross-encoder ← توليد RAG باستشهادات على مستوى المقطع.</span>
       <span class="t-en">An end-to-end RAG framework, genuinely built from scratch — not a LangChain wrapper. The pipeline: document parsing (PDF, DOCX, TXT, HTML, EPUB, PPTX, XLSX, images via OCR, audio via STT) → chunking (8+ strategies) → embeddings → vector store → hybrid search (dense vectors + BM25 fused with Reciprocal-Rank Fusion) → cross-encoder reranking → RAG generation with chunk-level citations.</span>
     </p>
     <p>
-      <span class="t-ar">يشحن الإطار واجهة سطر أوامر <code>tadweer</code> (init/add/index/search/status/eval)، ومعالج واجهة سطح مكتب بـ PyQt6، وخادم REST بـ FastAPI، وأهداف تصدير ONNX + حزمة مدمجة، ومنظومة تقييم (MRR، Recall@k، nDCG@k). دعم متعدّد اللغات <span class="em">مدمج في كامل المسار وليس مُلصقاً عليه لاحقاً</span>. الحالة: الإصدار v0.2.0، المرحلة الثالثة مكتملة في معظمها.</span>
+      <span class="t-ar">يأتي الإطار بواجهة سطر أوامر <code>tadweer</code> (init/add/index/search/status/eval)، ومعالج سطح مكتب بـ PyQt6، وخادم REST بـ FastAPI، وأهداف تصدير ONNX وحزمة مدمجة، ومنظومة تقييم (MRR، Recall@k، nDCG@k). ودعم اللغات المتعدّدة <span class="em">مدمج في كامل المسار لا مُلصق عليه لاحقاً</span>. أما الحالة فهي: الإصدار v0.2.0، والمرحلة الثالثة شبه مكتملة.</span>
       <span class="t-en">It ships a <code>tadweer</code> CLI (init/add/index/search/status/eval), a PyQt6 desktop GUI wizard, a FastAPI REST server, ONNX + embedded-bundle export targets, and an evaluation harness (MRR, Recall@k, nDCG@k). Multilingual support is <span class="em">baked in across the whole pipeline, not bolted on</span>. Status: v0.2.0, Phase 3 mostly complete.</span>
     </p>
   </div>
@@ -79,11 +79,11 @@
 <section class="psec">
   <div class="wrap">
     <h2><span class="num">02</span><span class="t-ar">لقطات</span><span class="t-en">Screenshots</span></h2>
-    <p class="sub"><span class="t-ar">مخرجات حقيقية من الأداة العاملة: CLI، بحث هجين، REST API، وقياسات الاسترجاع</span><span class="t-en">Real output from the working tool: CLI, hybrid search, REST API, and retrieval benchmarks</span></p>
+    <p class="sub"><span class="t-ar">مخرجات حقيقية من الأداة وهي تعمل: CLI، وبحث هجين، وREST API، وقياسات الاسترجاع</span><span class="t-en">Real output from the working tool: CLI, hybrid search, REST API, and retrieval benchmarks</span></p>
     <div class="gallery">
       <figure class="gshot">
         <div class="shot wide"><span class="ph-tag">01</span><img src="../assets/img/makeembedding/01-cli.png" alt="Tadweer CLI — index & search" loading="lazy" /></div>
-        <figcaption><span class="t-ar">جلسة CLI: فهرسة وبحث فعلي</span><span class="t-en">CLI session: real index &amp; search</span></figcaption>
+        <figcaption><span class="t-ar">جلسة CLI: فهرسة وبحث فعليّان</span><span class="t-en">CLI session: real index &amp; search</span></figcaption>
       </figure>
       <figure class="gshot">
         <div class="shot wide"><span class="ph-tag">02</span><img src="../assets/img/makeembedding/02-search.png" alt="Tadweer — index stats & hybrid search" loading="lazy" /></div>
@@ -91,7 +91,7 @@
       </figure>
       <figure class="gshot">
         <div class="shot wide"><span class="ph-tag">03</span><img src="../assets/img/makeembedding/04-rest.png" alt="Tadweer — REST API" loading="lazy" /></div>
-        <figcaption><span class="t-ar">واجهة REST تخدم الفهرس</span><span class="t-en">REST API serving the index</span></figcaption>
+        <figcaption><span class="t-ar">واجهة REST تقدّم الفهرس</span><span class="t-en">REST API serving the index</span></figcaption>
       </figure>
       <figure class="gshot">
         <div class="shot wide"><span class="ph-tag">04</span><img src="../assets/img/makeembedding/03-benchmark.png" alt="Tadweer retrieval benchmarks" loading="lazy" /></div>
@@ -105,7 +105,7 @@
 <section class="psec">
   <div class="wrap">
     <h2><span class="num">03</span><span class="t-ar">المعمارية</span><span class="t-en">Architecture</span></h2>
-    <p class="sub"><span class="t-ar">معمارية نظيفة متعدّدة الطبقات + انعكاس الاعتماديات (DIP) — النواة تستورد صفر اعتماديات خارجية</span><span class="t-en">Layered clean architecture + dependency inversion — the core imports zero external deps</span></p>
+    <p class="sub"><span class="t-ar">معمارية نظيفة متعدّدة الطبقات مع انعكاس الاعتماديات (DIP)، والنواة لا تستورد أيّ اعتمادية خارجية</span><span class="t-en">Layered clean architecture + dependency inversion — the core imports zero external deps</span></p>
     <div class="diagram">
 <pre><span class="dim">// clean / layered architecture · dependency inversion pivot</span>
 
@@ -125,8 +125,8 @@
        → <span class="hl">search</span>(dense + BM25 → <span class="lp">RRF</span>) → <span class="hl">rerank</span> → <span class="hl">generate</span>(<span class="lp">+citations</span>)</pre>
     </div>
     <ul class="bullets" style="margin-top:24px">
-      <li><span class="t-ar"><b>محور انعكاس الاعتماديات:</b> طبقة المجال (Domain) تحوي النماذج والواجهات والمنطق الصافي وتستورد صفر اعتماديات خارجية؛ كل التفاصيل الثقيلة تنزل إلى البنية التحتية خلف واجهات مجرّدة (ABCs).</span><span class="t-en"><b>Dependency-inversion pivot:</b> the Domain layer holds models, interfaces, and pure logic and imports zero external deps; all heavy details drop down into Infrastructure behind ABCs.</span></li>
-      <li><span class="t-ar"><b>تحميل كسول للمكتبات الثقيلة:</b> torch وchromadb وqdrant وopenai تُحمَّل عند الحاجة فقط عبر Poetry extras، وتعيش حصراً في طبقة البنية التحتية.</span><span class="t-en"><b>Lazy-loaded heavy libs:</b> torch, chromadb, qdrant, and openai are loaded only when needed via Poetry extras, and live exclusively in the Infrastructure layer.</span></li>
+      <li><span class="t-ar"><b>محور انعكاس الاعتماديات:</b> طبقة domain تضمّ النماذج والواجهات والمنطق الصافي ولا تستورد أيّ اعتمادية خارجية، فيما تهبط كل التفاصيل الثقيلة إلى البنية التحتية خلف واجهات مجرّدة (ABCs).</span><span class="t-en"><b>Dependency-inversion pivot:</b> the Domain layer holds models, interfaces, and pure logic and imports zero external deps; all heavy details drop down into Infrastructure behind ABCs.</span></li>
+      <li><span class="t-ar"><b>تحميل كسول للمكتبات الثقيلة:</b> لا تُحمَّل torch وchromadb وqdrant وopenai إلا عند الحاجة عبر Poetry extras، وتبقى محصورة في طبقة البنية التحتية.</span><span class="t-en"><b>Lazy-loaded heavy libs:</b> torch, chromadb, qdrant, and openai are loaded only when needed via Poetry extras, and live exclusively in the Infrastructure layer.</span></li>
       <li><span class="t-ar"><b>مسار بيانات واضح:</b> مستندات ← تحليل ← تقطيع ← embed ← تخزين ← بحث (كثيف + BM25 ← RRF) ← إعادة ترتيب ← توليد مع استشهادات.</span><span class="t-en"><b>Explicit data pipeline:</b> docs → parse → chunk → embed → store → search (dense + BM25 → RRF) → rerank → generate with citations.</span></li>
     </ul>
   </div>
@@ -140,32 +140,32 @@
       <div class="feat">
         <div class="fi">01</div>
         <h4><span class="t-ar">تصميم متعدّد اللغات</span><span class="t-en">Language-agnostic design</span></h4>
-        <p><span class="t-ar">تطبيع الحركات والألف والياء والتطويل (قابل للضبط لكل وضع بحث)، كشف حدود الجمل الواعي باللغة، وكشف الترميز للنصوص المختلطة عربي/إنجليزي — ولكل مرحلة نصّية حالات اختبار خاصة بها.</span><span class="t-en">Diacritic/alef/ya/tatweel normalization (configurable per search mode), language-aware sentence boundary detection, and encoding detection for mixed Arabic/English scripts — every text stage has dedicated test cases.</span></p>
+        <p><span class="t-ar">تطبيع الحركات والألف والياء والتطويل (قابل للضبط في كل وضع بحث)، وكشف حدود الجمل بوعي باللغة، وكشف الترميز للنصوص المختلطة عربي/إنجليزي، ولكل مرحلة نصّية حالات اختبار خاصة بها.</span><span class="t-en">Diacritic/alef/ya/tatweel normalization (configurable per search mode), language-aware sentence boundary detection, and encoding detection for mixed Arabic/English scripts — every text stage has dedicated test cases.</span></p>
       </div>
       <div class="feat">
         <div class="fi">02</div>
         <h4><span class="t-ar">بحث هجين بـ Reciprocal-Rank Fusion</span><span class="t-en">Hybrid search with Reciprocal-Rank Fusion</span></h4>
-        <p><span class="t-ar">يدمج المتّجهات الكثيفة + BM25 مخصّص؛ على مجموعة الاختبار: متّجه MiniLM 0.940 MRR ← هجين 0.986 ← هجين + إعادة ترتيب 1.000.</span><span class="t-en">Combines dense vectors + a custom BM25; on the test corpus: MiniLM vector 0.940 MRR → hybrid 0.986 → hybrid+rerank 1.000.</span></p>
+        <p><span class="t-ar">يدمج المتّجهات الكثيفة مع BM25 مخصّص؛ وعلى مجموعة الاختبار: متّجه MiniLM بـ 0.940 MRR ← هجين 0.986 ← هجين مع إعادة ترتيب 1.000.</span><span class="t-en">Combines dense vectors + a custom BM25; on the test corpus: MiniLM vector 0.940 MRR → hybrid 0.986 → hybrid+rerank 1.000.</span></p>
       </div>
       <div class="feat">
         <div class="fi">03</div>
         <h4><span class="t-ar">إعادة ترتيب على مرحلتين</span><span class="t-en">Two-stage reranking</span></h4>
-        <p><span class="t-ar">استرجاع المرحلة الأولى ثم cross-encoder (BAAI/bge-reranker-v2-m3) لرفع الدقّة؛ ونتائج المُعيد ترتيبها مُخزَّنة مؤقتاً لكل (استعلام، مقطع).</span><span class="t-en">First-stage retrieval, then a cross-encoder (BAAI/bge-reranker-v2-m3) for precision; reranker results are cached per (query, chunk).</span></p>
+        <p><span class="t-ar">استرجاع في المرحلة الأولى، يليه cross-encoder (BAAI/bge-reranker-v2-m3) لرفع الدقّة؛ وتُخزَّن نتائج إعادة الترتيب مؤقتاً لكل (استعلام، مقطع).</span><span class="t-en">First-stage retrieval, then a cross-encoder (BAAI/bge-reranker-v2-m3) for precision; reranker results are cached per (query, chunk).</span></p>
       </div>
       <div class="feat">
         <div class="fi">04</div>
         <h4><span class="t-ar">+8 استراتيجيات تقطيع</span><span class="t-en">8+ chunking strategies</span></h4>
-        <p><span class="t-ar">تكراري، جُملي، رمزي (token)، واعٍ بالمستند، دلالي (كشف تحوّل الموضوع عبر cosine)، هرمي، متعدّد المتّجهات، وsmall-to-big (يحلّ مشكلة فقدان السياق).</span><span class="t-en">Recursive, sentence, token, document-aware, semantic (topic-shift detection via cosine), hierarchical, multi-vector, and small-to-big (solves lost-context).</span></p>
+        <p><span class="t-ar">تكراري، وجُملي، ورمزي (token)، وواعٍ بالمستند، ودلالي (يكشف تحوّل الموضوع عبر cosine)، وهرمي، ومتعدّد المتّجهات، وsmall-to-big (يحلّ مشكلة فقدان السياق).</span><span class="t-en">Recursive, sentence, token, document-aware, semantic (topic-shift detection via cosine), hierarchical, multi-vector, and small-to-big (solves lost-context).</span></p>
       </div>
       <div class="feat">
         <div class="fi">05</div>
         <h4><span class="t-ar">فهرسة آمنة ضد الأعطال بنقاط تحقّق</span><span class="t-en">Crash-safe indexing with manifest checkpointing</span></h4>
-        <p><span class="t-ar">تُكتَب نتيجة كل ملف (البصمة، المقاطع، الحالة) تدريجياً؛ وإعادة التشغيل تستأنف من حيث توقّفت وتتخطّى الملفات غير المتغيّرة.</span><span class="t-en">Each file's result (fingerprint, chunks, status) is written incrementally; re-runs resume where they stopped and skip unchanged files.</span></p>
+        <p><span class="t-ar">تُكتَب نتيجة كل ملف (البصمة، والمقاطع، والحالة) تدريجياً؛ فتستأنف عمليةُ التشغيل المعادة من حيث توقّفت وتتخطّى الملفات التي لم تتغيّر.</span><span class="t-en">Each file's result (fingerprint, chunks, status) is written incrementally; re-runs resume where they stopped and skip unchanged files.</span></p>
       </div>
       <div class="feat">
         <div class="fi">06</div>
         <h4><span class="t-ar">أهداف تصدير مكتفية ذاتياً</span><span class="t-en">Self-contained export targets</span></h4>
-        <p><span class="t-ar">نماذج ONNX (بلا torch وقت الاستدلال)، حِزَم مدمجة (vectors.f32 + chunks.json + meta، تُقرأ ببايثون صرف)، وخادم REST بـ FastAPI مع حقن اعتماديات.</span><span class="t-en">ONNX models (no torch at inference), embedded bundles (vectors.f32 + chunks.json + meta, readable with pure Python), and a FastAPI REST server with dependency injection.</span></p>
+        <p><span class="t-ar">نماذج ONNX (بلا torch وقت الاستدلال)، وحِزَم مدمجة (vectors.f32 + chunks.json + meta، تُقرأ ببايثون صرف)، وخادم REST بـ FastAPI مع حقن اعتماديات.</span><span class="t-en">ONNX models (no torch at inference), embedded bundles (vectors.f32 + chunks.json + meta, readable with pure Python), and a FastAPI REST server with dependency injection.</span></p>
       </div>
     </div>
   </div>
@@ -177,12 +177,12 @@
     <h2><span class="num">05</span><span class="t-ar">قرارات هندسية</span><span class="t-en">Engineering decisions</span></h2>
     <div class="callout">
       <b><span class="t-ar">امتلاك الطبقات التي تهمّ</span><span class="t-en">Owning the layers that matter</span></b><br/>
-      <span class="t-ar">نواة المجال تستورد صفر اعتماديات خارجية؛ مخازن المتّجهات (Chroma/Qdrant/FAISS) والـ embedders (sentence-transformers) ونماذج اللغة (Ollama/OpenAI/Anthropic/Gemini) تجلس جميعها خلف واجهات (ABCs)، وتُحمَّل كسولاً عبر Poetry extras. هذا يجعل النظام قابلاً للاختبار بـ fakes وقابلاً للتوسعة من أطراف ثالثة. ويُفرَض ذلك بفحص أنواع mypy الصارم.</span>
+      <span class="t-ar">نواة domain لا تستورد أيّ اعتمادية خارجية؛ أما مخازن المتّجهات (Chroma/Qdrant/FAISS) والـ embedders (sentence-transformers) ونماذج اللغة (Ollama/OpenAI/Anthropic/Gemini) فتقع جميعها خلف واجهات (ABCs)، وتُحمَّل كسولاً عبر Poetry extras. وهذا يجعل النظام قابلاً للاختبار بـ fakes وقابلاً لأن توسّعه أطراف ثالثة، ويُفرَض ذلك بفحص أنواع mypy الصارم.</span>
       <span class="t-en">The domain core imports zero external dependencies; vector stores (Chroma/Qdrant/FAISS), embedders (sentence-transformers), and LLMs (Ollama/OpenAI/Anthropic/Gemini) all sit behind interfaces (ABCs), lazy-loaded via Poetry extras. This makes the system testable with fakes and pluggable for third parties — enforced with mypy strict typing.</span>
     </div>
     <div class="callout note">
       <b><span class="t-ar">الحالة بصراحة</span><span class="t-en">Honest status</span></b><br/>
-      <span class="t-ar">الإصدار v0.2.0 هو beta وليس v1.0. واجهة PyQt6 مُتحقَّق منها بلا شاشة (Qt offscreen) لكنها لم تُختبر بعد على شاشة حقيقية؛ ومجموعة الـ benchmark المنشورة صغيرة (12 مستنداً، 36 سؤالاً — توضيحية، شغّل منظومة التقييم على بياناتك أنت)؛ وخطوة النشر على PyPI لا تزال يدوية. الشفافية أولاً.</span>
+      <span class="t-ar">الإصدار v0.2.0 هو beta لا v1.0. وواجهة PyQt6 جرى التحقّق منها بلا شاشة (Qt offscreen) لكنها لم تُختبر بعد على شاشة حقيقية؛ ومجموعة الـ benchmark المنشورة صغيرة (12 مستنداً و36 سؤالاً، وهي توضيحية، فشغّل منظومة التقييم على بياناتك أنت)؛ وخطوة النشر على PyPI لا تزال يدوية. الشفافية أولاً.</span>
       <span class="t-en">v0.2.0 is beta, not v1.0. The PyQt6 GUI is validated headless (offscreen Qt) but not yet exercised on a real display; the published benchmark corpus is small (12 docs, 36 questions — illustrative, run the eval harness on your own data); the PyPI publish step is still manual. Be transparent.</span>
     </div>
   </div>

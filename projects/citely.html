@@ -39,7 +39,7 @@
     <span class="domain"><span class="t-ar">AI · منتج · RAG مع استشهاد</span><span class="t-en">AI · Product · RAG with citations</span></span>
     <h1><span class="t-en">Citely<span class="accent">سايتلي</span></span><span class="t-ar">سايتلي<span class="accent">Citely</span></span></h1>
     <p class="tagline">
-      <span class="t-ar">مساعد مستندات ثنائي اللغة (عربي/إنجليزي): ترفع ملف PDF فتحصل على إجابة <span class="em">مبنيّة على مستندك وحده</span>، وكل ادّعاء فيها مرفق باستشهاد يشير إلى المقطع المصدر وصفحته — <span class="em">دون هلوسة</span>. يقوم على بحث هجين وحلقة وكيلية تبثّ خطواتها وإجابتها لحظياً.</span>
+      <span class="t-ar">مساعد مستندات ثنائي اللغة (عربي/إنجليزي): ترفع ملف PDF فتحصل على إجابة <span class="em">مبنيّة على مستندك وحده</span>، وكل معلومة فيها مرفقة باستشهاد يشير إلى المقطع المصدر وصفحته، <span class="em">بلا هلوسة</span>. يعتمد على بحث هجين وحلقة وكيلية تبثّ خطواتها وإجابتها لحظياً.</span>
       <span class="t-en">A bilingual (Arabic/English) document assistant: upload a PDF and get an answer <span class="em">grounded in your document alone</span>, with every claim carrying a citation to the exact source passage and page — <span class="em">no hallucination</span>. Built on hybrid search and an agentic loop that streams its steps and answer in real time.</span>
     </p>
     <div class="badge-row">
@@ -68,11 +68,11 @@
   <div class="wrap">
     <h2><span class="num">01</span><span class="t-ar">نظرة عامة</span><span class="t-en">Overview</span></h2>
     <p class="lead-p">
-      <span class="t-ar">بنيتُ Citely لأعالج العيب الأكبر في مساعدات المستندات: الإجابات التي تبدو واثقة لكنها مُختلَقة. في Citely كل جملة في الإجابة مربوطة بمصدرها في مستندك — بالمقطع والصفحة — فتتحقّق بنفسك بدل أن تثق عمياءً.</span>
+      <span class="t-ar">بنيتُ Citely لأعالج أكبر عيوب مساعدات المستندات: إجابات تبدو واثقة لكنها مُختلَقة. في Citely كل جملة في الإجابة مربوطة بمصدرها في مستندك (بالمقطع والصفحة)، فتتحقّق بنفسك بدل أن تثق ثقة عمياء.</span>
       <span class="t-en">I built Citely to fix the biggest flaw in document assistants: confident-sounding answers that are actually fabricated. In Citely every sentence is tied to its source in your document — passage and page — so you verify instead of trusting blindly.</span>
     </p>
     <p>
-      <span class="t-ar">ترفع ملف PDF (عربياً أو إنجليزياً)، فيُحلَّل ويُقطَّع وتُحسَب له embeddings تُخزَّن في PostgreSQL عبر pgvector. عند السؤال يجري <span class="em">بحث هجين</span> يدمج الإشارة الدلالية (تشابه المتّجهات) والإشارة المعجمية (بحث نصّي كامل في PostgreSQL) بخوارزمية <span class="em">Reciprocal Rank Fusion</span>. ثم تتولّى حلقة وكيلية صياغة الإجابة من المقاطع المسترجَعة وحدها، وتبثّها رمزاً برمز مع بطاقات المصادر.</span>
+      <span class="t-ar">ترفع ملف PDF (عربياً أو إنجليزياً)، فيُحلَّل ويُقطَّع وتُحسَب له embeddings تُخزَّن في PostgreSQL عبر pgvector. وعند السؤال يجري <span class="em">بحث هجين</span> يدمج الإشارة الدلالية (تشابه المتّجهات) والإشارة المعجمية (بحث نصّي كامل في PostgreSQL) بخوارزمية <span class="em">Reciprocal Rank Fusion</span>. ثم تتولّى حلقة وكيلية صياغة الإجابة من المقاطع المسترجَعة وحدها، وتبثّها كلمةً كلمة مع بطاقات المصادر.</span>
       <span class="t-en">You upload a PDF (Arabic or English); it's parsed, chunked, and embedded into PostgreSQL via pgvector. At question time a <span class="em">hybrid search</span> fuses the semantic signal (vector similarity) and the lexical signal (PostgreSQL full-text search) with <span class="em">Reciprocal Rank Fusion</span>. An agentic loop then composes the answer from the retrieved passages only, streaming it token-by-token alongside source cards.</span>
     </p>
     <p>
@@ -127,9 +127,9 @@ app/
     </div>
     <ul class="bullets" style="margin-top:24px">
       <li><span class="t-ar"><b>بحث هجين بدمج RRF:</b> أدمج ترتيب البحث المتّجهي (تشابه دلالي) مع ترتيب البحث النصّي الكامل في PostgreSQL (تطابق الكلمات والأرقام والأسماء) عبر Reciprocal Rank Fusion (K=60) — يلتقط الهجين ما يفوت كلّاً منهما منفرداً.</span><span class="t-en"><b>Hybrid search with RRF fusion:</b> I merge the vector ranking (semantic) with PostgreSQL full-text ranking (exact words, numbers, names) via Reciprocal Rank Fusion (K=60) — the hybrid catches what either alone would miss.</span></li>
-      <li><span class="t-ar"><b>فهرسة غير حاجبة:</b> الرفع يُرجِع فوراً، والتحليل + التقطيع + حساب الـembeddings (على دفعات) يجري كمهمّة خلفية مع تحديث تقدّم حيّ يستعلم عنه العميل.</span><span class="t-en"><b>Non-blocking indexing:</b> upload returns immediately; parsing + chunking + embedding (in batches) run as a background task with live progress the client polls.</span></li>
+      <li><span class="t-ar"><b>فهرسة لا تحجب الطلب:</b> الرفع يستجيب فوراً، والتحليل والتقطيع وحساب الـembeddings (على دفعات) يجري كمهمّة خلفية مع تحديث تقدّم حيّ يستعلم عنه العميل.</span><span class="t-en"><b>Non-blocking indexing:</b> upload returns immediately; parsing + chunking + embedding (in batches) run as a background task with live progress the client polls.</span></li>
       <li><span class="t-ar"><b>بثّ عبر SSE:</b> الوكيل يبثّ أحداثاً متسلسلة (status · sources · token · done) فتُظهِر الواجهة خطواته ومصادره وإجابته وهي تُكتَب — بدل انتظار ردّ كامل.</span><span class="t-en"><b>SSE streaming:</b> the agent emits a sequence of events (status · sources · token · done), so the UI shows its steps, sources, and answer as they're written — instead of waiting for one full response.</span></li>
-      <li><span class="t-ar"><b>التأريض مفروض بالتصميم:</b> يُمنَح النموذج المقاطع المرقّمة فقط ويُطالَب بالاستشهاد بعد كل ادّعاء، وإن غاب الجواب عن المصادر يقولها صراحةً بدل اختلاقه.</span><span class="t-en"><b>Grounding by design:</b> the model is given only the numbered passages and required to cite after every claim; if the answer isn't in the sources, it says so rather than inventing it.</span></li>
+      <li><span class="t-ar"><b>التأريض مفروض بالتصميم:</b> لا يُمنَح النموذج إلا المقاطع المرقّمة، ويُلزَم بالاستشهاد بعد كل معلومة، وإن لم يجد الجواب في المصادر صرّح بذلك بدل أن يختلقه.</span><span class="t-en"><b>Grounding by design:</b> the model is given only the numbered passages and required to cite after every claim; if the answer isn't in the sources, it says so rather than inventing it.</span></li>
     </ul>
   </div>
 </section>
@@ -147,12 +147,12 @@ app/
       <div class="feat">
         <div class="fi">02</div>
         <h4><span class="t-ar">استشهاد لكل ادّعاء + بطاقات مصادر</span><span class="t-en">A citation per claim + source cards</span></h4>
-        <p><span class="t-ar">يُلزَم النموذج بوضع [n] بعد كل جملة، وتعرض الواجهة بطاقة لكل مصدر فيها عنوان المستند والصفحة ومقتطف — فيتحقّق القارئ من كل ادّعاء بنقرة.</span><span class="t-en">The model must place [n] after each sentence, and the UI shows a card per source with the document title, page, and a snippet — so the reader can verify every claim at a glance.</span></p>
+        <p><span class="t-ar">يُلزَم النموذج بوضع [n] بعد كل جملة، وتعرض الواجهة بطاقة لكل مصدر فيها عنوان المستند والصفحة ومقتطف منه، فيتحقّق القارئ من كل معلومة في لمحة.</span><span class="t-en">The model must place [n] after each sentence, and the UI shows a card per source with the document title, page, and a snippet — so the reader can verify every claim at a glance.</span></p>
       </div>
       <div class="feat">
         <div class="fi">03</div>
         <h4><span class="t-ar">حلقة وكيلية شفّافة بالبثّ</span><span class="t-en">Transparent agentic loop, streamed</span></h4>
-        <p><span class="t-ar">الوكيل يبثّ خطواته (استرجاع ← مصادر ← كتابة) لحظياً عبر SSE، فالمستخدم يرى المنطق يجري لا مجرّد ناتج نهائي — شفافية تبني الثقة.</span><span class="t-en">The agent streams its steps (retrieve → sources → write) live over SSE, so the user sees the reasoning unfold, not just a final output — transparency that builds trust.</span></p>
+        <p><span class="t-ar">يبثّ الوكيل خطواته (استرجاع ← مصادر ← كتابة) لحظياً عبر SSE، فيرى المستخدم سير الاستدلال لا مجرّد نتيجة نهائية، وهي شفافية تبني الثقة.</span><span class="t-en">The agent streams its steps (retrieve → sources → write) live over SSE, so the user sees the reasoning unfold, not just a final output — transparency that builds trust.</span></p>
       </div>
       <div class="feat">
         <div class="fi">04</div>
@@ -162,7 +162,7 @@ app/
       <div class="feat">
         <div class="fi">05</div>
         <h4><span class="t-ar">فهرسة غير متزامنة على دفعات</span><span class="t-en">Async, batched indexing</span></h4>
-        <p><span class="t-ar">تحليل PyMuPDF ثم تقطيع منزلق بتداخل، وحساب embeddings على دفعات في مهمّة خلفية مع تتبّع تقدّم — يُبقي الرفع سريعاً والاستيعاب قابلاً للتوسّع.</span><span class="t-en">PyMuPDF parsing, overlapping sliding-window chunking, and batched embedding in a background task with progress tracking — keeping upload snappy and ingestion scalable.</span></p>
+        <p><span class="t-ar">تحليل بـ PyMuPDF، ثم تقطيع منزلق بتداخل، وحساب embeddings على دفعات في مهمّة خلفية مع تتبّع التقدّم، فيبقى الرفع سريعاً ومعالجة المستندات قابلة للتوسّع.</span><span class="t-en">PyMuPDF parsing, overlapping sliding-window chunking, and batched embedding in a background task with progress tracking — keeping upload snappy and ingestion scalable.</span></p>
       </div>
       <div class="feat">
         <div class="fi">06</div>
@@ -179,12 +179,12 @@ app/
     <h2><span class="num">05</span><span class="t-ar">قرارات هندسية</span><span class="t-en">Engineering decisions</span></h2>
     <div class="callout">
       <b><span class="t-ar">لماذا بحث هجين بدل بحث متّجهي خالص؟</span><span class="t-en">Why hybrid search instead of pure vector search?</span></b><br/>
-      <span class="t-ar">البحث المتّجهي بارع في المعنى لكنه يضعف أمام التطابق الحرفي: الأسماء، الأرقام، المصطلحات النادرة. البحث النصّي الكامل يلتقطها بدقّة. بدمج الترتيبين عبر RRF (K=60) أحصل على ما يجيده كلٌّ منهما دون معايرة أوزان هشّة — وهي الطريقة التي تعتمدها أنظمة الاسترجاع الجادّة.</span>
+      <span class="t-ar">البحث المتّجهي بارع في المعنى لكنه يضعف أمام التطابق الحرفي: الأسماء والأرقام والمصطلحات النادرة، وهذه يلتقطها البحث النصّي الكامل بدقّة. وبدمج الترتيبين عبر RRF (K=60) أحصل على ما يجيده كلٌّ منهما دون معايرة أوزان هشّة، وهي الطريقة التي تعتمدها أنظمة الاسترجاع الجادّة.</span>
       <span class="t-en">Vector search is great at meaning but weak on literal matches: names, numbers, rare terms. Full-text search nails those. Fusing both rankings with RRF (K=60) gives me the strengths of each without brittle weight tuning — the approach serious retrieval systems rely on.</span>
     </div>
     <div class="callout">
       <b><span class="t-ar">لماذا PostgreSQL + pgvector بدل قاعدة متّجهات منفصلة؟</span><span class="t-en">Why PostgreSQL + pgvector over a separate vector DB?</span></b><br/>
-      <span class="t-ar">وضع المتّجهات والنصّ في قاعدة واحدة يتيح البحث الهجين داخل المحرّك نفسه، ويُبقي البيانات متّسقة بلا مزامنة بين مخزنين، ويبسّط النشر والتشغيل — مع الاحتفاظ بقوّة SQL والفهارس والمعاملات.</span>
+      <span class="t-ar">وضع المتّجهات والنصّ في قاعدة واحدة يتيح البحث الهجين داخل المحرّك نفسه، ويُبقي البيانات متّسقة بلا مزامنة بين مخزنين، ويبسّط النشر والتشغيل، مع الاحتفاظ بقوّة SQL والفهارس والمعاملات.</span>
       <span class="t-en">Keeping vectors and text in one database enables hybrid search inside the same engine, keeps data consistent with no two-store sync, and simplifies deploy/ops — while retaining the power of SQL, indexes, and transactions.</span>
     </div>
     <div class="callout note">

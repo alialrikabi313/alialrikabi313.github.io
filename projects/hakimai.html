@@ -39,7 +39,7 @@
     <span class="domain"><span class="t-ar">ذكاء اصطناعي · صحة</span><span class="t-en">AI · Healthcare</span></span>
     <h1><span class="t-en">HakimAI<span class="accent">حكيم</span></span><span class="t-ar">حكيم<span class="accent">HakimAI</span></span></h1>
     <p class="tagline">
-      <span class="t-ar">مُحرّر طبي يفهم اللهجة العراقية، مُوجَّه للأطباء في العراق — يحوّل حوار الطبيب والمريض المنطوق (لهجة عراقية) إلى توثيق سريري منظَّم (SOAP · تشخيص · ICD-10) لحظياً.</span>
+      <span class="t-ar">مُحرّر طبي يفهم اللهجة العراقية، صُمّم للأطباء في العراق: يحوّل الحوار المنطوق بين الطبيب والمريض إلى توثيق سريري منظَّم (SOAP · تشخيص · ICD-10) لحظياً.</span>
       <span class="t-en">A dialect-aware medical scribe for Iraqi clinicians — turns a spoken doctor-patient conversation (Iraqi dialect) into structured clinical documentation (SOAP, diagnosis, ICD-10) in real time.</span>
     </p>
     <div class="badge-row">
@@ -69,7 +69,7 @@
       <span class="t-en">Doctors record a consultation in the app; the audio is sent <span class="em">directly</span> to Google Gemini 2.5 Pro — with no separate transcription step (no Whisper, no intermediate ASR engine) — along with specialty-specific prompts and patient context (history, allergies, clinic drug list).</span>
     </p>
     <p>
-      <span class="t-ar">يُعيد Gemini ردّاً منظَّماً بصيغة JSON: ملاحظات SOAP، تشخيص مع رموز ICD-10، ومستويات ثقة. ثم يشغّل الـ backend <span class="em">محرّك تفاعلات دوائية محلّياً</span> مقابل قاعدة بيانات صيدلانية عراقية مُنسَّقة: جرعات حقيقية، موانع استعمال، تعديلات أطفال حسب الوزن، وعلامات للحمل. ويولّد وصفات PDF بإظهار سليم (RTL)، ويصدّر السجلات إلى FHIR R4 لتكامل أنظمة EHR في المستشفيات. ثم يراجع الطبيب ويعدّل ويوقّع ويعتمد.</span>
+      <span class="t-ar">يُعيد Gemini ردّاً منظَّماً بصيغة JSON: ملاحظات SOAP، تشخيص مع رموز ICD-10، ومستويات ثقة. ثم يشغّل الـ backend <span class="em">محرّك تفاعلات دوائية محلّياً</span> مقابل قاعدة بيانات صيدلانية عراقية مُنسَّقة: جرعات حقيقية، موانع استعمال، تعديلات أطفال حسب الوزن، وعلامات للحمل. ويولّد وصفات PDF بعرض عربي سليم من اليمين إلى اليسار، ويصدّر السجلات إلى FHIR R4 للتكامل مع أنظمة EHR في المستشفيات. ثم يراجع الطبيب ويعدّل ويوقّع ويعتمد.</span>
       <span class="t-en">Gemini returns structured JSON: SOAP notes, diagnosis + ICD-10 codes, and confidence levels. The backend then runs a <span class="em">local drug-interaction engine</span> against a curated Iraqi pharmaceutical database (real dosing, contraindications, weight-based pediatric adjustments, pregnancy flags). It generates PDF prescriptions with proper RTL rendering, and exports records to FHIR R4 for hospital EHR integration. The doctor then reviews, edits, signs, and finalizes.</span>
     </p>
     <p style="font-size:.82rem;color:var(--muted);margin-top:6px">
@@ -134,9 +134,9 @@
    • <span class="dim">daily 1am →</span> clinic reports</pre>
     </div>
     <ul class="bullets" style="margin-top:24px">
-      <li><span class="t-ar"><b>معالجة صوت مباشرة:</b> الصوت الخام يذهب إلى Gemini دون تفريغ نصّي وسيط، فيعود JSON منظَّماً يحوي SOAP والتشخيص ورموز ICD-10 ومستويات الثقة.</span><span class="t-en"><b>Direct audio processing:</b> raw audio goes to Gemini with no intermediate transcription, returning structured JSON with SOAP, diagnosis, ICD-10 codes, and confidence levels.</span></li>
+      <li><span class="t-ar"><b>معالجة صوت مباشرة:</b> يُرسَل الصوت الخام إلى Gemini دون تفريغ نصّي وسيط، فيعود JSON منظَّماً يحوي SOAP والتشخيص ورموز ICD-10 ومستويات الثقة.</span><span class="t-en"><b>Direct audio processing:</b> raw audio goes to Gemini with no intermediate transcription, returning structured JSON with SOAP, diagnosis, ICD-10 codes, and confidence levels.</span></li>
       <li><span class="t-ar"><b>بثّ لحظي بـ WebSocket:</b> التفريغ والنتائج تُبَثّ للعميل أثناء الجلسة بدل انتظار اكتمال المعالجة.</span><span class="t-en"><b>Real-time WebSocket streaming:</b> transcript and results stream to the client during the session instead of waiting for processing to finish.</span></li>
-      <li><span class="t-ar"><b>عمّال Celery Beat آمنون:</b> تذكيرات المواعيد كل ساعة وتقارير العيادة اليومية الساعة 1 صباحاً — مصمّمة لتكون idempotent ومعزولة الأعطال (فشل مهمّة لا يُسقط البقية).</span><span class="t-en"><b>Safe Celery Beat workers:</b> hourly appointment reminders and daily 1am clinic reports — designed to be idempotent and fault-isolated (one failing task doesn't take down the rest).</span></li>
+      <li><span class="t-ar"><b>مهام Celery Beat موثوقة:</b> تذكيرات المواعيد كل ساعة وتقارير العيادة اليومية عند الساعة 1 صباحاً، مصمَّمة لتكون idempotent ومعزولة الأعطال، فإخفاق مهمّة واحدة لا يُسقط البقية.</span><span class="t-en"><b>Safe Celery Beat workers:</b> hourly appointment reminders and daily 1am clinic reports — designed to be idempotent and fault-isolated (one failing task doesn't take down the rest).</span></li>
     </ul>
   </div>
 </section>
@@ -149,12 +149,12 @@
       <div class="feat">
         <div class="fi">01</div>
         <h4><span class="t-ar">صوت ← JSON مباشرةً (بلا تفريغ)</span><span class="t-en">Direct audio→JSON (no transcription step)</span></h4>
-        <p><span class="t-ar">يُرسِل الصوت الخام إلى Gemini مع سياق المريض ويتلقّى JSON منظَّماً مباشرة — ما يلغي زمن وتكلفة مرحلة ASR وسيطة ويتجنّب طبقة نصّية فاقدة للمعلومة في اللهجة العراقية.</span><span class="t-en">Sends raw audio to Gemini with patient context and receives structured JSON directly — eliminating the latency and cost of an intermediate ASR stage and avoiding a lossy text layer for Iraqi dialect.</span></p>
+        <p><span class="t-ar">يُرسِل الصوت الخام إلى Gemini مع سياق المريض، ويتلقّى JSON منظَّماً مباشرة، فيوفّر زمن وتكلفة مرحلة ASR وسيطة، ويتجنّب طبقة نصّية تضيّع تفاصيل اللهجة العراقية.</span><span class="t-en">Sends raw audio to Gemini with patient context and receives structured JSON directly — eliminating the latency and cost of an intermediate ASR stage and avoiding a lossy text layer for Iraqi dialect.</span></p>
       </div>
       <div class="feat">
         <div class="fi">02</div>
         <h4><span class="t-ar">محرّك سلامة دوائية محلّي حتمي</span><span class="t-en">Local deterministic drug-safety engine</span></h4>
-        <p><span class="t-ar">قاعدة أدوية عراقية مُنسَّقة: تفاعلات (مثل Warfarin+Amoxicillin)، موانع استعمال، وجرعات أطفال حسب الوزن — لا تعتمد على الـ LLM، فهي عديمة الحالة وحتمية وقابلة للتدقيق.</span><span class="t-en">A curated Iraqi drug DB: interactions (e.g. Warfarin+Amoxicillin), contraindications, and weight-based pediatric dosing — NOT relying on the LLM, so it's stateless, deterministic, and auditable.</span></p>
+        <p><span class="t-ar">قاعدة أدوية عراقية مُنسَّقة: تفاعلات (مثل Warfarin+Amoxicillin)، موانع استعمال، وجرعات أطفال محسوبة على أساس الوزن، ولا يعتمد على الـ LLM إطلاقاً، فهو حتمي لا يحتفظ بحالة وقابل للتدقيق.</span><span class="t-en">A curated Iraqi drug DB: interactions (e.g. Warfarin+Amoxicillin), contraindications, and weight-based pediatric dosing — NOT relying on the LLM, so it's stateless, deterministic, and auditable.</span></p>
       </div>
       <div class="feat">
         <div class="fi">03</div>
@@ -186,12 +186,12 @@
     <h2><span class="num">05</span><span class="t-ar">قرارات هندسية</span><span class="t-en">Engineering decisions</span></h2>
     <div class="callout">
       <b><span class="t-ar">لماذا إرسال الصوت مباشرةً إلى Gemini بدل Whisper ثم LLM؟</span><span class="t-en">Why send audio directly to Gemini instead of Whisper→LLM?</span></b><br/>
-      <span class="t-ar">إزالة مرحلة التفريغ تقلّل الزمن والتكلفة وتتجنّب طبقة نصّية وسيطة فاقدة للمعلومة في اللهجة العراقية. المقايضة هي مرونة أقلّ إن تأخّر استجابة الـ API — وهي منطقة معترَف بها للتحصين لاحقاً.</span>
+      <span class="t-ar">حذف مرحلة التفريغ يقلّل الزمن والتكلفة، ويتجنّب طبقة نصّية وسيطة تفقد معلومات اللهجة العراقية. ومقابل ذلك تقلّ مرونة النظام إذا تأخّرت استجابة الـ API، وهو جانب نعترف بأنه يحتاج إلى تحصين لاحقاً.</span>
       <span class="t-en">Removing the transcription stage cuts latency and cost and avoids a lossy intermediate text layer for Iraqi dialect. The tradeoff is less resilience if the API times out — an acknowledged area to harden.</span>
     </div>
     <div class="callout note">
-      <b><span class="t-ar">الحالة بصدق</span><span class="t-en">Honest status</span></b><br/>
-      <span class="t-ar">الـ backend هو الـ 80% القويّ والعامل. لوحة الويب بـ Next.js حالياً مجرّد هيكلة للـ API ببيانات وهمية (mock)، وصفحة الفوترة نموذج أوّلي بلا أي معالج دفع موصول. لذا أُقدّم الـ backend والمعمارية بوصفهما الإنجاز الفعلي بشفافية.</span>
+      <b><span class="t-ar">الوضع بصراحة</span><span class="t-en">Honest status</span></b><br/>
+      <span class="t-ar">الـ backend هو الجزء القويّ العامل، ويمثّل نحو 80% من العمل. أمّا لوحة الويب بـ Next.js فهي حالياً مجرّد هيكل يستدعي الـ API ببيانات وهمية (mock)، وصفحة الفوترة نموذج أوّلي لم يُوصَل بأي معالج دفع. لذلك أُقدّم الـ backend والمعمارية بوصفهما الإنجاز الفعلي، بكل شفافية.</span>
       <span class="t-en">The backend is the strong, working 80%. The Next.js web dashboard is currently API scaffolding using mock data, and the billing page is a mock (no payment processor wired). So I present the backend + architecture as the real achievement — transparently.</span>
     </div>
   </div>

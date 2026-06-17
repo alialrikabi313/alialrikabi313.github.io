@@ -77,7 +77,7 @@
       <span class="t-en"><b>(2) High-fidelity PDF→Word conversion:</b> a multi-pass OCR pipeline (quality analysis → hybrid extraction → verification → structure detection) mixes PyMuPDF text extraction (searchable PDFs) with Gemini Vision (scanned/image PDFs), detects and corrects garbled text and reversed/mirrored text, and outputs a properly formatted RTL <code>.docx</code>.</span>
     </p>
     <p>
-      <span class="t-ar">التأريض (grounding) حقيقي: المقاطع المُقتبَسة هي مقاطع فعلية من الكتب بأرقام صفحاتها، تُسترجَع عبر بحث دلالي ومعجمي.</span>
+      <span class="t-ar">التأريض (grounding) فعليّ لا شكليّ: المقاطع المُقتبَسة مأخوذة فعلاً من الكتب بأرقام صفحاتها، وتُسترجَع عبر بحث دلالي ومعجمي.</span>
       <span class="t-en">Grounding is real: passages are actual chunks with page numbers, retrieved by semantic + lexical search.</span>
     </p>
   </div>
@@ -87,7 +87,7 @@
 <section class="psec">
   <div class="wrap">
     <h2><span class="num">02</span><span class="t-ar">لقطات</span><span class="t-en">Screenshots</span></h2>
-    <p class="sub"><span class="t-ar">لقطات من التطبيق — والمحادثة الوكيلية مُلتقطة من الـbackend الحقيقي (Gemini + pgvector)</span><span class="t-en">App screenshots — the agentic chat is captured from the live backend (Gemini + pgvector)</span></p>
+    <p class="sub"><span class="t-ar">لقطات من التطبيق، والمحادثة الوكيلية مُلتقطة من backend عامل فعلاً (Gemini + pgvector)</span><span class="t-en">App screenshots — the agentic chat is captured from the live backend (Gemini + pgvector)</span></p>
     <div class="gallery">
       <figure class="gshot">
         <div class="shot"><span class="ph-tag">01</span><img src="../assets/img/arabiq/06-chat.png" alt="Arabiq — live agentic RAG answer with citation" loading="lazy" /></div>
@@ -137,7 +137,7 @@ Flutter app
     <ul class="bullets" style="margin-top:24px">
       <li><span class="t-ar"><b>فصل واضح للطبقات:</b> الواجهة تتحدّث عبر REST للعمليات المتزامنة، وعبر WebSocket لبثّ خطوات الوكيل لحظياً.</span><span class="t-en"><b>Clear layer separation:</b> the frontend talks REST for synchronous ops and WebSocket for live agent-step streaming.</span></li>
       <li><span class="t-ar"><b>عمل ثقيل خارج دورة الطلب:</b> المهام الطويلة (OCR، الفهرسة، التحويل) تُدفع إلى عمّال ARQ على Redis بدل حجب الطلب.</span><span class="t-en"><b>Heavy work off the request cycle:</b> long jobs (OCR, indexing, conversion) are pushed to ARQ workers on Redis rather than blocking the request.</span></li>
-      <li><span class="t-ar"><b>تأريض حقيقي:</b> pgvector يخدم بحثاً دلالياً ومعجمياً هجيناً يُرجع مقاطع فعلية بأرقام صفحاتها للاقتباس.</span><span class="t-en"><b>Real grounding:</b> pgvector serves hybrid semantic + lexical search returning actual chunks with page numbers for citation.</span></li>
+      <li><span class="t-ar"><b>تأريض حقيقي:</b> يوفّر pgvector بحثاً هجيناً دلالياً ومعجمياً يُعيد مقاطع فعلية بأرقام صفحاتها لاستخدامها في الاقتباس.</span><span class="t-en"><b>Real grounding:</b> pgvector serves hybrid semantic + lexical search returning actual chunks with page numbers for citation.</span></li>
     </ul>
   </div>
 </section>
@@ -175,7 +175,7 @@ Flutter app
       <div class="feat">
         <div class="fi">06</div>
         <h4><span class="t-ar">فوترة وتحديد معدّل حقيقيان</span><span class="t-en">Real billing &amp; rate limiting</span></h4>
-        <p><span class="t-ar">تتبّع استخدام على مستوى الرسالة، حصص شهرية تُفرَض قبل الطلب، بدمج الأيام المكتملة (DailyUsageSummary) مع صفوف «اليوم» الحيّة لتفادي الثغرات عند تشغيل المجمِّع الليلي.</span><span class="t-en">Message-level usage tracking, monthly quotas enforced pre-request, combining completed days (DailyUsageSummary) + live "today" rows to avoid gaps when the nightly aggregator runs.</span></p>
+        <p><span class="t-ar">يتتبّع الاستخدام على مستوى كل رسالة، ويفرض حصصاً شهرية قبل تنفيذ الطلب، ويدمج الأيام المكتملة (DailyUsageSummary) مع صفوف «اليوم» الحيّة لتفادي الثغرات أثناء تشغيل المجمِّع الليلي.</span><span class="t-en">Message-level usage tracking, monthly quotas enforced pre-request, combining completed days (DailyUsageSummary) + live "today" rows to avoid gaps when the nightly aggregator runs.</span></p>
       </div>
     </div>
   </div>
@@ -191,8 +191,8 @@ Flutter app
       <span class="t-en">Instead of a single retrieve-then-answer pass, the agent evaluates whether retrieved passages actually answer the question and re-plans if not; streaming the reasoning makes the process transparent and debuggable.</span>
     </div>
     <div class="callout note">
-      <b><span class="t-ar">الحالة بصدق</span><span class="t-en">Honest status</span></b><br/>
-      <span class="t-ar">يعمل بالكامل عبر Docker Compose مع 95 اختباراً ناجحاً (التبعيات الثقيلة مُحاكاة في conftest). الثغرات المعروفة: مسار دفع Stripe مبدئي (المخطّط وتحديد المعدّل موجودان، بلا خصم فعلي)؛ حالة مهمة PDF←Word في الذاكرة (عامل وحيد)؛ إعداد CORS مفتوح على مصراعيه في تهيئة التطوير؛ وFlutter Web غير مُختبَر (الأولوية للموبايل). الشفافية أولاً.</span>
+      <b><span class="t-ar">الوضع بصراحة</span><span class="t-en">Honest status</span></b><br/>
+      <span class="t-ar">يعمل بالكامل عبر Docker Compose مع 95 اختباراً ناجحاً (التبعيات الثقيلة مُحاكاة في conftest). الثغرات المعروفة: مسار دفع Stripe مبدئي (المخطّط وتحديد المعدّل موجودان، بلا خصم فعلي)؛ حالة مهمة PDF←Word في الذاكرة (عامل وحيد)؛ إعداد CORS مفتوح بالكامل في تهيئة التطوير؛ وFlutter Web غير مُختبَر (الأولوية للموبايل). أُفضّل المصارحة على التجميل.</span>
       <span class="t-en">Runs fully via Docker Compose with 95 passing tests (heavy deps stubbed in conftest). Known gaps: the Stripe payment flow is stubbed (schema + rate limiting exist, no real charges); PDF→Word job state is in-memory (single-worker); CORS is wide-open in the dev config; Flutter Web is untested (mobile-first). Be transparent.</span>
     </div>
   </div>

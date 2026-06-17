@@ -73,7 +73,7 @@
       <span class="t-en"><span class="em">Communication:</span> real-time posts and reactions, WhatsApp-style group chat (admin roles, replies, read receipts, multiple message types), and direct messages. <span class="em">Education:</span> a Duolingo-style "learning journey" with five categories and three progressive levels, plus a knowledge library of downloadable PDFs, videos, and articles. <span class="em">Competitions:</span> timed questions, competitive games, points, and monthly leaderboards for individuals and groups with badges.</span>
     </p>
     <p>
-      <span class="t-ar">الدخول مغلق على المجتمع عبر <span class="em">أكواد وصول فريدة</span> (لا تسجيل عامّ)، مع تحكّم بالأدوار على خمسة مستويات. الإشعارات تُدار عبر سبع Cloud Functions تُطلَق على الأحداث (إعجاب، تعليق، رسالة، نقاط، طلب انضمام) وتُرسَل عبر FCM وتُحفَظ في Firestore.</span>
+      <span class="t-ar">الدخول مغلق على المجتمع عبر <span class="em">أكواد وصول فريدة</span> (لا تسجيل عامّ)، مع تحكّم بالأدوار على خمسة مستويات. وتُدار الإشعارات عبر سبع Cloud Functions تعمل عند وقوع الأحداث (إعجاب، تعليق، رسالة، نقاط، طلب انضمام)، فتُرسلها عبر FCM وتحفظها في Firestore.</span>
       <span class="t-en">Access is closed to the community via <span class="em">unique access codes</span> (no public signup), with five-tier role-based access control. Notifications are driven by seven Cloud Functions triggered on events (like, comment, message, points, join request), delivered via FCM and persisted in Firestore.</span>
     </p>
     <div class="p-links" style="margin-top:18px">
@@ -136,7 +136,7 @@ lib/
     </div>
     <ul class="bullets" style="margin-top:24px">
       <li><span class="t-ar"><b>تزامن لحظي عبر Firestore snapshots:</b> الخلاصة والرسائل ولوحات الصدارة تتحدّث مباشرةً، مع ترقيم صفحات (20–50 عنصراً للدفعة) للحدّ من القراءات.</span><span class="t-en"><b>Real-time sync via Firestore snapshots:</b> feed, messages, and leaderboards update live, with pagination (20–50 items per batch) to limit reads.</span></li>
-      <li><span class="t-ar"><b>منطق خادمي في 7 Cloud Functions:</b> تُطلَق على الأحداث وتبثّ الإشعارات بكتابات دفعية (batch) لعشرات الأعضاء، عبر قنوات إشعار أندرويد منفصلة.</span><span class="t-en"><b>Server logic in 7 Cloud Functions:</b> triggered on events, broadcasting notifications via batch writes to dozens of members across separate Android notification channels.</span></li>
+      <li><span class="t-ar"><b>منطق خادمي في 7 Cloud Functions:</b> تعمل عند وقوع الأحداث فتبثّ الإشعارات إلى عشرات الأعضاء بكتابات دفعية (batch) عبر قنوات إشعار منفصلة في أندرويد.</span><span class="t-en"><b>Server logic in 7 Cloud Functions:</b> triggered on events, broadcasting notifications via batch writes to dozens of members across separate Android notification channels.</span></li>
       <li><span class="t-ar"><b>قواعد أمان Firestore صارمة:</b> وصول قائم على الأدوار (5 مستويات)، قيود على مستوى المجموعة والمجموعات الفرعية، وأكواد وصول للتحقّق قبل الدخول.</span><span class="t-en"><b>Strict Firestore security rules:</b> role-based access (5 tiers), collection- and subcollection-level restrictions, and access codes for pre-auth validation.</span></li>
     </ul>
   </div>
@@ -170,7 +170,7 @@ lib/
       <div class="feat">
         <div class="fi">05</div>
         <h4><span class="t-ar">خطّ إشعارات (Cloud Functions + FCM)</span><span class="t-en">Notification pipeline (Cloud Functions + FCM)</span></h4>
-        <p><span class="t-ar">7 دوال تُطلَق على النشاط وتبثّ إشعارات بكتابات دفعية، مع حفظها في Firestore لمركز إشعارات داخلي موثوق، وقنوات أندرويد منفصلة (رسائل/مهام/عام).</span><span class="t-en">7 functions triggered on activity, broadcasting notifications via batch writes and persisting them in Firestore for a reliable in-app center, with separate Android channels (messages/tasks/general).</span></p>
+        <p><span class="t-ar">7 دوال تعمل عند حدوث أيّ نشاط فتبثّ الإشعارات بكتابات دفعية وتحفظها في Firestore ليعتمد عليها مركز إشعارات داخلي موثوق، مع قنوات أندرويد منفصلة (رسائل/مهام/عام).</span><span class="t-en">7 functions triggered on activity, broadcasting notifications via batch writes and persisting them in Firestore for a reliable in-app center, with separate Android channels (messages/tasks/general).</span></p>
       </div>
       <div class="feat">
         <div class="fi">06</div>
@@ -192,7 +192,7 @@ lib/
     </div>
     <div class="callout note">
       <b><span class="t-ar">ملاحظة صادقة عن الحالة</span><span class="t-en">An honest status note</span></b><br/>
-      <span class="t-ar">التطبيق منشور ويعمل لمستخدمين حقيقيين (v1.0.5)، لكن تغطية الاختبارات الآلية ضعيفة ولا يوجد خطّ CI/CD، وأسئلة المسابقات مُضمَّنة في الأصول بدل قاعدة بيانات ديناميكية. قرارات مقبولة لمشروع فردي مشحون، لكنها أوّل ما سأحصّنه عند التوسّع.</span>
+      <span class="t-ar">التطبيق منشور ويعمل لمستخدمين حقيقيين (v1.0.5)، لكن تغطية الاختبارات الآلية ضعيفة ولا يوجد خطّ CI/CD، وأسئلة المسابقات مُضمَّنة في الأصول بدل قاعدة بيانات ديناميكية. وهي مفاضلات مقبولة لمشروع فردي وصل إلى النشر فعلاً، لكنها أوّل ما سأحصّنه عند التوسّع.</span>
       <span class="t-en">The app is published and serving real users (v1.0.5), but automated test coverage is light, there's no CI/CD pipeline, and quiz questions are bundled in assets rather than a dynamic database. Reasonable trade-offs for a shipped solo project — and the first things I'd harden at scale.</span>
     </div>
   </div>

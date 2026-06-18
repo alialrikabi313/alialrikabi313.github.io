@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Citely — سايتلي · Ali Hashim Salman</title>
-<meta name="description" content="مساعد مستندات ثنائي اللغة بنظام RAG: إجابات مبنيّة على مستندك وحده مع استشهاد لكل ادّعاء. بحث هجين (pgvector + FTS · RRF)، حلقة وكيلية، وبثّ SSE. دراسة حالة تقنية." />
+<meta name="description" content="مساعد مستندات ثنائي اللغة بنظام RAG: إجابات مبنيّة على مستندك وحده مع استشهاد لكل ادّعاء. بحث هجين (pgvector + FTS · RRF)، وتدفّق إجابة مُؤرَّض، وبثّ SSE. دراسة حالة تقنية." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet" />
@@ -39,8 +39,8 @@
     <span class="domain"><span class="t-ar">AI · منتج · RAG مع استشهاد</span><span class="t-en">AI · Product · RAG with citations</span></span>
     <h1><span class="t-en">Citely<span class="accent">سايتلي</span></span><span class="t-ar">سايتلي<span class="accent">Citely</span></span></h1>
     <p class="tagline">
-      <span class="t-ar">مساعد مستندات ثنائي اللغة (عربي/إنجليزي): ترفع ملف PDF فتحصل على إجابة <span class="em">مبنيّة على مستندك وحده</span>، وكل معلومة فيها مرفقة باستشهاد يشير إلى المقطع المصدر وصفحته، <span class="em">بلا هلوسة</span>. يعتمد على بحث هجين وحلقة وكيلية تبثّ خطواتها وإجابتها لحظياً.</span>
-      <span class="t-en">A bilingual (Arabic/English) document assistant: upload a PDF and get an answer <span class="em">grounded in your document alone</span>, with every claim carrying a citation to the exact source passage and page — <span class="em">no hallucination</span>. Built on hybrid search and an agentic loop that streams its steps and answer in real time.</span>
+      <span class="t-ar">مساعد مستندات ثنائي اللغة (عربي/إنجليزي): ترفع ملف PDF فتحصل على إجابة <span class="em">مبنيّة على مستندك وحده</span>، وكل معلومة فيها مرفقة باستشهاد يشير إلى المقطع المصدر وصفحته، <span class="em">بلا هلوسة</span>. يعتمد على بحث هجين وتدفّق إجابة شفّاف يبثّ خطواته (استرجاع ← مصادر ← كتابة) وإجابته لحظياً.</span>
+      <span class="t-en">A bilingual (Arabic/English) document assistant: upload a PDF and get an answer <span class="em">grounded in your document alone</span>, with every claim carrying a citation to the exact source passage and page — <span class="em">no hallucination</span>. Built on hybrid search and a transparent, streamed answer flow (retrieve → sources → write) shown live.</span>
     </p>
     <div class="badge-row">
       <span class="badge live"><span class="t-ar">نسخة حيّة</span><span class="t-en">Live</span></span>
@@ -57,7 +57,7 @@
     <div class="factbar" style="margin-top:30px">
       <div class="fact"><div class="k"><span class="t-ar">الدور</span><span class="t-en">Role</span></div><div class="v"><span class="t-ar">مطوّر منفرد — كامل</span><span class="t-en">Solo — end to end</span></div></div>
       <div class="fact"><div class="k"><span class="t-ar">الاسترجاع</span><span class="t-en">Retrieval</span></div><div class="v"><span class="t-ar">هجين: متّجهي + نصّي · RRF</span><span class="t-en">Hybrid: vector + lexical · RRF</span></div></div>
-      <div class="fact"><div class="k"><span class="t-ar">الإجابة</span><span class="t-en">Answering</span></div><div class="v"><span class="t-ar">وكيلية · بثّ SSE · استشهاد</span><span class="t-en">Agentic · SSE stream · cited</span></div></div>
+      <div class="fact"><div class="k"><span class="t-ar">الإجابة</span><span class="t-en">Answering</span></div><div class="v"><span class="t-ar">مُؤرَّضة · بثّ SSE · استشهاد</span><span class="t-en">Grounded · SSE stream · cited</span></div></div>
       <div class="fact"><div class="k"><span class="t-ar">المكدّس</span><span class="t-en">Stack</span></div><div class="v">FastAPI · Postgres · Gemini · Docker</div></div>
     </div>
   </div>
@@ -72,8 +72,8 @@
       <span class="t-en">I built Citely to fix the biggest flaw in document assistants: confident-sounding answers that are actually fabricated. In Citely every sentence is tied to its source in your document — passage and page — so you verify instead of trusting blindly.</span>
     </p>
     <p>
-      <span class="t-ar">ترفع ملف PDF (عربياً أو إنجليزياً)، فيُحلَّل ويُقطَّع وتُحسَب له embeddings تُخزَّن في PostgreSQL عبر pgvector. وعند السؤال يجري <span class="em">بحث هجين</span> يدمج الإشارة الدلالية (تشابه المتّجهات) والإشارة المعجمية (بحث نصّي كامل في PostgreSQL) بخوارزمية <span class="em">Reciprocal Rank Fusion</span>. ثم تتولّى حلقة وكيلية صياغة الإجابة من المقاطع المسترجَعة وحدها، وتبثّها كلمةً كلمة مع بطاقات المصادر.</span>
-      <span class="t-en">You upload a PDF (Arabic or English); it's parsed, chunked, and embedded into PostgreSQL via pgvector. At question time a <span class="em">hybrid search</span> fuses the semantic signal (vector similarity) and the lexical signal (PostgreSQL full-text search) with <span class="em">Reciprocal Rank Fusion</span>. An agentic loop then composes the answer from the retrieved passages only, streaming it token-by-token alongside source cards.</span>
+      <span class="t-ar">ترفع ملف PDF (عربياً أو إنجليزياً)، فيُحلَّل ويُقطَّع وتُحسَب له embeddings تُخزَّن في PostgreSQL عبر pgvector. وعند السؤال يجري <span class="em">بحث هجين</span> يدمج الإشارة الدلالية (تشابه المتّجهات) والإشارة المعجمية (بحث نصّي كامل في PostgreSQL) بخوارزمية <span class="em">Reciprocal Rank Fusion</span>. ثم يتولّى الوكيل صياغة الإجابة من المقاطع المسترجَعة وحدها، وتبثّها كلمةً كلمة مع بطاقات المصادر.</span>
+      <span class="t-en">You upload a PDF (Arabic or English); it's parsed, chunked, and embedded into PostgreSQL via pgvector. At question time a <span class="em">hybrid search</span> fuses the semantic signal (vector similarity) and the lexical signal (PostgreSQL full-text search) with <span class="em">Reciprocal Rank Fusion</span>. The agent then composes the answer from the retrieved passages only, streaming it token-by-token alongside source cards.</span>
     </p>
     <p>
       <span class="t-ar">الواجهة ثنائية اللغة بالكامل مع دعم RTL/LTR، وتُظهِر خطوات الوكيل (استرجاع ← مصادر ← كتابة) أثناء عملها — لتكون التجربة شفّافة بقدر ما هي موثّقة. المشروع مبنيّ من الصفر بمعمارية نظيفة ومُحوّى بـ Docker.</span>
@@ -151,7 +151,7 @@ app/
       </div>
       <div class="feat">
         <div class="fi">03</div>
-        <h4><span class="t-ar">حلقة وكيلية شفّافة بالبثّ</span><span class="t-en">Transparent agentic loop, streamed</span></h4>
+        <h4><span class="t-ar">تدفّق إجابة شفّاف بالبثّ</span><span class="t-en">Transparent streamed answer flow</span></h4>
         <p><span class="t-ar">يبثّ الوكيل خطواته (استرجاع ← مصادر ← كتابة) لحظياً عبر SSE، فيرى المستخدم سير الاستدلال لا مجرّد نتيجة نهائية، وهي شفافية تبني الثقة.</span><span class="t-en">The agent streams its steps (retrieve → sources → write) live over SSE, so the user sees the reasoning unfold, not just a final output — transparency that builds trust.</span></p>
       </div>
       <div class="feat">

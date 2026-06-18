@@ -69,7 +69,7 @@
       <span class="t-en">An end-to-end RAG framework, genuinely built from scratch — not a LangChain wrapper. The pipeline: document parsing (PDF, DOCX, TXT, HTML, EPUB, PPTX, XLSX, images via OCR, audio via STT) → chunking (8+ strategies) → embeddings → vector store → hybrid search (dense vectors + BM25 fused with Reciprocal-Rank Fusion) → cross-encoder reranking → RAG generation with chunk-level citations.</span>
     </p>
     <p>
-      <span class="t-ar">يأتي الإطار بواجهة سطر أوامر <code>tadweer</code> (init/add/index/search/status/eval)، ومعالج سطح مكتب بـ PyQt6، وخادم REST بـ FastAPI، وأهداف تصدير ONNX وحزمة مدمجة، ومنظومة تقييم (MRR، Recall@k، nDCG@k). ودعم اللغات المتعدّدة <span class="em">مدمج في كامل المسار لا مُلصق عليه لاحقاً</span>. أما الحالة فهي: الإصدار v0.2.0، والمرحلة الثالثة شبه مكتملة.</span>
+      <span class="t-ar">يأتي الإطار بواجهة سطر أوامر <code>tadweer</code> (init/add/index/search/status/eval)، ومعالج سطح مكتب بـ PyQt6، وخادم REST بـ FastAPI، وصيغ تصدير ONNX وحزمة مدمجة، ومنظومة تقييم (MRR، Recall@k، nDCG@k). ودعم اللغات المتعدّدة <span class="em">مدمج في كامل المسار لا مُلصق عليه لاحقاً</span>. أما الحالة فهي: الإصدار v0.2.0، والمرحلة الثالثة شبه مكتملة.</span>
       <span class="t-en">It ships a <code>tadweer</code> CLI (init/add/index/search/status/eval), a PyQt6 desktop GUI wizard, a FastAPI REST server, ONNX + embedded-bundle export targets, and an evaluation harness (MRR, Recall@k, nDCG@k). Multilingual support is <span class="em">baked in across the whole pipeline, not bolted on</span>. Status: v0.2.0, Phase 3 mostly complete.</span>
     </p>
   </div>
@@ -145,7 +145,7 @@
       <div class="feat">
         <div class="fi">02</div>
         <h4><span class="t-ar">بحث هجين بـ Reciprocal-Rank Fusion</span><span class="t-en">Hybrid search with Reciprocal-Rank Fusion</span></h4>
-        <p><span class="t-ar">يدمج المتّجهات الكثيفة مع BM25 مخصّص؛ وعلى مجموعة الاختبار: متّجه MiniLM بـ 0.940 MRR ← هجين 0.986 ← هجين مع إعادة ترتيب 1.000.</span><span class="t-en">Combines dense vectors + a custom BM25; on the test corpus: MiniLM vector 0.940 MRR → hybrid 0.986 → hybrid+rerank 1.000.</span></p>
+        <p><span class="t-ar">يدمج المتّجهات الكثيفة مع BM25 مخصّص؛ وعلى مجموعة تقييم توضيحية صغيرة (12 مستنداً، 36 سؤالاً) يرتفع الـ MRR من 0.940 (متّجه MiniLM) إلى 0.986 (هجين) ثم 1.000 (هجين + إعادة ترتيب) — أرقام دالّة على الاتجاه لا قياس على مقياس مرجعي كبير.</span><span class="t-en">Combines dense vectors + a custom BM25; on a small illustrative eval set (12 docs, 36 questions), MRR rises from 0.940 (MiniLM vector) → 0.986 (hybrid) → 1.000 (hybrid + rerank) — directional figures, not a large-benchmark result.</span></p>
       </div>
       <div class="feat">
         <div class="fi">03</div>
@@ -164,7 +164,7 @@
       </div>
       <div class="feat">
         <div class="fi">06</div>
-        <h4><span class="t-ar">أهداف تصدير مكتفية ذاتياً</span><span class="t-en">Self-contained export targets</span></h4>
+        <h4><span class="t-ar">صيغ تصدير مكتفية ذاتياً</span><span class="t-en">Self-contained export targets</span></h4>
         <p><span class="t-ar">نماذج ONNX (بلا torch وقت الاستدلال)، وحِزَم مدمجة (vectors.f32 + chunks.json + meta، تُقرأ ببايثون صرف)، وخادم REST بـ FastAPI مع حقن اعتماديات.</span><span class="t-en">ONNX models (no torch at inference), embedded bundles (vectors.f32 + chunks.json + meta, readable with pure Python), and a FastAPI REST server with dependency injection.</span></p>
       </div>
     </div>

@@ -39,7 +39,7 @@
     <span class="domain"><span class="t-ar">ذكاء اصطناعي · هندسة مستندات + بحث وكيلي</span><span class="t-en">AI · Document engineering + agentic search</span></span>
     <h1><span class="t-en">Arabiq<span class="accent">عربِق</span></span><span class="t-ar">عربِق</span></h1>
     <p class="tagline">
-      <span class="t-ar">منصّة full-stack تجمع قدرتين متقدّمتين على المستندات: <span class="em">خطّ OCR متعدّد المرّات</span> يحوّل ملفات PDF الممسوحة ضوئياً إلى Word قابل للتحرير بصيغة RTL سليمة، و<span class="em">حلقة بحث وكيلية متعدّدة الدورات</span> (تخطيط ← تقييم ← إعادة تخطيط حتى 5 تكرارات) تبثّ استدلالها لحظياً عبر WebSocket.</span>
+      <span class="t-ar">منصّة full-stack تجمع قدرتين متقدّمتين في معالجة المستندات: <span class="em">خطّ OCR متعدّد المرّات</span> يحوّل ملفات PDF الممسوحة ضوئياً إلى Word قابل للتحرير بصيغة RTL سليمة، و<span class="em">حلقة بحث وكيلية متعدّدة الدورات</span> (تخطيط ← تقييم ← إعادة تخطيط حتى 5 تكرارات) تبثّ استدلالها لحظياً عبر WebSocket.</span>
       <span class="t-en">A full-stack platform with two advanced document capabilities: a <span class="em">multi-pass OCR pipeline</span> that converts scanned PDFs into editable, correctly-RTL Word documents, and a <span class="em">multi-iteration agentic search loop</span> (plan → evaluate → re-plan, up to 5 iterations) that streams its reasoning live over WebSocket.</span>
     </p>
     <div class="badge-row">
@@ -53,7 +53,7 @@
 
     <div class="factbar" style="margin-top:30px">
       <div class="fact"><div class="k"><span class="t-ar">الدور</span><span class="t-en">Role</span></div><div class="v"><span class="t-ar">مطوّر منفرد — full-stack</span><span class="t-en">Solo full-stack</span></div></div>
-      <div class="fact"><div class="k"><span class="t-ar">الخلفية</span><span class="t-en">Backend</span></div><div class="v"><span class="t-ar">FastAPI · pgvector · ARQ</span><span class="t-en">FastAPI · pgvector · ARQ</span></div></div>
+      <div class="fact"><div class="k"><span class="t-ar">الخادم</span><span class="t-en">Backend</span></div><div class="v"><span class="t-ar">FastAPI · pgvector · ARQ</span><span class="t-en">FastAPI · pgvector · ARQ</span></div></div>
       <div class="fact"><div class="k"><span class="t-ar">الواجهة</span><span class="t-en">Frontend</span></div><div class="v"><span class="t-ar">Flutter · Riverpod</span><span class="t-en">Flutter · Riverpod</span></div></div>
       <div class="fact"><div class="k"><span class="t-ar">الاختبارات</span><span class="t-en">Tests</span></div><div class="v"><b>95</b></div></div>
     </div>
@@ -203,7 +203,7 @@ Flutter app
   <div class="wrap">
     <h2><span class="num">06</span><span class="t-ar">التقنيات</span><span class="t-en">Tech stack</span></h2>
     <table class="stack-table">
-      <tr><td><span class="t-ar">الخلفية</span><span class="t-en">Backend</span></td><td><b>FastAPI</b> · Python 3.12 <span class="t-ar">(غير متزامن)</span><span class="t-en">(async)</span></td></tr>
+      <tr><td><span class="t-ar">الخادم</span><span class="t-en">Backend</span></td><td><b>FastAPI</b> · Python 3.12 <span class="t-ar">(غير متزامن)</span><span class="t-en">(async)</span></td></tr>
       <tr><td><span class="t-ar">قاعدة البيانات</span><span class="t-en">Database</span></td><td><b>PostgreSQL + pgvector</b> · SQLAlchemy async + asyncpg · Alembic <span class="t-ar">(3 ترحيلات)</span><span class="t-en">(3 migrations)</span></td></tr>
       <tr><td><span class="t-ar">التخزين/الطابور</span><span class="t-en">Cache / Queue</span></td><td><b>Redis</b> + ARQ <span class="t-ar">عمّال</span><span class="t-en">workers</span></td></tr>
       <tr><td><span class="t-ar">الذكاء/RAG</span><span class="t-en">AI / RAG</span></td><td><b>Google Gemini</b> <span class="t-ar">(نصّ · رؤية · embeddings)</span><span class="t-en">(text · vision · embeddings)</span> · <span class="t-ar">sentence-transformers محلية اختيارية (GPU)</span><span class="t-en">optional local sentence-transformers (GPU)</span></td></tr>

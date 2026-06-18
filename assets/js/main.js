@@ -3,7 +3,14 @@
   var root = document.documentElement;
   var saved = null;
   try{ saved = localStorage.getItem('lang'); }catch(e){}
-  if(saved === 'en' || saved === 'ar'){ applyLang(saved); }
+  if(saved === 'en' || saved === 'ar'){
+    applyLang(saved);
+  } else {
+    // No saved preference: respect the visitor's browser language.
+    // Arabic browsers keep the Arabic default; everyone else starts in English.
+    var nav = (navigator.language || navigator.userLanguage || '').toLowerCase();
+    if(nav && nav.indexOf('ar') !== 0){ applyLang('en'); }
+  }
 
   function applyLang(next){
     root.setAttribute('data-lang', next);

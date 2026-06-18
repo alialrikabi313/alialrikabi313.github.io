@@ -186,6 +186,11 @@
   <div class="wrap">
     <h2><span class="num">05</span><span class="t-ar">قرارات هندسية</span><span class="t-en">Engineering decisions</span></h2>
     <div class="callout">
+      <b><span class="t-ar">سلامة سريرية: أداة بإشراف الطبيب لا قرار آليّ</span><span class="t-en">Clinical safety: a physician-supervised aid, not an autonomous decision</span></b><br/>
+      <span class="t-ar">HakimAI <b>مسوّدة بإشراف بشري</b>: يراجع الطبيب كل مخرَج (التوثيق، التشخيص، رموز ICD-10، تنبيهات الدواء) ويعتمده قبل دخوله السجل. فالنظام يسرّع التوثيق ويقترح، ولا يستبدل الحكم السريري ولا يكتب في السجل دون موافقة بشرية.</span>
+      <span class="t-en">HakimAI is a <b>physician-supervised drafting tool</b>: the clinician reviews every output (notes, diagnosis, ICD-10 codes, drug alerts) and approves it before it enters the record. It accelerates and suggests — it never replaces clinical judgment or writes to the record without human sign-off.</span>
+    </div>
+    <div class="callout">
       <b><span class="t-ar">لماذا إرسال الصوت مباشرةً إلى Gemini بدل Whisper ثم LLM؟</span><span class="t-en">Why send audio directly to Gemini instead of Whisper→LLM?</span></b><br/>
       <span class="t-ar">حذف مرحلة التفريغ يقلّل الزمن والتكلفة، ويتجنّب طبقة نصّية وسيطة تفقد معلومات اللهجة العراقية. ومقابل ذلك تقلّ مرونة النظام إذا تأخّرت استجابة الـ API، وهو جانب نعترف بأنه يحتاج إلى تحصين لاحقاً.</span>
       <span class="t-en">Removing the transcription stage cuts latency and cost and avoids a lossy intermediate text layer for Iraqi dialect. The tradeoff is less resilience if the API times out — an acknowledged area to harden.</span>
